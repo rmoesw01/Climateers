@@ -4,15 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Planeteers</title>
+    <!-- <link href="/static/css/styles.css" rel="stylesheet" /> -->
+    <style>
+        #chartdiv {
+            max-width: 100%;
+            height: 600px;
+            background-color: #fbebdb;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="chartdiv"></div>
+    amCharts
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="config.js"></script>
-    <script src="testapi.js"></script>
+    <!-- <script src="static/js/config.js"></script> -->
+    <!-- <script src="static/js/testapi.js"></script> -->
+    <!-- Resources -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/continentsLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="static/js/globe.js"></script>
 </body>
 
 </html>
