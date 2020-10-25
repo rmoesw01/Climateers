@@ -1,53 +1,96 @@
-am4core.useTheme(am4themes_amchartsdark);
-am4core.useTheme(am4themes_animated);
+am4core.ready(function() {
 
-// main container
-var mainContainer = am4core.create("chartdiv2", am4core.Container);
-mainContainer.width = am4core.percent(100);
-mainContainer.height = am4core.percent(100);
-
-var mapChart = mainContainer.createChild(am4maps.MapChart);
-mapChart.geodata = am4geodata_continentsLow;
-mapChart.projection = new am4maps.projections.Mercator();
-
-var continentSeries = mapChart.series.push(new am4maps.MapPolygonSeries());
-continentSeries.useGeodata = true;
-continentSeries.exclude = ["antarctica"];
-continentSeries.mapPolygons.template.fill = am4core.color("#222a3f");
-continentSeries.mapPolygons.template.stroke = am4core.color("#313950");
-
-var countrySeries = mapChart.series.push(new am4maps.MapPolygonSeries());
-countrySeries.geodata = am4geodata_worldLow;
-
-countrySeries.useGeodata = true;
-countrySeries.include = ["DE"];
-countrySeries.mapPolygons.template.fill = am4core.color("#0975da");
-countrySeries.mapPolygons.template.strokeOpacity = 0;
-
-mapChart.events.on("ready", function() {
-    setTimeout(function() {
-        zoomToCountry();
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+    
+    var countryCodes = ["AF", "AO", "AR", "AM", "AU", "AT", "AZ", "BD", "BY", "BE", "BO", "BA", "BW", "BR", "BG", "KH", "CM", "CA", "CF", "TD", "CL", "CN", "CO", "CG", "CD", "CR", "CI", "HR", "CU", "CY", "CZ", "DK", "EC", "EG", "ER", "EE", "ET", "FI", "FR", "GE", "DE", "GR", "GL", "GP", "GT", "GN", "GW", "GY", "HT", "HN", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IL", "IT", "JM", "JP", "JO", "KZ", "KE", "KP", "KR", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LT", "LU", "MK", "MG", "MY", "ML", "MT", "MR", "MX", "MD", "MN", "ME", "MA", "MZ", "MM", "NA", "NP", "NL", "NZ", "NI", "NE", "NG", "NO", "OM", "PK", "PA", "PG", "PY", "PE", "PH", "PL", "PT", "RO", "RU", "SA", "SN", "RS", "SK", "SI", "SO", "ZA", "SS", "ES", "SD", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TN", "TR", "TM", "UA", "AE", "GB", "US", "UY", "UZ", "VE", "VN", "YE", "ZM", "ZW"];
+    
+    var chart = am4core.create("chartdiv2", am4maps.MapChart);
+    
+    
+    try {
+      chart.geodata = am4geodata_worldLow;
+    }
+    catch (e) {
+      chart.raiseCriticalError(new Error("Map geodata could not be loaded. Please download the latest <a href=\"https://www.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its contents into the same directory as your amCharts files."));
+    }
+    
+    chart.projection = new am4maps.projections.Mercator();
+    chart.padding(10, 20, 10, 20);
+    chart.minZoomLevel = 0.9;
+    chart.zoomLevel = 0.9;
+    chart.maxZoomLevel = 1;
+    
+    var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    polygonSeries.useGeodata = true;
+    polygonSeries.include = ["AF"];
+    
+    
+    var chart1 = am4core.create("hiddenchartdiv2", am4maps.MapChart);
+    chart1.padding(10, 20, 10, 20);
+    chart1.geodata = am4geodata_worldLow;
+    chart1.projection = new am4maps.projections.Mercator();
+    
+    var polygonSeries1 = chart1.series.push(new am4maps.MapPolygonSeries());
+    polygonSeries1.useGeodata = true;
+    polygonSeries1.include = ["AF"];
+    
+    var slider = chart.createChild(am4core.Slider);
+    slider.padding(0, 15, 0, 60);
+    slider.background.padding(0, 15, 0, 60);
+    slider.marginBottom = 15;
+    slider.valign = "bottom";
+    
+    var currentIndex = -1;
+    // var colorset = new am4core.ColorSet();
+    
+    setInterval(function () {
+      var next = slider.start + 1 / countryCodes.length;
+      if (next >= 1) {
+        next = 0;
+      }
+      slider.animate({ property: "start", to: next }, 300);
     }, 2000)
-});
+    
+    slider.events.on("rangechanged", function () {
+      changeCountry();
+    })
+    
+    function changeCountry() {
+      var totalCountries = countryCodes.length - 1;
+      var countryIndex = Math.round(totalCountries * slider.start);
+    
+      var morphToPolygon;
+    
+      if (currentIndex != countryIndex) {
+        polygonSeries1.data = [];
+        polygonSeries1.include = [countryCodes[countryIndex]];
+    
+        currentIndex = countryIndex;
+    
+        polygonSeries1.events.once ("validated", function () {
+          morphToPolygon = polygonSeries1.mapPolygons.getIndex(0);
 
-function zoomToCountry() {
-    var animation = mapChart.zoomToMapObject(countrySeries.getPolygonById("DE"), 8);
-    animation.events.on("animationended", morphToCircle)
-}
+          if (morphToPolygon) {
+            var countryPolygon = polygonSeries.mapPolygons.getIndex(0);
 
-function morphToCircle() {
-    var polygon = countrySeries.getPolygonById("DE");
-    var animation = polygon.polygon.morpher.morphToCircle();
-    animation.events.on("animationended", function() {
-        setTimeout(morphBack, 1000);
+            var morpher = countryPolygon.polygon.morpher;
+            var morphAnimation = morpher.morphToPolygon(morphToPolygon.polygon.points);
+    
+            // var colorAnimation = countryPolygon.animate({ "property": "fill", "to": colorset.getIndex(Math.round(Math.random() * 20)) }, 1000);
+    
+            // var animation = label.animate({ property: "y", to: 1000 }, 300);
+    
+            // animation.events.once("animationended", function () {
+            //   label.text = morphToPolygon.dataItem.dataContext["name"];
+            //   label.y = -50;
+            //   label.animate({ property: "y", to: 200 }, 300, am4core.ease.quadOut);
+            // })
+          }
+        })
+      }
+    }
+    
+    
     });
-}
-
-function morphBack() {
-    var polygon = countrySeries.getPolygonById("DE");
-    polygon.polygon.morpher.morphBack();
-
-    setTimeout(function() {
-        morphToCircle();
-    }, 1000)    
-}

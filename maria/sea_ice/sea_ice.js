@@ -29,17 +29,15 @@ am4core.ready (function() {
     
     // create map polygon series for countries
     var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
-    var polygonSeries2 = chart2.series.push(new am4maps.MapPolygonSeries());
     
     // load polygon geodata from geoJSON
     polygonSeries.useGeodata = true;
-    polygonSeries2.useGeodata = true;
     
     // configure template (tooltip & fill/strokes)
     var polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name}";
     polygonTemplate.fill = am4core.color("#212F3C");
-    // polygonTemplate.fillOpacity = 0.6;
+    polygonTemplate.fillOpacity = 0.9;
     polygonTemplate.stroke = am4core.color("#212F3C");
     polygonTemplate.nonScalingStroke = true;
     
@@ -53,9 +51,11 @@ am4core.ready (function() {
     
     // create map polygon series for northern polar sea ice
     var iceSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries2 = chart2.series.push(new am4maps.MapPolygonSeries());
 
-    var url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_197908_geo.json';
-    iceSeries.geodataSource.url = url;
+    // add geojson url
+    iceSeries.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_197908_geo.json';
+    iceSeries2.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_201608_geo.json';
 
     // config fill, stroke, color
     var iceTemplate = iceSeries.mapPolygons.template;
@@ -64,6 +64,13 @@ am4core.ready (function() {
     iceTemplate.fillOpacity = 0.9;
     iceTemplate.nonScalingStroke = true;
     iceTemplate.strokeWidth = 0.5;
+
+    var iceTemplate2 = iceSeries2.mapPolygons.template;
+    // iceTemplate2.tooltipText = "{name}";
+    iceTemplate2.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate2.fillOpacity = 0.9;
+    iceTemplate2.nonScalingStroke = true;
+    iceTemplate2.strokeWidth = 0.5;
 
     // add series for grid
     var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
@@ -79,52 +86,58 @@ am4core.ready (function() {
     var currentIndex = -1;
     // var colorset = new am4core.ColorSet();
 
-    // setInterval(function () {
-    // var next = slider.start + 1 / (2016 - 1979 + 1);
-    // if (next >= 1) {
-    //     next = 0;
-    // }
-    // slider.animate({ property: "start", to: next }, 300);
-    // }, 2000)
+    setInterval (function () {
+        var next = slider.start + 1 / (2016 - 1979 + 1);
+        if (next >= 1) {
+            next = 0;
+        }
 
-    // slider.events.on("rangechanged", function () {
-    // changeYear();
-    // })
+        slider.animate ({ property: "start", to: next }, 300);
+        }, 2000)
+
+    slider.events.on("rangechanged", function () {
+        changeYear();
+    })
     
-    // function changeYear() {
-    //     var totalYears = 2016 - 1979;
-    //     var yearIndex = Math.round(totalYears * slider.start);
+    function changeYear() {
+        var totalYears = 2016 - 1979;
+        var yearIndex = Math.round(totalYears * slider.start);
       
-    //     var morphToPolygon;
+        var morphToPolygon;
       
-    //     if (currentIndex != yearIndex) {
-    //     //   polygonSeries1.data = [];
-    //     //   polygonSeries1.include = [countryCodes[yearIndex]];
-    //       polygonSeries2.geodataSource.url = `https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_${1979+yearIndex}08_geo.json`
+        if (currentIndex != yearIndex) {
+
+        //   console.log (currentIndex, yearIndex);
+          iceSeries2.data = [];
+          iceSeries2.geodataSource.url = `https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_${1979+yearIndex}08_geo.json`
+        //   console.log (iceSeries2.geodataSource.url);
+          
+          currentIndex = yearIndex;
       
-    //       currentIndex = yearIndex;
+          iceSeries2.events.once ("validated", function() {
+            console.log ('validated!');
+            morphToPolygon = iceSeries2.mapPolygons;
+            console.log (morphToPolygon);
+
+            if (morphToPolygon) {
+              console.log ('again');
+              var icePolygon = iceSeries.mapPolygons.getIndex(0);
       
-    //       polygonSeries2.events.once("validated", function () {
+              var morpher = icePolygon.polygon.morpher;
+              var morphAnimation = morpher.morphToPolygon(morphToPolygon.polygon.points);
       
-    //         morphToPolygon = polygonSeries2.mapPolygons.getIndex(0);
-    //         if(morphToPolygon){
-    //           var icePolygon = iceSeries.mapPolygons.getIndex(0);
+            //   var colorAnimation = icePolygon.animate({ "property": "fill", "to": colorset.getIndex(Math.round(Math.random() * 20)) }, 1000);
       
-    //           var morpher = icePolygon.polygon.morpher;
-    //           var morphAnimation = morpher.morphToPolygon(morphToPolygon.polygon.points);
+            //   var animation = label.animate({ property: "y", to: 1000 }, 300);
       
-    //           var colorAnimation = icePolygon.animate({ "property": "fill", "to": colorset.getIndex(Math.round(Math.random() * 20)) }, 1000);
-      
-    //         //   var animation = label.animate({ property: "y", to: 1000 }, 300);
-      
-    //         //   animation.events.once("animationended", function () {
-    //         //     label.text = morphToPolygon.dataItem.dataContext["name"];
-    //         //     label.y = -50;
-    //         //     label.animate({ property: "y", to: 200 }, 300, am4core.ease.quadOut);
-    //         //   })
-    //         }
-    //       })
-    //     }
-    // }
+            //   animation.events.once("animationended", function () {
+            //     label.text = morphToPolygon.dataItem.dataContext["name"];
+            //     label.y = -50;
+            //     label.animate({ property: "y", to: 200 }, 300, am4core.ease.quadOut);
+            //   })
+            }
+          })
+        }
+    }
 
 }); // end am4core.ready()
