@@ -59,6 +59,8 @@ am4core.ready (function() {
 
     // config fill, stroke, color
     var iceTemplate = iceSeries.mapPolygons.template;
+
+    console.log (iceSeries.mapPolygons);
     // iceTemplate.tooltipText = "{name}";
     iceTemplate.fill = am4core.color("rgba(255, 255, 255, 1.0)");
     iceTemplate.fillOpacity = 0.9;
@@ -71,6 +73,9 @@ am4core.ready (function() {
     iceTemplate2.fillOpacity = 0.9;
     iceTemplate2.nonScalingStroke = true;
     iceTemplate2.strokeWidth = 0.5;
+
+    iceSeries.useGeodata = true;
+    iceSeries2.useGeodata = true;
 
     // add series for grid
     var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
@@ -116,7 +121,7 @@ am4core.ready (function() {
       
           iceSeries2.events.once ("validated", function() {
             console.log ('validated!');
-            morphToPolygon = iceSeries2.mapPolygons;
+            morphToPolygon = iceSeries2.mapPolygons.getIndex(0);
             console.log (morphToPolygon);
 
             if (morphToPolygon) {
