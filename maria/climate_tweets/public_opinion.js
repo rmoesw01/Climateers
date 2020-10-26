@@ -261,42 +261,12 @@ function total_fxn2() {
 // begin world views visualization
 var countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'France', 'Germany', 'Greece', 'Hungary', 'India', 'Indonesia', 'Israel', 'Italy', 'Japan', 'Kenya', 'Mexico', 'Netherlands', 'Nigeria', 'Philippines', 'Poland', 'Russia', 'South Africa', 'South Korea', 'Spain', 'Sweden', 'Tunisia', 'United Kingdom', 'United States']
 
-async function getGlobalData() {
-    const response = await d3.csv('pew_data/pew_csvs/global_survey.csv');
-
-    var major = [];
-    var minor = [];
-    var none = [];
-
-    response.forEach((d) => {
-        if (d.intthreat_climatechange == 1) {
-            major.push(d.count);
-        }
-        else if (d.intthreat_climatechange == 2) {
-            minor.push(d.count);
-        }
-        else if (d.intthreat_climatechange == 3) {
-            none.push(d.count);
-        }
-    })
-
-    var global_data = [];
-
-    for (var x = 0; x < countries.length; x++) {
-        var total_responses = +major[x] + +minor[x] + +none[x];
-        var major_threat_percent = Math.round(+major[x] * 100 / total_responses);
-
-        global_data.push({ 'country': countries[x], 'major_threat_percent': major_threat_percent });
-    }
-    return global_data;
-}
-
 d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
     var major = [];
     var minor = [];
     var none = [];
 
-    response.forEach((d) => {
+    response.forEach ((d) => {
         if (d.intthreat_climatechange == 1) {
             major.push(d.count);
         }
@@ -316,11 +286,20 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
         var minor_percent = Math.round(+minor[x] * 100 / total_responses);
         var none_percent = Math.round(+none[x] * 100 / total_responses);
 
-        global_data.push ({
+        if (countries[x] == 'United States') {
+            var color = am4core.color('#F1C40F');
+        }
+
+        else {
+            var color = am4core.color('#2471A3');
+        }
+
+        global_data.push({
             'country': countries[x],
             'major_percent': major_percent,
             'minor_percent': minor_percent,
-            'none_percent': none_percent
+            'none_percent': none_percent,
+            'fill': color
         });
     }
 
@@ -330,61 +309,101 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
         am4core.useTheme(am4themes_animated);
         // Themes end
 
-        // Create chart instance
-        var chart = am4core.create("chart3", am4charts.RadarChart);
-        // chart.scrollbarX = new am4core.Scrollbar();
+        var chart = am4core.create("chart3", am4charts.XYChart);
+        chart.padding(40, 40, 40, 40);
 
-        chart.data = global_data;
-        chart.radius = am4core.percent(100);
-        chart.innerRadius = am4core.percent(50);
-
-        // Create axes
-        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-        categoryAxis.dataFields.category = "country";
+        var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
         categoryAxis.renderer.grid.template.location = 0;
-        categoryAxis.renderer.minGridDistance = 30;
-        categoryAxis.tooltip.disabled = true;
-        categoryAxis.renderer.minHeight = 110;
+        categoryAxis.dataFields.category = "country";
+        categoryAxis.renderer.minGridDistance = 1;
+        categoryAxis.renderer.inversed = true;
         categoryAxis.renderer.grid.template.disabled = true;
-        //categoryAxis.renderer.labels.template.disabled = true;
-        let labelTemplate = categoryAxis.renderer.labels.template;
-        labelTemplate.radius = am4core.percent(-60);
-        labelTemplate.location = 0.5;
-        labelTemplate.relativeRotation = 90;
 
-        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-        valueAxis.renderer.grid.template.disabled = true;
-        valueAxis.renderer.labels.template.disabled = true;
-        valueAxis.tooltip.disabled = true;
+        var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = 0;
 
-        // Create series
-        var series = chart.series.push(new am4charts.RadarColumnSeries());
-        series.sequencedInterpolation = true;
-        series.dataFields.valueY = "major_percent";
-        series.dataFields.categoryX = "country";
-        series.columns.template.strokeWidth = 0;
-        series.tooltipText = "{valueY}";
-        series.columns.template.radarColumn.cornerRadius = 10;
-        series.columns.template.radarColumn.innerCornerRadius = 0;
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.dataFields.categoryY = "country";
+        series.dataFields.valueX = "major_percent";
+        series.columns.template.tooltipText = "{categoryY}: {valueX}%";
+        series.columns.template.tooltipX = am4core.percent (100);
+        series.columns.template.propertyFields.fill = 'fill';
+        series.columns.template.strokeOpacity = 0;
+        series.columns.template.column.cornerRadiusBottomRight = 5;
+        series.columns.template.column.cornerRadiusTopRight = 5;
 
-        series.tooltip.pointerOrientation = "vertical";
+        // var labelBullet = series.bullets.push(new am4charts.LabelBullet())
+        // labelBullet.label.horizontalCenter = "left";
+        // labelBullet.label.dx = 10;
+        // labelBullet.label.text = "{valueX}%";
+        // labelBullet.locationX = 1;
 
-        // on hover, make corner radiuses bigger
-        let hoverState = series.columns.template.radarColumn.states.create("hover");
-        hoverState.properties.cornerRadius = 0;
-        hoverState.properties.fillOpacity = 1;
-
-
-        series.columns.template.adapter.add("fill", function (fill, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-        })
-
-        // Cursor
-        chart.cursor = new am4charts.RadarCursor();
-        chart.cursor.innerRadius = am4core.percent(50);
-        chart.cursor.lineY.disabled = true;
+        categoryAxis.sortBySeries = series;
+        chart.data = global_data;
 
     }); // end am4core.ready()
+
+    // am4core.ready(function () {
+
+    //     // Themes begin
+    //     am4core.useTheme(am4themes_animated);
+    //     // Themes end
+
+    //     // Create chart instance
+    //     var chart = am4core.create("chart3", am4charts.RadarChart);
+    //     // chart.scrollbarX = new am4core.Scrollbar();
+
+    //     chart.data = global_data;
+    //     chart.radius = am4core.percent(100);
+    //     chart.innerRadius = am4core.percent(50);
+
+    //     // Create axes
+    //     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    //     categoryAxis.dataFields.category = "country";
+    //     categoryAxis.renderer.grid.template.location = 0;
+    //     categoryAxis.renderer.minGridDistance = 30;
+    //     categoryAxis.tooltip.disabled = true;
+    //     categoryAxis.renderer.minHeight = 110;
+    //     categoryAxis.renderer.grid.template.disabled = true;
+    //     //categoryAxis.renderer.labels.template.disabled = true;
+    //     let labelTemplate = categoryAxis.renderer.labels.template;
+    //     labelTemplate.radius = am4core.percent(-60);
+    //     labelTemplate.location = 0.5;
+    //     labelTemplate.relativeRotation = 90;
+
+    //     var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    //     valueAxis.renderer.grid.template.disabled = true;
+    //     valueAxis.renderer.labels.template.disabled = true;
+    //     valueAxis.tooltip.disabled = true;
+
+    //     // Create series
+    //     var series = chart.series.push(new am4charts.RadarColumnSeries());
+    //     series.sequencedInterpolation = true;
+    //     series.dataFields.valueY = "major_percent";
+    //     series.dataFields.categoryX = "country";
+    //     series.columns.template.strokeWidth = 0;
+    //     series.tooltipText = "{valueY}";
+    //     series.columns.template.radarColumn.cornerRadius = 10;
+    //     series.columns.template.radarColumn.innerCornerRadius = 0;
+
+    //     series.tooltip.pointerOrientation = "vertical";
+
+    //     // on hover, make corner radiuses bigger
+    //     let hoverState = series.columns.template.radarColumn.states.create("hover");
+    //     hoverState.properties.cornerRadius = 0;
+    //     hoverState.properties.fillOpacity = 1;
+
+
+    //     series.columns.template.adapter.add("fill", function (fill, target) {
+    //         return chart.colors.getIndex(target.dataItem.index);
+    //     })
+
+    //     // Cursor
+    //     chart.cursor = new am4charts.RadarCursor();
+    //     chart.cursor.innerRadius = am4core.percent(50);
+    //     chart.cursor.lineY.disabled = true;
+
+    // }); // end am4core.ready()
 });
 
 
