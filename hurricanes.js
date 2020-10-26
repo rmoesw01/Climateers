@@ -1,3 +1,8 @@
+d3.csv("Data/Projected_hurricanes.csv").then(function(data) {
+
+    console.log(data);
+
+})
 
 am4core.ready(function() {
 
@@ -136,7 +141,7 @@ distanceAxis.title.text = "Count";
 
 var durationAxis = chart.yAxes.push(new am4charts.DurationAxis());
 durationAxis.title.text = "Duration";
-durationAxis.baseUnit = "minute";
+// durationAxis.baseUnit = "minute";
 durationAxis.renderer.grid.template.disabled = true;
 durationAxis.renderer.opposite = true;
 durationAxis.syncWithAxis = distanceAxis;
