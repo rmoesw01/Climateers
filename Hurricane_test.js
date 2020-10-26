@@ -22,11 +22,12 @@ var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
 dateAxis.renderer.grid.template.location = 0;
 dateAxis.renderer.minGridDistance = 50;
 dateAxis.renderer.grid.template.disabled = true;
+dateAxis.title.text = "Year";
 // dateAxis.renderer.fullWidthTooltip = true;
 
 var countAxis = chart.yAxes.push(new am4charts.ValueAxis());
 countAxis.title.text = "Count";
-countAxis.renderer.minGridDistance = 500;
+countAxis.renderer.minGridDistance = 100;
 // countAxis.renderer.grid.template.disabled = true;
 
 // var durationAxis = chart.yAxes.push(new am4charts.DurationAxis());
