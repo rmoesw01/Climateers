@@ -266,7 +266,7 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
     var minor = [];
     var none = [];
 
-    response.forEach ((d) => {
+    response.forEach((d) => {
         if (d.intthreat_climatechange == 1) {
             major.push(d.count);
         }
@@ -293,7 +293,7 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
         else {
             var color = am4core.color('#2471A3');
         }
-
+        
         global_data.push({
             'country': countries[x],
             'major_percent': major_percent,
@@ -302,6 +302,8 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
             'fill': color
         });
     }
+
+    console.log (global_data);
 
     am4core.ready(function () {
 
@@ -318,19 +320,32 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
         categoryAxis.renderer.minGridDistance = 1;
         categoryAxis.renderer.inversed = true;
         categoryAxis.renderer.grid.template.disabled = true;
+        categoryAxis.cursorTooltipEnabled = false;
 
         var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
         valueAxis.min = 0;
+        valueAxis.cursorTooltipEnabled = false;
 
         var series = chart.series.push(new am4charts.ColumnSeries());
         series.dataFields.categoryY = "country";
         series.dataFields.valueX = "major_percent";
-        series.columns.template.tooltipText = "{categoryY}: {valueX}%";
-        series.columns.template.tooltipX = am4core.percent (100);
+        series.columns.template.tooltipText = "{categoryY}: [bold]{valueX}%[/]";
+        series.columns.template.tooltipX = am4core.percent(100);
+        series.tooltip.pointerOrientation = 'left';
         series.columns.template.propertyFields.fill = 'fill';
         series.columns.template.strokeOpacity = 0;
         series.columns.template.column.cornerRadiusBottomRight = 5;
         series.columns.template.column.cornerRadiusTopRight = 5;
+
+        chart.cursor = new am4charts.XYCursor();
+        // chart.cursor.xAxis = categoryAxis;
+        // chart.cursor.yAxis = valueAxis;
+        // chart.cursor.lineY.stroke = am4core.color("#8F3985");
+        // chart.cursor.lineY.strokeWidth = 4;
+        // chart.cursor.lineY.strokeOpacity = 0.2;
+        // chart.cursor.lineY.strokeDasharray = "";
+        chart.cursor.lineX.disabled = true;
+        chart.cursor.behavior = 'zoomY';
 
         // var labelBullet = series.bullets.push(new am4charts.LabelBullet())
         // labelBullet.label.horizontalCenter = "left";
@@ -340,6 +355,60 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
 
         categoryAxis.sortBySeries = series;
         chart.data = global_data;
+
+        // call fxn to populate minor/no threat data
+        series.events.on("ready", function () {
+            setTimeout(showMinorThreat, 6000);
+        })
+
+        function showMinorThreat() {
+
+            // change values of each column accordingly
+            chart.data = '';
+            series.dataFields.valueX = 'minor_percent';
+            chart.data = global_data;
+            // label.text = 'Republican/ \nlean Republican';
+            // label.y = -50;
+            // label.animate({ property: "y", to: 100 }, 300, am4core.ease.quadOut);
+
+            categoryAxis.sortBySeries = series;
+
+            // call fxn to populate democrat data
+            setTimeout(showNoThreat, 6000);
+        }
+
+        function showNoThreat() {
+
+            // change values of each column accordingly
+            chart.data = '';
+            series.dataFields.valueX = 'none_percent';
+            chart.data = global_data;
+            // label.text = 'Republican/ \nlean Republican';
+            // label.y = -50;
+            // label.animate({ property: "y", to: 100 }, 300, am4core.ease.quadOut);
+
+            categoryAxis.sortBySeries = series;
+
+            // call fxn to populate democrat data
+            setTimeout(showMajorThreat, 6000);
+        }
+        
+        function showMajorThreat() {
+
+            // change values of each column accordingly
+            chart.data = '';
+            series.dataFields.valueX = 'major_percent';
+            chart.data = global_data;
+
+            // label.text = 'Republican/ \nlean Republican';
+            // label.y = -50;
+            // label.animate({ property: "y", to: 100 }, 300, am4core.ease.quadOut);
+
+            categoryAxis.sortBySeries = series;
+
+            // call fxn to populate democrat data
+            setTimeout(showMinorThreat, 6000);
+        }
 
     }); // end am4core.ready()
 
