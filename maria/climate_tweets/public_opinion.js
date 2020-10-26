@@ -1,3 +1,4 @@
+// data of # of responses for each group
 var q1_all = [2450, 348, 789];
 var q1_rep = [517, 305, 653];
 var q1_dem = [1861, 31, 118];
@@ -23,14 +24,14 @@ partyChart.data = [{
     "radius": 20,
     "value": q1_all[0],
     // "tickDisabled": false,
-    'sliceColor': am4core.color ('#F1C40F')
+    'sliceColor': am4core.color('#F1C40F')
 }, {
     "name": "more than enough",
     "fontColor": am4core.color("#566573"),
     "radius": 20,
     "value": q1_all[1],
     // "tickDisabled": true,
-    'sliceColor': am4core.color ('#1F618D')
+    'sliceColor': am4core.color('#1F618D')
 }, {
     "name": "just enough",
     "fontColor": am4core.color("#566573"),
@@ -38,7 +39,7 @@ partyChart.data = [{
     "value": q1_all[2],
     // "labelDisabled": true,
     // "tickDisabled": true,
-    'sliceColor': am4core.color ('#154360')
+    'sliceColor': am4core.color('#154360')
 }];
 
 // create series from chart & data
@@ -79,15 +80,15 @@ label.text = "All respondents";
 label.fillOpacity = 0.3;
 
 // call fxn to populate republican data
-partySeries.events.on("ready", function(){
-  setTimeout(rep_fxn, 4000);
+partySeries.events.on("ready", function () {
+    setTimeout(rep_fxn, 4000);
 })
 
 // fxn to populate republican data
 function rep_fxn() {
 
     // change values of each slice accordingly
-    partySeries.slices.each (function(slice) {
+    partySeries.slices.each(function (slice) {
         slice.dataItem.value = q1_rep[slice.dataItem.index];
     })
 
@@ -101,7 +102,7 @@ function rep_fxn() {
 
 // fxn to populate democrat data
 function dem_fxn() {
-    partySeries.slices.each (function(slice) {
+    partySeries.slices.each(function (slice) {
         slice.dataItem.value = q1_dem[slice.dataItem.index];
     })
 
@@ -115,7 +116,7 @@ function dem_fxn() {
 
 // fxn to return to total data
 function total_fxn() {
-    partySeries.slices.each (function(slice) {
+    partySeries.slices.each(function (slice) {
         slice.dataItem.value = q1_all[slice.dataItem.index];
     })
 
@@ -150,14 +151,14 @@ partyChart2.data = [{
     "radius": 20,
     "value": q2_all[0],
     // "tickDisabled": false,
-    'sliceColor': am4core.color ('#F1C40F')
+    'sliceColor': am4core.color('#F1C40F')
 }, {
     "name": "some",
     "fontColor": am4core.color("#566573"),
     "radius": 20,
     "value": q2_all[1],
     // "tickDisabled": true,
-    'sliceColor': am4core.color ('#2980B9')
+    'sliceColor': am4core.color('#2980B9')
 }, {
     "name": "not too much",
     "fontColor": am4core.color("#566573"),
@@ -165,7 +166,7 @@ partyChart2.data = [{
     "value": q2_all[2],
     // "labelDisabled": true,
     // "tickDisabled": true,
-    'sliceColor': am4core.color ('#1F618D')
+    'sliceColor': am4core.color('#1F618D')
 }, {
     "name": "not at all",
     "fontColor": am4core.color("#566573"),
@@ -173,7 +174,7 @@ partyChart2.data = [{
     "value": q2_all[3],
     // "labelDisabled": true,
     // "tickDisabled": true,
-    'sliceColor': am4core.color ('#154360')
+    'sliceColor': am4core.color('#154360')
 }];
 
 // create series from chart & data
@@ -208,15 +209,15 @@ label2.text = "All respondents";
 label2.fillOpacity = 0.3;
 
 // call fxn to populate republican data
-partySeries2.events.on("ready", function(){
-  setTimeout(rep_fxn2, 4000);
+partySeries2.events.on("ready", function () {
+    setTimeout(rep_fxn2, 4000);
 })
 
 // fxn to populate republican data
 function rep_fxn2() {
 
     // change values of each slice accordingly
-    partySeries2.slices.each (function(slice) {
+    partySeries2.slices.each(function (slice) {
         slice.dataItem.value = q2_rep[slice.dataItem.index];
     })
 
@@ -230,7 +231,7 @@ function rep_fxn2() {
 
 // fxn to populate democrat data
 function dem_fxn2() {
-    partySeries2.slices.each (function(slice) {
+    partySeries2.slices.each(function (slice) {
         slice.dataItem.value = q2_dem[slice.dataItem.index];
     })
 
@@ -244,7 +245,7 @@ function dem_fxn2() {
 
 // fxn to return to total data
 function total_fxn2() {
-    partySeries2.slices.each (function(slice) {
+    partySeries2.slices.each(function (slice) {
         slice.dataItem.value = q2_all[slice.dataItem.index];
     })
 
@@ -255,3 +256,135 @@ function total_fxn2() {
     // call fxn to populate republican data
     setTimeout(rep_fxn2, 4000);
 }
+
+
+// begin world views visualization
+var countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'France', 'Germany', 'Greece', 'Hungary', 'India', 'Indonesia', 'Israel', 'Italy', 'Japan', 'Kenya', 'Mexico', 'Netherlands', 'Nigeria', 'Philippines', 'Poland', 'Russia', 'South Africa', 'South Korea', 'Spain', 'Sweden', 'Tunisia', 'United Kingdom', 'United States']
+
+async function getGlobalData() {
+    const response = await d3.csv('pew_data/pew_csvs/global_survey.csv');
+
+    var major = [];
+    var minor = [];
+    var none = [];
+
+    response.forEach((d) => {
+        if (d.intthreat_climatechange == 1) {
+            major.push(d.count);
+        }
+        else if (d.intthreat_climatechange == 2) {
+            minor.push(d.count);
+        }
+        else if (d.intthreat_climatechange == 3) {
+            none.push(d.count);
+        }
+    })
+
+    var global_data = [];
+
+    for (var x = 0; x < countries.length; x++) {
+        var total_responses = +major[x] + +minor[x] + +none[x];
+        var major_threat_percent = Math.round(+major[x] * 100 / total_responses);
+
+        global_data.push({ 'country': countries[x], 'major_threat_percent': major_threat_percent });
+    }
+    return global_data;
+}
+
+d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
+    var major = [];
+    var minor = [];
+    var none = [];
+
+    response.forEach((d) => {
+        if (d.intthreat_climatechange == 1) {
+            major.push(d.count);
+        }
+        else if (d.intthreat_climatechange == 2) {
+            minor.push(d.count);
+        }
+        else if (d.intthreat_climatechange == 3) {
+            none.push(d.count);
+        }
+    })
+
+    var global_data = [];
+
+    for (var x = 0; x < countries.length; x++) {
+        var total_responses = +major[x] + +minor[x] + +none[x];
+        var major_percent = Math.round(+major[x] * 100 / total_responses);
+        var minor_percent = Math.round(+minor[x] * 100 / total_responses);
+        var none_percent = Math.round(+none[x] * 100 / total_responses);
+
+        global_data.push ({
+            'country': countries[x],
+            'major_percent': major_percent,
+            'minor_percent': minor_percent,
+            'none_percent': none_percent
+        });
+    }
+
+    am4core.ready(function () {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create chart instance
+        var chart = am4core.create("chart3", am4charts.RadarChart);
+        // chart.scrollbarX = new am4core.Scrollbar();
+
+        chart.data = global_data;
+        chart.radius = am4core.percent(100);
+        chart.innerRadius = am4core.percent(50);
+
+        // Create axes
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "country";
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.renderer.minGridDistance = 30;
+        categoryAxis.tooltip.disabled = true;
+        categoryAxis.renderer.minHeight = 110;
+        categoryAxis.renderer.grid.template.disabled = true;
+        //categoryAxis.renderer.labels.template.disabled = true;
+        let labelTemplate = categoryAxis.renderer.labels.template;
+        labelTemplate.radius = am4core.percent(-60);
+        labelTemplate.location = 0.5;
+        labelTemplate.relativeRotation = 90;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.renderer.grid.template.disabled = true;
+        valueAxis.renderer.labels.template.disabled = true;
+        valueAxis.tooltip.disabled = true;
+
+        // Create series
+        var series = chart.series.push(new am4charts.RadarColumnSeries());
+        series.sequencedInterpolation = true;
+        series.dataFields.valueY = "major_percent";
+        series.dataFields.categoryX = "country";
+        series.columns.template.strokeWidth = 0;
+        series.tooltipText = "{valueY}";
+        series.columns.template.radarColumn.cornerRadius = 10;
+        series.columns.template.radarColumn.innerCornerRadius = 0;
+
+        series.tooltip.pointerOrientation = "vertical";
+
+        // on hover, make corner radiuses bigger
+        let hoverState = series.columns.template.radarColumn.states.create("hover");
+        hoverState.properties.cornerRadius = 0;
+        hoverState.properties.fillOpacity = 1;
+
+
+        series.columns.template.adapter.add("fill", function (fill, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        })
+
+        // Cursor
+        chart.cursor = new am4charts.RadarCursor();
+        chart.cursor.innerRadius = am4core.percent(50);
+        chart.cursor.lineY.disabled = true;
+
+    }); // end am4core.ready()
+});
+
+
