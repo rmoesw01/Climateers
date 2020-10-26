@@ -71,13 +71,14 @@ partySeries.hiddenState.properties.endAngle = -90;
 
 // add label
 var label = partyChart.chartContainer.createChild(am4core.Label);
-label.x = 50;
+label.x = 10;
 label.y = 100;
 label.fill = am4core.color("#000000");
-label.fontSize = 35;
+label.fontSize = 30;
 label.fontWeight = "bold";
 label.text = "All respondents";
 label.fillOpacity = 0.3;
+label.zIndex = 3;
 
 // call fxn to populate republican data
 partySeries.events.on("ready", function () {
@@ -200,13 +201,14 @@ partySeries2.hiddenState.properties.endAngle = -90;
 
 // add label
 var label2 = partyChart2.chartContainer.createChild(am4core.Label);
-label2.x = 50;
+label2.x = 10;
 label2.y = 100;
 label2.fill = am4core.color("#000000");
-label2.fontSize = 35;
+label2.fontSize = 30;
 label2.fontWeight = "bold";
 label2.text = "All respondents";
 label2.fillOpacity = 0.3;
+label2.zIndex = 3;
 
 // call fxn to populate republican data
 partySeries2.events.on("ready", function () {
@@ -293,7 +295,7 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
         else {
             var color = am4core.color('#2471A3');
         }
-        
+
         global_data.push({
             'country': countries[x],
             'major_percent': major_percent,
@@ -303,176 +305,132 @@ d3.csv('pew_data/pew_csvs/global_survey.csv').then(response => {
         });
     }
 
-    console.log (global_data);
+    // console.log(global_data);
 
-    am4core.ready(function () {
+    am4core.useTheme(am4themes_animated);
 
-        // Themes begin
-        am4core.useTheme(am4themes_animated);
-        // Themes end
+    var threatContainer = am4core.create("chart3", am4core.Container);
+    threatContainer.width = am4core.percent(100);
+    threatContainer.height = am4core.percent(100);
 
-        var chart = am4core.create("chart3", am4charts.XYChart);
-        chart.padding(40, 40, 40, 40);
+    var chart = threatContainer.createChild(am4charts.XYChart);
+    chart.width = am4core.percent(80);
+    chart.height = am4core.percent(80);
 
-        var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-        categoryAxis.renderer.grid.template.location = 0;
-        categoryAxis.dataFields.category = "country";
-        categoryAxis.renderer.minGridDistance = 1;
-        categoryAxis.renderer.inversed = true;
-        categoryAxis.renderer.grid.template.disabled = true;
-        categoryAxis.cursorTooltipEnabled = false;
+    var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.renderer.grid.template.location = 0;
+    categoryAxis.dataFields.category = "country";
+    categoryAxis.renderer.minGridDistance = 1;
+    categoryAxis.renderer.inversed = true;
+    categoryAxis.renderer.grid.template.disabled = true;
+    categoryAxis.cursorTooltipEnabled = false;
 
-        var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-        valueAxis.min = 0;
-        valueAxis.cursorTooltipEnabled = false;
+    var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+    valueAxis.min = 0;
+    valueAxis.max = 100;
+    valueAxis.cursorTooltipEnabled = false;
 
-        var series = chart.series.push(new am4charts.ColumnSeries());
-        series.dataFields.categoryY = "country";
-        series.dataFields.valueX = "major_percent";
-        series.columns.template.tooltipText = "{categoryY}: [bold]{valueX}%[/]";
-        series.columns.template.tooltipX = am4core.percent(100);
-        series.tooltip.pointerOrientation = 'left';
-        series.columns.template.propertyFields.fill = 'fill';
-        series.columns.template.strokeOpacity = 0;
-        series.columns.template.column.cornerRadiusBottomRight = 5;
-        series.columns.template.column.cornerRadiusTopRight = 5;
+    var series = chart.series.push(new am4charts.ColumnSeries());
+    series.dataFields.categoryY = "country";
+    series.dataFields.valueX = "major_percent";
+    series.columns.template.tooltipText = "{categoryY}: [bold]{valueX}%[/]";
+    series.columns.template.tooltipX = am4core.percent(100);
+    series.tooltip.pointerOrientation = 'left';
+    series.columns.template.propertyFields.fill = 'fill';
+    series.columns.template.strokeOpacity = 0;
+    series.columns.template.column.cornerRadiusBottomRight = 5;
+    series.columns.template.column.cornerRadiusTopRight = 5;
 
-        chart.cursor = new am4charts.XYCursor();
-        // chart.cursor.xAxis = categoryAxis;
-        // chart.cursor.yAxis = valueAxis;
-        // chart.cursor.lineY.stroke = am4core.color("#8F3985");
-        // chart.cursor.lineY.strokeWidth = 4;
-        // chart.cursor.lineY.strokeOpacity = 0.2;
-        // chart.cursor.lineY.strokeDasharray = "";
-        chart.cursor.lineX.disabled = true;
-        chart.cursor.behavior = 'zoomY';
+    chart.cursor = new am4charts.XYCursor();
+    // chart.cursor.xAxis = categoryAxis;
+    // chart.cursor.yAxis = valueAxis;
+    // chart.cursor.lineY.stroke = am4core.color("#8F3985");
+    // chart.cursor.lineY.strokeWidth = 4;
+    // chart.cursor.lineY.strokeOpacity = 0.2;
+    // chart.cursor.lineY.strokeDasharray = "";
+    chart.cursor.lineX.disabled = true;
+    chart.cursor.behavior = 'zoomY';
 
-        // var labelBullet = series.bullets.push(new am4charts.LabelBullet())
-        // labelBullet.label.horizontalCenter = "left";
-        // labelBullet.label.dx = 10;
-        // labelBullet.label.text = "{valueX}%";
-        // labelBullet.locationX = 1;
+    categoryAxis.sortBySeries = series;
+    chart.data = global_data;
 
-        categoryAxis.sortBySeries = series;
+    // add label
+    var labelContainer = chart.chartContainer.createChild(am4core.Container);
+    labelContainer.layout = 'absolute';
+    labelContainer.toBack();
+    labelContainer.paddingBottom = 15;
+    labelContainer.width = am4core.percent (100);
+
+    var threat_label = labelContainer.createChild(am4core.Label);
+    threat_label.fill = am4core.color("#000000");
+    threat_label.align = 'right';
+    threat_label.paddingLeft = 10;
+
+    threat_label.fontSize = 30;
+    threat_label.fontWeight = "bold";
+    threat_label.text = "[bold]major[/] threat";
+    threat_label.fillOpacity = 0.6;
+    // threat_label.isMeasured = false;
+
+    // call fxn to populate minor threat data
+    series.events.on("ready", function () {
+        setTimeout(showMinorThreat, 6000);
+    })
+
+    function showMinorThreat() {
+
+        // change values of each column accordingly
+        chart.data = '';
+        series.dataFields.valueX = 'minor_percent';
         chart.data = global_data;
 
-        // call fxn to populate minor/no threat data
-        series.events.on("ready", function () {
-            setTimeout(showMinorThreat, 6000);
-        })
+        threat_label.text = '[bold]minor[/] threat';
+        // threat_label.animate({
+        //     'from': 0,
+        //     'to': 100,
+        //     'property': 'locationX'
+        // }, 1000, am4core.ease.quadInOut);
 
-        function showMinorThreat() {
+        categoryAxis.sortBySeries = series;
 
-            // change values of each column accordingly
-            chart.data = '';
-            series.dataFields.valueX = 'minor_percent';
-            chart.data = global_data;
-            // label.text = 'Republican/ \nlean Republican';
-            // label.y = -50;
-            // label.animate({ property: "y", to: 100 }, 300, am4core.ease.quadOut);
+        // call fxn to populate no threat data
+        setTimeout(showNoThreat, 6000);
+    }
 
-            categoryAxis.sortBySeries = series;
+    function showNoThreat() {
 
-            // call fxn to populate democrat data
-            setTimeout(showNoThreat, 6000);
-        }
+        // change values of each column accordingly
+        chart.data = '';
+        series.dataFields.valueX = 'none_percent';
+        chart.data = global_data;
 
-        function showNoThreat() {
+        threat_label.text = '[bold]no[/] threat';
+        // threat_label.y = -50;
+        // threat_label.animate({}, 300, am4core.ease.quadOut);
 
-            // change values of each column accordingly
-            chart.data = '';
-            series.dataFields.valueX = 'none_percent';
-            chart.data = global_data;
-            // label.text = 'Republican/ \nlean Republican';
-            // label.y = -50;
-            // label.animate({ property: "y", to: 100 }, 300, am4core.ease.quadOut);
+        categoryAxis.sortBySeries = series;
 
-            categoryAxis.sortBySeries = series;
+        // call fxn to populate major threat data
+        setTimeout(showMajorThreat, 6000);
+    }
 
-            // call fxn to populate democrat data
-            setTimeout(showMajorThreat, 6000);
-        }
-        
-        function showMajorThreat() {
+    function showMajorThreat() {
 
-            // change values of each column accordingly
-            chart.data = '';
-            series.dataFields.valueX = 'major_percent';
-            chart.data = global_data;
+        // change values of each column accordingly
+        chart.data = '';
+        series.dataFields.valueX = 'major_percent';
+        chart.data = global_data;
 
-            // label.text = 'Republican/ \nlean Republican';
-            // label.y = -50;
-            // label.animate({ property: "y", to: 100 }, 300, am4core.ease.quadOut);
+        threat_label.text = '[bold]major[/] threat';
+        // threat_label.y = -50;
+        // threat_label.animate({}, 300, am4core.ease.quadOut);
 
-            categoryAxis.sortBySeries = series;
+        categoryAxis.sortBySeries = series;
 
-            // call fxn to populate democrat data
-            setTimeout(showMinorThreat, 6000);
-        }
+        // call fxn to populate minor threat data
+        setTimeout(showMinorThreat, 6000);
+    }
 
-    }); // end am4core.ready()
-
-    // am4core.ready(function () {
-
-    //     // Themes begin
-    //     am4core.useTheme(am4themes_animated);
-    //     // Themes end
-
-    //     // Create chart instance
-    //     var chart = am4core.create("chart3", am4charts.RadarChart);
-    //     // chart.scrollbarX = new am4core.Scrollbar();
-
-    //     chart.data = global_data;
-    //     chart.radius = am4core.percent(100);
-    //     chart.innerRadius = am4core.percent(50);
-
-    //     // Create axes
-    //     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    //     categoryAxis.dataFields.category = "country";
-    //     categoryAxis.renderer.grid.template.location = 0;
-    //     categoryAxis.renderer.minGridDistance = 30;
-    //     categoryAxis.tooltip.disabled = true;
-    //     categoryAxis.renderer.minHeight = 110;
-    //     categoryAxis.renderer.grid.template.disabled = true;
-    //     //categoryAxis.renderer.labels.template.disabled = true;
-    //     let labelTemplate = categoryAxis.renderer.labels.template;
-    //     labelTemplate.radius = am4core.percent(-60);
-    //     labelTemplate.location = 0.5;
-    //     labelTemplate.relativeRotation = 90;
-
-    //     var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    //     valueAxis.renderer.grid.template.disabled = true;
-    //     valueAxis.renderer.labels.template.disabled = true;
-    //     valueAxis.tooltip.disabled = true;
-
-    //     // Create series
-    //     var series = chart.series.push(new am4charts.RadarColumnSeries());
-    //     series.sequencedInterpolation = true;
-    //     series.dataFields.valueY = "major_percent";
-    //     series.dataFields.categoryX = "country";
-    //     series.columns.template.strokeWidth = 0;
-    //     series.tooltipText = "{valueY}";
-    //     series.columns.template.radarColumn.cornerRadius = 10;
-    //     series.columns.template.radarColumn.innerCornerRadius = 0;
-
-    //     series.tooltip.pointerOrientation = "vertical";
-
-    //     // on hover, make corner radiuses bigger
-    //     let hoverState = series.columns.template.radarColumn.states.create("hover");
-    //     hoverState.properties.cornerRadius = 0;
-    //     hoverState.properties.fillOpacity = 1;
-
-
-    //     series.columns.template.adapter.add("fill", function (fill, target) {
-    //         return chart.colors.getIndex(target.dataItem.index);
-    //     })
-
-    //     // Cursor
-    //     chart.cursor = new am4charts.RadarCursor();
-    //     chart.cursor.innerRadius = am4core.percent(50);
-    //     chart.cursor.lineY.disabled = true;
-
-    // }); // end am4core.ready()
 });
 
 
