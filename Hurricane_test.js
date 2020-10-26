@@ -1,6 +1,6 @@
 d3.csv("Data/Projected_hurricanes_reduced.csv").then(function(data) {
 
-    console.log(data);
+    // console.log(data);
 
 am4core.ready(function() {
 
