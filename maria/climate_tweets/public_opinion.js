@@ -1,3 +1,7 @@
+var q1_all = [2450, 348, 789];
+var q1_rep = [517, 305, 653];
+var q1_dem = [1861, 31, 118];
+
 // amcore theme for animation
 am4core.useTheme(am4themes_animated);
 
@@ -17,21 +21,21 @@ partyChart.data = [{
     "name": "[bold]not enough[/]",
     "fontColor": am4core.color("#2C3E50"),
     "radius": 20,
-    "value": 2450,
+    "value": q1_all[0],
     // "tickDisabled": false,
     'sliceColor': am4core.color ('#F1C40F')
 }, {
     "name": "more than enough",
     "fontColor": am4core.color("#566573"),
     "radius": 20,
-    "value": 348,
+    "value": q1_all[1],
     // "tickDisabled": true,
     'sliceColor': am4core.color ('#1F618D')
 }, {
     "name": "just enough",
     "fontColor": am4core.color("#566573"),
-    "radius": 20,
-    "value": 789,
+    "radius": 30,
+    "value": q1_all[2],
     // "labelDisabled": true,
     // "tickDisabled": true,
     'sliceColor': am4core.color ('#154360')
@@ -84,17 +88,7 @@ function rep_fxn() {
 
     // change values of each slice accordingly
     partySeries.slices.each (function(slice) {
-        if (slice.dataItem.index == 0) {
-            slice.dataItem.value = 517;
-        }
-
-        else if (slice.dataItem.index == 1) {
-            slice.dataItem.value = 305;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 653;
-        }
+        slice.dataItem.value = q1_rep[slice.dataItem.index];
     })
 
     label.text = 'Republican/ \nlean Republican';
@@ -108,17 +102,7 @@ function rep_fxn() {
 // fxn to populate democrat data
 function dem_fxn() {
     partySeries.slices.each (function(slice) {
-        if (slice.dataItem.index == 0) {
-            slice.dataItem.value = 1861;
-        }
-
-        else if (slice.dataItem.index == 1) {
-            slice.dataItem.value = 36;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 118;
-        }
+        slice.dataItem.value = q1_dem[slice.dataItem.index];
     })
 
     label.text = 'Democrat/ \nlean Democrat';
@@ -132,17 +116,7 @@ function dem_fxn() {
 // fxn to return to total data
 function total_fxn() {
     partySeries.slices.each (function(slice) {
-        if (slice.dataItem.index == 0) {
-            slice.dataItem.value = 2450;
-        }
-
-        else if (slice.dataItem.index == 1) {
-            slice.dataItem.value = 348;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 789;
-        }
+        slice.dataItem.value = q1_all[slice.dataItem.index];
     })
 
     label.text = 'All respondents';
@@ -154,6 +128,10 @@ function total_fxn() {
 }
 
 // begin pie chart for 2nd question
+var q2_all = [1889, 1014, 488, 190];
+var q2_rep = [298, 603, 406, 172];
+var q2_dem = [1538, 380, 69, 16];
+
 // main container
 var mainContainer2 = am4core.create("chart2", am4core.Container);
 mainContainer2.width = am4core.percent(100);
@@ -170,29 +148,29 @@ partyChart2.data = [{
     "name": "[bold]a great deal[/]",
     "fontColor": am4core.color("#2C3E50"),
     "radius": 20,
-    "value": 1889,
+    "value": q2_all[0],
     // "tickDisabled": false,
     'sliceColor': am4core.color ('#F1C40F')
 }, {
     "name": "some",
     "fontColor": am4core.color("#566573"),
     "radius": 20,
-    "value": 1014,
+    "value": q2_all[1],
     // "tickDisabled": true,
     'sliceColor': am4core.color ('#2980B9')
 }, {
     "name": "not too much",
     "fontColor": am4core.color("#566573"),
     "radius": 20,
-    "value": 488,
+    "value": q2_all[2],
     // "labelDisabled": true,
     // "tickDisabled": true,
     'sliceColor': am4core.color ('#1F618D')
 }, {
     "name": "not at all",
     "fontColor": am4core.color("#566573"),
-    "radius": 20,
-    "value": 190,
+    "radius": 35,
+    "value": q2_all[3],
     // "labelDisabled": true,
     // "tickDisabled": true,
     'sliceColor': am4core.color ('#154360')
@@ -209,9 +187,7 @@ partySeries2.slices.template.propertyFields.fill = 'sliceColor';
 // partySeries.ticks.template.propertyFields.disabled = "tickDisabled";
 
 // config labels & tooltips
-// partySeries.labels.template.text = "{category}";
-// partySeries2.labels.template.propertyFields.fill = "fontColor";
-// partySeries.labels.template.propertyFields.disabled = "labelDisabled";
+partySeries2.labels.template.propertyFields.fill = "fontColor";
 partySeries2.labels.template.radius = am4core.percent(-30);
 partySeries2.labels.template.propertyFields.radius = "radius";
 
@@ -220,10 +196,6 @@ partySeries2.slices.template.cornerRadius = 8;
 
 // create initial animation
 partySeries2.hiddenState.properties.endAngle = -90;
-
-// create legend
-// partyChart.legend = new am4charts.Legend();
-// partyChart.legend.position = "right";
 
 // add label
 var label2 = partyChart2.chartContainer.createChild(am4core.Label);
@@ -245,21 +217,7 @@ function rep_fxn2() {
 
     // change values of each slice accordingly
     partySeries2.slices.each (function(slice) {
-        if (slice.dataItem.index == 0) {
-            slice.dataItem.value = 298;
-        }
-
-        else if (slice.dataItem.index == 1) {
-            slice.dataItem.value = 603;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 406;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 172;
-        }
+        slice.dataItem.value = q2_rep[slice.dataItem.index];
     })
 
     label2.text = 'Republican/ \nlean Republican';
@@ -273,21 +231,7 @@ function rep_fxn2() {
 // fxn to populate democrat data
 function dem_fxn2() {
     partySeries2.slices.each (function(slice) {
-        if (slice.dataItem.index == 0) {
-            slice.dataItem.value = 1538;
-        }
-
-        else if (slice.dataItem.index == 1) {
-            slice.dataItem.value = 380;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 69;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 16;
-        }
+        slice.dataItem.value = q2_dem[slice.dataItem.index];
     })
 
     label2.text = 'Democrat/ \nlean Democrat';
@@ -301,21 +245,7 @@ function dem_fxn2() {
 // fxn to return to total data
 function total_fxn2() {
     partySeries2.slices.each (function(slice) {
-        if (slice.dataItem.index == 0) {
-            slice.dataItem.value = 1889;
-        }
-
-        else if (slice.dataItem.index == 1) {
-            slice.dataItem.value = 1014;
-        }
-
-        else if (slice.dataItem.index == 2) {
-            slice.dataItem.value = 488;
-        }
-
-        else if (slice.dataItem.index == 3) {
-            slice.dataItem.value = 190;
-        }
+        slice.dataItem.value = q2_all[slice.dataItem.index];
     })
 
     label2.text = 'All respondents';
