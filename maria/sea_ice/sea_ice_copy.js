@@ -42,7 +42,7 @@ am4core.ready (function() {
     var outlineSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
     // add geojson url
-    outlineSeries.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_198009_geo.json';
+    outlineSeries.geodataSource.url = 'geojsons/198009extent_geo.json';
     outlineSeries.useGeodata = true;
 
     // config fill, stroke, color
@@ -56,144 +56,204 @@ am4core.ready (function() {
     var iceSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
     // add geojson url
-    iceSeries.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_198009_geo.json';
+    iceSeries.geodataSource.url = 'geojsons/198009extent_geo.json';
     iceSeries.useGeodata = true;
 
+    // create 1985 map polygon series
+    var iceSeries2 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries2.geodataSource.url = 'geojsons/198509extent_geo.json';
+    iceSeries2.useGeodata = true;
+    iceSeries2.hidden = true;
+
+    // create 1990 map polygon series
+    var iceSeries3 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries3.geodataSource.url = 'geojsons/199009extent_geo.json';
+    iceSeries3.useGeodata = true;
+    iceSeries3.hidden = true;
+
+    // create 1995 map polygon series
+    var iceSeries4 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries4.geodataSource.url = 'geojsons/199509extent_geo.json';
+    iceSeries4.useGeodata = true;
+    iceSeries4.hidden = true;
+
+    // create 2000 map polygon series
+    var iceSeries5 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries5.geodataSource.url = 'geojsons/200009extent_geo.json';
+    iceSeries5.useGeodata = true;
+    iceSeries5.hidden = true;
+
+    // create 2005 map polygon series
+    var iceSeries6 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries6.geodataSource.url = 'geojsons/200509extent_geo.json';
+    iceSeries6.useGeodata = true;
+    iceSeries6.hidden = true;
+
+    // create 2010 map polygon series
+    var iceSeries7 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries7.geodataSource.url = 'geojsons/201009extent_geo.json';
+    iceSeries7.useGeodata = true;
+    iceSeries7.hidden = true;
+
+    // create 2015 map polygon series
+    var iceSeries8 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries8.geodataSource.url = 'geojsons/201509extent_geo.json';
+    iceSeries8.useGeodata = true;
+    iceSeries8.hidden = true;
+
+    // create 2020 map polygon series
+    var iceSeries9 = chart.series.push(new am4maps.MapPolygonSeries());
+    iceSeries9.geodataSource.url = 'geojsons/202009extent_geo.json';
+    iceSeries9.useGeodata = true;
+    iceSeries9.hidden = true;
+    
     // config fill, stroke, color
     var iceTemplate = iceSeries.mapPolygons.template;
-    // iceTemplate.tooltipText = "{name}";
     iceTemplate.fill = am4core.color("rgba(255, 255, 255, 1.0)");
     iceTemplate.fillOpacity = 1.0;
     iceTemplate.nonScalingStroke = true;
     iceTemplate.strokeWidth = 0.5;
-    iceTemplate.tooltipText = "(number)M sq km";
+    iceTemplate.tooltipText = "sea ice extent: 7.67M sq km";
 
-    // create second chart as hidden chart for polygon morphing; mostly same properties
-    var chart2 = am4core.create("hiddenchartdiv", am4maps.MapChart);
+    var iceTemplate2 = iceSeries2.mapPolygons.template;
+    iceTemplate2.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate2.fillOpacity = 1.0;
+    iceTemplate2.nonScalingStroke = true;
+    iceTemplate2.strokeWidth = 0.5;
+    iceTemplate2.tooltipText = "sea ice extent: 6.70M sq km";
 
-    chart2.geodata = am4geodata_continentsLow;
-    chart2.projection = new am4maps.projections.Orthographic();
-    chart2.panBehavior = "rotateLongLat";
+    var iceTemplate3 = iceSeries3.mapPolygons.template;
+    iceTemplate3.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate3.fillOpacity = 1.0;
+    iceTemplate3.nonScalingStroke = true;
+    iceTemplate3.strokeWidth = 0.5;
+    iceTemplate3.tooltipText = "sea ice extent: 6.14M sq km";
 
-    chart2.deltaLatitude = -90;
-    chart2.homeZoomLevel = 2.7;
+    var iceTemplate4 = iceSeries4.mapPolygons.template;
+    iceTemplate4.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate4.fillOpacity = 1.0;
+    iceTemplate4.nonScalingStroke = true;
+    iceTemplate4.strokeWidth = 0.5;
+    iceTemplate4.tooltipText = "sea ice extent: 6.08M sq km";
 
-    // create map polygon series for countries
-    var polygonSeries2 = chart2.series.push(new am4maps.MapPolygonSeries());
-    polygonSeries2.useGeodata = true;
+    var iceTemplate5 = iceSeries5.mapPolygons.template;
+    iceTemplate5.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate5.fillOpacity = 1.0;
+    iceTemplate5.nonScalingStroke = true;
+    iceTemplate5.strokeWidth = 0.5;
+    iceTemplate5.tooltipText = "sea ice extent: 6.25M sq km";
 
-    // center on north pole
-    chart2.deltaLatitude = -90;
-    chart2.homeZoomLevel = 2.7;
+    var iceTemplate6 = iceSeries6.mapPolygons.template;
+    iceTemplate6.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate6.fillOpacity = 1.0;
+    iceTemplate6.nonScalingStroke = true;
+    iceTemplate6.strokeWidth = 0.5;
+    iceTemplate6.tooltipText = "sea ice extent: 5.5M sq km";
 
-    // create 1985 map polygon series
-    var iceSeries2 = chart2.series.push(new am4maps.MapPolygonSeries());
-    iceSeries2.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_198509_geo.json';
-    iceSeries2.useGeodata = true;
+    var iceTemplate7 = iceSeries7.mapPolygons.template;
+    iceTemplate7.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate7.fillOpacity = 1.0;
+    iceTemplate7.nonScalingStroke = true;
+    iceTemplate7.strokeWidth = 0.5;
+    iceTemplate7.tooltipText = "sea ice extent: 4.87M sq km";
 
-    // create 1990 map polygon series
-    var iceSeries3 = chart2.series.push(new am4maps.MapPolygonSeries());
-    iceSeries3.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_199009_geo.json';
-    iceSeries3.useGeodata = true;
+    var iceTemplate8 = iceSeries8.mapPolygons.template;
+    iceTemplate8.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate8.fillOpacity = 1.0;
+    iceTemplate8.nonScalingStroke = true;
+    iceTemplate8.strokeWidth = 0.5;
+    iceTemplate8.tooltipText = "sea ice extent: 4.62M sq km";
 
-    // create 1995 map polygon series
-    var iceSeries4 = chart2.series.push(new am4maps.MapPolygonSeries());
-    iceSeries4.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_199509_geo.json';
-    iceSeries4.useGeodata = true;
+    var iceTemplate9 = iceSeries9.mapPolygons.template;
+    iceTemplate9.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    iceTemplate9.fillOpacity = 1.0;
+    iceTemplate9.nonScalingStroke = true;
+    iceTemplate9.strokeWidth = 0.5;
+    iceTemplate9.tooltipText = "sea ice extent: 3.92M sq km";
 
-    // create 2000 map polygon series
-    var iceSeries5 = chart2.series.push(new am4maps.MapPolygonSeries());
-    iceSeries5.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_200009_geo.json';
-    iceSeries5.useGeodata = true;
+    // unfortunately, looping through the templates didn't work. likely d/t the geojsons
 
-    // create 2005 map polygon series
-    var iceSeries6 = chart2.series.push(new am4maps.MapPolygonSeries());
-    iceSeries6.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_200509_geo.json';
-    iceSeries6.useGeodata = true;
+    // var year_list = [1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020];
+    // var series_list = [iceSeries, iceSeries2, iceSeries3, iceSeries4, iceSeries5, iceSeries6, iceSeries7, iceSeries8, iceSeries9];
+    // var extent_areas = ['7.67', '6.7', '6.14', '6.08', '6.25', '5.5', '4.87', '4.62', '3.92'];
 
-    // create 2010 map polygon series
-    var iceSeries7 = chart2.series.push(new am4maps.MapPolygonSeries());
-    iceSeries7.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_201009_geo.json';
-    iceSeries7.useGeodata = true;
+    // for (var x = 0; x < length.year_list; x++) {
 
-    // create 2016 map polygon series
-    var iceSeries8 = chart2.series.push(new am4maps.MapPolygonSeries());
-    iceSeries8.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_201609_geo.json';
-    iceSeries8.useGeodata = true;
+    //   // config fill, stroke, color
+    //   var thisSeries = series_list[x];
+    //   thisSeries.geodataSource.url = `geojsons/${year_list[x]}09extent_geo.json`;
+    //   thisSeries.useGeodata = true;
+
+    //   var iceTemplate = thisSeries.mapPolygons.template;
+    //   iceTemplate.tooltipText = `sea ice extent: ${extent_areas[x]}`;
+    //   iceTemplate.fill = am4core.color("rgba(255, 255, 255, 1.0)");
+    //   iceTemplate.fillOpacity = 1.0;
+    //   iceTemplate.nonScalingStroke = true;
+    //   iceTemplate.strokeWidth = 0.5;
+
+    //   if (x != 0) {
+    //     thisSeries.hidden = true;
+    //   }
+    //   chart.invalidateData();
+    // }
 
     chart.events.on ('ready', function() {
-      setTimeout (function() {
-        morphIce1();
-      }, 3000)
+      setTimeout (morphIce1, 3000)
     });
 
     function morphIce1() {
-      var polygon1 = iceSeries.mapPolygons.getIndex(0);
-      var polygon2 = iceSeries2.mapPolygons.getIndex(0);
-      var animation = polygon1.polygon.morpher.morphToPolygon (polygon2.polygon.points);
-      animation.events.on ('animationended', function() {
-        setTimeout (morphIce2, 3000);
-      });
+      iceSeries.hide();
+      iceSeries2.show();
+      setTimeout (morphIce2, 3000)
     }
 
     function morphIce2() {
-      var polygon = iceSeries.mapPolygons.getIndex(0);
-      var polygon3 = iceSeries3.mapPolygons.getIndex(0);
-      var animation = polygon.polygon.morpher.morphToPolygon (polygon3.polygon.points);
-      animation.events.on ('animationended', function() {
-        setTimeout (morphIce3, 3000);
-      });
+      iceSeries2.hide();
+      iceSeries3.show();
+      setTimeout (morphIce3, 3000)
     }
 
     function morphIce3() {
-      var polygon = iceSeries.mapPolygons.getIndex(0);
-      var polygon4 = iceSeries4.mapPolygons.getIndex(0);
-      var animation = polygon.polygon.morpher.morphToPolygon (polygon4.polygon.points);
-      animation.events.on ('animationended', function() {
-        setTimeout (morphIce4, 3000);
-      });
+      iceSeries3.hide();
+      iceSeries4.show();
+      setTimeout (morphIce4, 3000)
     }
 
     function morphIce4() {
-      var polygon = iceSeries.mapPolygons.getIndex(0);
-      var polygon5 = iceSeries5.mapPolygons.getIndex(0);
-      var animation = polygon.polygon.morpher.morphToPolygon (polygon5.polygon.points);
-      animation.events.on ('animationended', function() {
-        setTimeout (morphIce5, 3000);
-      });
+      iceSeries4.hide();
+      iceSeries5.show();
+      setTimeout (morphIce5, 3000)
     }
 
     function morphIce5() {
-      var polygon = iceSeries.mapPolygons.getIndex(0);
-      var polygon6 = iceSeries6.mapPolygons.getIndex(0);
-      var animation = polygon.polygon.morpher.morphToPolygon (polygon6.polygon.points);
-      animation.events.on ('animationended', function() {
-        setTimeout (morphIce6, 3000);
-      });
+      iceSeries5.hide();
+      iceSeries6.show();
+      setTimeout (morphIce6, 3000)
     }
 
     function morphIce6() {
-      var polygon = iceSeries.mapPolygons.getIndex(0);
-      var polygon7 = iceSeries7.mapPolygons.getIndex(0);
-      var animation = polygon.polygon.morpher.morphToPolygon (polygon7.polygon.points);
-      animation.events.on ('animationended', function() {
-        setTimeout (morphIce7, 3000);
-      });
+      iceSeries6.hide();
+      iceSeries7.show();
+      setTimeout (morphIce7, 3000)
     }
 
     function morphIce7() {
-      var polygon = iceSeries.mapPolygons.getIndex(0);
-      var polygon8 = iceSeries8.mapPolygons.getIndex(0);
-      var animation = polygon.polygon.morpher.morphToPolygon (polygon8.polygon.points);
-      animation.events.on ('animationended', function() {
-        // setTimeout (morphIce7, 3000);
-      });
+      iceSeries7.hide();
+      iceSeries8.show();
+      setTimeout (morphIce8, 3000)
+    }
+
+    function morphIce8() {
+      iceSeries8.hide();
+      iceSeries9.show();
+      // chart.events.on ('ready', function() {
+      //   setTimeout (morphIce9, 3000)
+      // });
     }
 
     function morphBack() {
-      var polygon = iceSeries.mapPolygons.getIndex(0);
-      polygon.polygon.morpher.morphBack();
-
+      iceSeries9.hide();
+      iceSeries.show();
       setTimeout (function() {
         morphIce1();
       }, 3000)
