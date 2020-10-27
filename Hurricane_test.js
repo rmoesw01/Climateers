@@ -1,4 +1,4 @@
-d3.csv("Data/Projected_hurricanes_reduced.csv").then(function(data) {
+d3.csv("Output_Data/Projected_hurricanes_reduced.csv").then(function(data) {
 
     // console.log(data);
 
@@ -52,9 +52,9 @@ countSeries.yAxis = countAxis;
 countSeries.tooltipText = "{valueY} hurricanes";
 countSeries.name = "Total Hurricanes";
 countSeries.columns.template.fillOpacity = 0.7;
-// countSeries.columns.template.propertyFields.strokeDasharray = "dashLength";
-// countSeries.columns.template.propertyFields.fillOpacity = "alpha";
-// countSeries.showOnInit = true;
+countSeries.columns.template.propertyFields.strokeDasharray = "dashLength";
+countSeries.columns.template.propertyFields.fillOpacity = "alpha";
+countSeries.showOnInit = true;
 
 var countState = countSeries.columns.template.states.create("hover");
 countState.properties.fillOpacity = 0.9;
@@ -65,18 +65,18 @@ cat_1_Series.dataFields.dateX = "Year";
 cat_1_Series.yAxis = countAxis;
 cat_1_Series.name = "Category 1";
 cat_1_Series.strokeWidth = 2;
-// mag_0_Series.propertyFields.strokeDasharray = "dashLength";
+cat_1_Series.propertyFields.strokeDasharray = "dashLength";
 cat_1_Series.tooltipText = "{valueY} ";
 // cat_1_Series.showOnInit = true;
 
-var cat_1_Bullet = cat_1_Series.bullets.push(new am4charts.Bullet());
-var cat_1_Rectangle = cat_1_Bullet.createChild(am4core.Rectangle);
-cat_1_Bullet.horizontalCenter = "middle";
-cat_1_Bullet.verticalCenter = "middle";
-cat_1_Bullet.width = 7;
-cat_1_Bullet.height = 7;
-cat_1_Rectangle.width = 7;
-cat_1_Rectangle.height = 7;
+// var cat_1_Bullet = cat_1_Series.bullets.push(new am4charts.Bullet());
+// var cat_1_Rectangle = cat_1_Bullet.createChild(am4core.Rectangle);
+// cat_1_Bullet.horizontalCenter = "middle";
+// cat_1_Bullet.verticalCenter = "middle";
+// cat_1_Bullet.width = 7;
+// cat_1_Bullet.height = 7;
+// cat_1_Rectangle.width = 7;
+// cat_1_Rectangle.height = 7;
 
 // var durationState = durationBullet.states.create("hover");
 // durationState.properties.scale = 1.2;
@@ -91,9 +91,9 @@ cat_2_Series.propertyFields.strokeDasharray = "dashLength";
 cat_2_Series.tooltipText = "{valueY}";
 cat_2_Series.showOnInit = true;
 
-var cat_2_Bullet = cat_2_Series.bullets.push(new am4charts.CircleBullet());
-cat_2_Bullet.circle.fill = am4core.color("#fff");
-cat_2_Bullet.circle.strokeWidth = 2;
+// var cat_2_Bullet = cat_2_Series.bullets.push(new am4charts.CircleBullet());
+// cat_2_Bullet.circle.fill = am4core.color("#fff");
+// cat_2_Bullet.circle.strokeWidth = 2;
 // cat_2_Bullet.circle.propertyFields.radius = "Category_2";
 
 // var latitudeState = latitudeBullet.states.create("hover");

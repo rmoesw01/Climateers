@@ -1,5 +1,5 @@
 
-d3.csv("Data/Projected_Sea_tmp_lvl_reduced.csv").then(function (data) {
+d3.csv("Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(function (data) {
 
     // console.log(data);
 
@@ -46,6 +46,7 @@ d3.csv("Data/Projected_Sea_tmp_lvl_reduced.csv").then(function (data) {
         series.yAxis = valueAxis;
         series.tooltipText = "{valueY} in"
         series.strokeWidth = 2;
+        series.propertyFields.strokeDasharray = "dashLength";
         // series.minBulletDistance = 10;
         series.name = "Projected Sea Level";
         series.showOnInit = true;
@@ -56,17 +57,20 @@ d3.csv("Data/Projected_Sea_tmp_lvl_reduced.csv").then(function (data) {
         series2.yAxis = valueAxis;
         series2.tooltipText = "{valueY} in"
         series2.strokeWidth = 2;
+        series2.propertyFields.strokeDasharray = "dashLength";
         // series2.minBulletDistance = 10;
         series2.name = "Lin Regress Sea Level";
         series2.showOnInit = true;
 
-        var sea_tmp_series = chart.series.push(new am4charts.LineSeries());
+        var sea_tmp_series = chart.series.push(new am4charts.ColumnSeries());
         sea_tmp_series.dataFields.valueY = "Projected_Sea_tmp";
         sea_tmp_series.dataFields.dateX = "Year";
         sea_tmp_series.yAxis = tempAxis;
         sea_tmp_series.tooltipText = "{valueY} F"
         sea_tmp_series.strokeWidth = 2;
         // sea_tmp_series.minBulletDistance = 10;
+        sea_tmp_series.columns.template.propertyFields.strokeDasharray = "dashLength";
+        sea_tmp_series.columns.template.propertyFields.fillOpacity = "alpha";
         sea_tmp_series.name = "Projected Sea Temperature";
         sea_tmp_series.showOnInit = true;
 
@@ -90,21 +94,21 @@ d3.csv("Data/Projected_Sea_tmp_lvl_reduced.csv").then(function (data) {
         series2.tooltip.label.textValign = "middle";
 
         // Make bullets grow on hover
-        var bullet = series.bullets.push(new am4charts.CircleBullet());
-        bullet.circle.strokeWidth = 2;
-        bullet.circle.radius = 4;
-        bullet.circle.fill = am4core.color("#fff");
+        // var bullet = series.bullets.push(new am4charts.CircleBullet());
+        // bullet.circle.strokeWidth = 2;
+        // bullet.circle.radius = 4;
+        // bullet.circle.fill = am4core.color("#fff");
 
-        var bullethover = bullet.states.create("hover");
-        bullethover.properties.scale = 1.3;
+        // var bullethover = bullet.states.create("hover");
+        // bullethover.properties.scale = 1.3;
 
-        var bullet2 = series2.bullets.push(new am4charts.CircleBullet());
-        bullet2.circle.strokeWidth = 2;
-        bullet2.circle.radius = 4;
-        bullet2.circle.fill = am4core.color("#fff");
+        // var bullet2 = series2.bullets.push(new am4charts.CircleBullet());
+        // bullet2.circle.strokeWidth = 2;
+        // bullet2.circle.radius = 4;
+        // bullet2.circle.fill = am4core.color("#fff");
 
-        var bullethover2 = bullet2.states.create("hover");
-        bullethover2.properties.scale = 1.3;
+        // var bullethover2 = bullet2.states.create("hover");
+        // bullethover2.properties.scale = 1.3;
 
         // Make a panning cursor
         chart.cursor = new am4charts.XYCursor();
