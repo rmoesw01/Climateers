@@ -10,6 +10,7 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         // Create chart instance
         var chart = am4core.create("chartdiv5", am4charts.XYChart3D);
 
+
         // Add data
         chart.data = data;
 
@@ -21,7 +22,7 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
 
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.title.text = "Count";
-       
+
 
         // Create series
         var series3 = chart.series.push(new am4charts.ColumnSeries3D());
@@ -32,7 +33,8 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         series3.columns.template.tooltipText = "{valueY}";
         series3.columns.template.propertyFields.strokeDasharray = "dashLength";
         series3.columns.template.propertyFields.fillOpacity = "alpha";
-        
+        series3.showOnInit = true;
+
         var series = chart.series.push(new am4charts.ColumnSeries3D());
         // series.dataFields.valueY = "Tornado_total";
         series.dataFields.valueY = "Magnitude_0";
@@ -43,9 +45,11 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         series.columns.template.fillOpacity = 0.9;
         series.columns.template.propertyFields.strokeDasharray = "dashLength";
         series.columns.template.propertyFields.fillOpacity = "alpha";
+        series.showOnInit = true;
+
+
 
         var series2 = chart.series.push(new am4charts.ColumnSeries3D());
-        
         series2.dataFields.valueY = "Tornado_total";
         series2.dataFields.categoryX = "Year";
         series2.name = "Total Tornadoes";
@@ -53,11 +57,18 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         series2.columns.template.tooltipText = "{valueY}";
         series2.columns.template.propertyFields.strokeDasharray = "dashLength";
         series2.columns.template.propertyFields.fillOpacity = "alpha";
+        series2.showOnInit = true;
 
-      
+        // Add cursor
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.fullWidthLineX = true;
+        // chart.cursor.xAxis = categoryAxis;
+        // chart.cursor.lineX.strokeOpacity = 0;
+        // chart.cursor.lineX.fill = am4core.color("#000");
+        // chart.cursor.lineX.fillOpacity = 0.1;
 
         // Add legend
-    chart.legend = new am4charts.Legend();
+        chart.legend = new am4charts.Legend();
 
     }); // end am4core.ready()
 })
