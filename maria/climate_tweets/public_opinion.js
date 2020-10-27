@@ -206,8 +206,8 @@ label2.y = 0;
 label2.fill = am4core.color("#000000");
 label2.fontSize = 25;
 label2.fontWeight = "bold";
-label2.text = "All respondents";
-label2.fillOpacity = 0.3;
+label2.text = "all respondents";
+label2.fillOpacity = 0.6;
 label2.zIndex = 3;
 
 // call fxn to populate republican data
@@ -367,7 +367,7 @@ d3.csv('climate_tweets/pew_data/pew_csvs/global_survey.csv').then(response => {
     threat_label.align = 'right';
     threat_label.paddingLeft = 10;
 
-    threat_label.fontSize = 30;
+    threat_label.fontSize = 25;
     threat_label.fontWeight = "bold";
     threat_label.text = "[bold]major[/] threat";
     threat_label.fillOpacity = 0.6;
@@ -405,7 +405,7 @@ d3.csv('climate_tweets/pew_data/pew_csvs/global_survey.csv').then(response => {
         series.dataFields.valueX = 'none_percent';
         chart.data = global_data;
 
-        threat_label.text = '[bold]no[/] threat';
+        threat_label.text = '[bold]not[/] a threat';
         // threat_label.y = -50;
         // threat_label.animate({}, 300, am4core.ease.quadOut);
 
