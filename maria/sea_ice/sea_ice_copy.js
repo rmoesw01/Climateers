@@ -56,7 +56,7 @@ am4core.ready (function() {
     var iceSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
     // add geojson url
-    iceSeries.geodataSource.url = '/extent_N_202009_geo.json';
+    iceSeries.geodataSource.url = 'https://raw.githubusercontent.com/vigorousnorth/arctic-ice/master/geojson_files/extent_N_198009_geo.json';
     iceSeries.useGeodata = true;
 
     // config fill, stroke, color
@@ -66,7 +66,7 @@ am4core.ready (function() {
     iceTemplate.fillOpacity = 1.0;
     iceTemplate.nonScalingStroke = true;
     iceTemplate.strokeWidth = 0.5;
-    iceTemplate.tooltipText = "millions of square kilometers";
+    iceTemplate.tooltipText = "(number)M sq km";
 
     // create second chart as hidden chart for polygon morphing; mostly same properties
     var chart2 = am4core.create("hiddenchartdiv", am4maps.MapChart);
