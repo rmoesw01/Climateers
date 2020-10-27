@@ -43,8 +43,8 @@ am4core.ready(function() {
     //     ]
     // }
     
-    var startYear = 2004;
-    var endYear = 2016;
+    var startYear = 1965;
+    var endYear = 2019;
     var currentYear = 2003;
     var colorSet = new am4core.ColorSet();
     
