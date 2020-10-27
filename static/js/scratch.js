@@ -14,7 +14,7 @@ map.adapter.add("deltaLatitude", function(delatLatitude){
 })
 
 // Globe Chart: Color of the water, without it the water is tranparent
-map.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#00FFFF");
+map.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#C0C0C0");
 map.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1;
 map.deltaLongitude = 20;
 map.deltaLatitude = -20;
@@ -73,7 +73,7 @@ imageSeries.data = [
         "title": "Vancouver"
     }
 ];
-
+imageSeries.hidden = true;
 // *************************************************************
 // * Line Series - draws lines between points with lat & lng   *
 // *************************************************************
@@ -111,21 +111,32 @@ map.smallMap.valign = "top";
 // *************************************************************
 // * Inset map with copy of full map that remains when zoomed  *
 // *************************************************************
-series.heatRules.push({
-    "target": series.columns.template,
-    "property": "fill",
-    "min": am4core.color("#F5DBCB"),
-    "max": am4core.color("#ED7B84"),
-    "dataField": "valueY"
-  });
+// series.heatRules.push({
+//     "target": series.columns.template,
+//     "property": "fill",
+//     "min": am4core.color("#F5DBCB"),
+//     "max": am4core.color("#ED7B84"),
+//     "dataField": "valueY"
+//   });
 
 // *************************************************************
-// *             load series from geojson                      *
+// *                load series from json                      *
 // *************************************************************
-map.geodataSource.url = "/static/data/NOAA_filtStations.json";
-am4geodata_NOAA_filtStations = {
-    
-}
-// var polygonSeries = new am4maps.MapPolygonSeries();
-// polygonSeries.useGeodata = true;
-// map.series.push(series);
+var filtStationSeries = map.series.push(new am4maps.MapImageSeries());
+filtStationSeries.hidden=false
+var filtStationSeriesTemplate = filtStationSeries.mapImages.template;
+var circle = filtStationSeriesTemplate.createChild(am4core.Circle);
+circle.radius = 4;
+circle.fill = am4core.color("#B27799");
+circle.stroke = am4core.color("#FFFFFF");
+circle.strokeWidth = 2;
+circle.nonScaling = true;
+circle.tooltipText = "{name}";
+
+filtStationSeriesTemplate.propertyFields.latitude = "latitude";
+filtStationSeriesTemplate.propertyFields.longitude = "longitude";
+
+d3.json("static/data/NOAA_filtStations.json").then(function(filtstationData) {
+  filtStationSeries.data = filtstationData;
+  console.log(filtStationSeries.data);
+});
