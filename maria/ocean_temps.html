@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+
+<head>
+	<title>Climateers | Ocean Temperatures</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="subpage">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="logo"><b><a href="index.html">C L I M A T E E R S </a></b> by the Hindsight Team</div>
+		<a href="#menu">Menu</a>
+	</header>
+
+	<!-- Nav -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="generic.html">Generic</a></li>
+			<li><a href="elements.html">Elements</a></li>
+		</ul>
+	</nav>
+
+	<!-- title header -->
+	<section class="wrapper style3 ocean-banner">
+		<div class="inner">
+			<header class="align-center">
+				<p>Ocean Temperatures</p>
+				<h2>How have the world's waters been affected?</h2>
+			</header>
+		</div>
+	</section>
+
+	<!-- main body container -->
+	<section id="two" class="wrapper style2">
+		<div class="inner">
+			<div class="box">
+				<div class="content">
+					<header class="align-center">
+						<p>at the north pole</p>
+						<h2>Shrinkage of Northern Sea Ice</h2>
+						<br>
+					</header>
+					<div class="row 200%">
+						<div class="6u 12u$(medium)">
+							<h4>Sea ice at the North Pole is <b>rapidly dwindling.</b></h4>
+							<h5>GeoTIFFs from NSIDC, <i><a href="https://nsidc.org/data/g02135">Sea Ice Index</a></i>, 
+							 Sept. 1980-2020</h5>
+							<hr>
+							<p>
+								The average extent of northern sea ice has changed dramatically since 1980
+								as seen in the corresponding figure. Hover over the sea ice (depicted in white) 
+								to view the numerical measure of the area. The interactive globe can also be dragged and zoomed out.
+							<br><br>
+								This is consistent with rising global temperatures, both <a href="#">atmospheric</a> and oceanic. 
+								This also directly contributes to rising sea levels, which in turn leads to flooding and higher 
+								likelihood of hurricane formation.
+							<br><br>
+								GeoTIFF files of September sea ice extent every 5 years were obtained from the
+								<a href="https://nsidc.org/data/g02135">NSIDC</a>, polygonized with 
+								<a href="https://qgis.org/en/site/">QGIS</a>, and further manipulated with 
+								<a href="https://mapshaper.org/">mapshaper</a> to return files in geoJSON format.
+							</p>
+						</div>
+						<div class="6u 12u$(medium)">
+							<div id='icechartdiv' style="width: 100%; height: 500px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="two" class="wrapper style2" style="padding-top: 0px;">
+		<div class="inner">
+			<div class="box">
+				<div class="content">
+					<header class="align-center">
+						<p>rising tides</p>
+						<h2>Sea Level & Sea Temperature</h2>
+						<br>
+					</header>
+					<div class="row 200%">
+						<div class="7u 12u$(medium)">
+							<div id='seatemps' style="width: 100%; height: 500px;"></div>
+							<br><br>
+						</div>
+						<div class="5u 12u$(medium)">
+							<h4>There is <b>more water</b> these days.</h4>
+							<h5>GeoTIFFs from NSIDC, <i><a href="https://nsidc.org/data/g02135">Sea Ice Index</a></i>, 
+							 Sept. 1980-2020</h5>
+							<hr>
+							<p>
+								The average extent of northern sea ice has changed dramatically since 1980
+								as seen in the corresponding figure. Hover over the sea ice (depicted in white) 
+								to view the numerical measure of the area.
+							<br><br>
+								This is consistent with rising global temperatures, both <a href="#">atmospheric</a> and oceanic. 
+								This also directly contributes to rising sea levels, which in turn leads to flooding and higher 
+								likelihood of hurricane formation.
+							<br><br>
+								GeoTIFF files of September sea ice extent every 5 years were obtained from the
+								<a href="https://nsidc.org/data/g02135">NSIDC</a>, polygonized with 
+								<a href="https://qgis.org/en/site/">QGIS</a>, and further manipulated with 
+								<a href="https://mapshaper.org/">mapshaper</a> to return files in geoJSON format.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="wrapper style3 ocean-banner">
+		<div class="inner">
+			<header class="align-center">
+				<p>classification opinions</p>
+				<h2>Are hurricanes water or weather?</h2>
+			</header>
+		</div>
+	</section>
+	<section id="three" class="wrapper style2">
+		<div class="inner" align='center'>
+			<p>Add hurricanes here if we so choose. Or not.
+			</p>
+
+			<p>We compiled lists of tweets (with <a href="https://github.com/twintproject/twint">Twint</a>) for each tag from January 2014 to October 2020 that were retweeted
+				at least <i>100 times</i>.<br>We then used the module <a href="https://www.fast.ai/">fastAI</a> to create a neural network and 
+				perform deep learning on each group of tweets. With this model, we were able to generate new tweets based 
+				on the existing ones.
+			</p>
+			<br><br>
+			<div class="grid-style">
+				<div>
+				<div class="box">
+					<section class="banner">
+						<article>
+							<p>where is the text</p>
+						</article>
+						<article>
+							<h5>why is the text here</h5>
+						</article>
+						<article>can i have text</article>
+
+					</section>
+					<div class="content">
+						<header class="align-center">
+							<h2>#ClimateChangeHoax</h2>
+						</header>
+						<p>Typically attached to users who deny or downplay the severity of global
+							climate change and the role carbon emissions. Occasionally includes tweets 
+							that treat the notion of a "hoax" with sarcasm.
+							<br><br>
+							Total of 192 tweets analyzed.
+						</p>
+						<footer class="align-center">
+							<a href="#" class="button alt">Learn More</a>
+						</footer>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="box">
+					<section class="banner">
+						<article>
+							<p>where is the text</p>
+						</article>
+						<article>
+							<h5>why is the text here</h5>
+						</article>
+						<article>can i have text</article>
+
+					</section>
+					<div class="content">
+						<header class="align-center">
+							<h2>#ClimateChangeIsReal</h2>
+						</header>
+						<p>Usually attached to posts stressing and insisting on the existence of climate change, 
+							as well as future consequences as a result of global warming. Has fewer sarcastic 
+							posts, but still some.
+							<br><br>
+							Total of 414 tweets analyzed.
+						</p>
+						<footer class="align-center">
+							<a href="#" class="button alt">Learn More</a>
+						</footer>
+					</div>
+				</div>
+			</div>
+			</div>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="container">
+			<ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+			</ul>
+		</div>
+		<div class="copyright">
+			&copy; Untitled. All rights reserved.
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<!-- amcharts libs -->
+	<script src="//cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="//www.amcharts.com/lib/4/charts.js"></script>
+	<script src="//cdn.amcharts.com/lib/4/maps.js"></script>
+	<script src="//cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+	<script src="//cdn.amcharts.com/lib/4/geodata/continentsLow.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="//www.amcharts.com/lib/4/themes/amchartsdark.js"></script>
+
+	<!-- d3 -->
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+
+	<!-- custom scripts -->
+	<script src="sea_ice/sea_ice.js"></script>
+
+</body>
+
+</html>
