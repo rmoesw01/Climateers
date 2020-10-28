@@ -9,7 +9,8 @@ am4core.useTheme(am4themes_animated);
 // Themes end
 
 // Create chart instance
-var chart = am4core.create("chartdiv2", am4charts.XYChart);
+// var chart = am4core.create("chartdiv2", am4charts.XYChart);
+var chart = am4core.create("hurricane_chart", am4charts.XYChart);
 
 chart.colors.step = 2;
 chart.maskBullets = false;

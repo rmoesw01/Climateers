@@ -8,8 +8,8 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         // Themes end
 
         // Create chart instance
-        var chart = am4core.create("chartdiv5", am4charts.XYChart3D);
-
+        // var chart = am4core.create("chartdiv5", am4charts.XYChart3D);
+        var chart = am4core.create("tornado_chart", am4charts.XYChart3D);
 
         // Add data
         chart.data = data;
