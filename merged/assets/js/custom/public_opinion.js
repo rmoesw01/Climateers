@@ -1,7 +1,9 @@
+// begin donut chart
+
 // amcore theme for animation
 am4core.useTheme(am4themes_animated);
 
-// begin pie chart for 2nd question
+// compile data
 var names = ["[bold]a great deal[/]", "some", "not too much", "not at all"];
 var fontcolors = [am4core.color("#2C3E50"), am4core.color("#566573"), am4core.color("#566573"), am4core.color("#566573")];
 var slicecolors = [am4core.color('#F1C40F'), am4core.color('#2980B9'), am4core.color('#1F618D'), am4core.color('#154360')];
@@ -12,6 +14,7 @@ var q2_dem = [1538, 380, 69, 16];
 
 party_data = [];
 
+// loop through arrays, assemble data for plotting
 for (var x = 0; x < names.length; x++) {
     party_data.push ({
         'name': names[x],
@@ -121,7 +124,7 @@ function total_fxn2() {
 // begin world views visualization
 var countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'France', 'Germany', 'Greece', 'Hungary', 'India', 'Indonesia', 'Israel', 'Italy', 'Japan', 'Kenya', 'Mexico', 'Netherlands', 'Nigeria', 'Philippines', 'Poland', 'Russia', 'South Africa', 'South Korea', 'Spain', 'Sweden', 'Tunisia', 'United Kingdom', 'United States']
 
-d3.csv('climate_tweets/pew_data/pew_csvs/global_survey.csv').then(response => {
+d3.csv('assets/data/climate_tweets/pew_data/pew_csvs/global_survey.csv').then(response => {
     var major = [];
     var minor = [];
     var none = [];

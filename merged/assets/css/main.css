@@ -11,6 +11,10 @@
 /* additions */
 
 /* for customizing half-banners; make sure we comment out the background-image url there */
+.landing-banner {
+	background-image: url(../../images/fire_final.jpg);
+}
+
 .sentiment-banner {
 	background-image: url(../../images/sentiment_bg2.jpg);
 }
