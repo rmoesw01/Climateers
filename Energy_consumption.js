@@ -93,7 +93,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
             "Solar": [NA_data_solar, china_data_solar, europe_data_solar, africa_data_solar, brazil_data_solar, world_data_solar],
             "Hydropower": [NA_data_hydro, china_data_hydro, africa_data_hydro, europe_data_hydro, brazil_data_hydro, world_data_hydro],
             "Wind": [china_data_wind, NA_data_wind, europe_data_wind, africa_data_wind, brazil_data_wind, world_data_wind],
-            "Other Renewables": [china_data_other,NA_data_other, europe_data_other, africa_data_other, brazil_data_other,world_data_other]
+            "Other Renewables": [china_data_other, NA_data_other, europe_data_other, africa_data_other, brazil_data_other, world_data_other]
         }
 
         var startYear = 1965;
@@ -179,6 +179,17 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         valueAxisRenderer.minGridDistance = 20;
         valueAxisRenderer.grid.template.strokeOpacity = 0.05;
 
+        // axis break
+        var axisBreak = valueAxis.axisBreaks.create();
+        axisBreak.startValue = 1600;
+        axisBreak.endValue = 4500;
+        axisBreak.breakSize = 0.02;
+
+        // make break expand on hover
+        var hoverState = axisBreak.states.create("hover");
+        hoverState.properties.breakSize = 1;
+        hoverState.properties.opacity = 0.1;
+        hoverState.transitionDuration = 1500;
 
         // series
         var series = chart.series.push(new am4charts.RadarColumnSeries());
@@ -189,9 +200,9 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         series.tooltipText = "{categoryX}:{valueY.value}";
 
         // this makes columns to be of a different color, depending on value
-        series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
+        // series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
 
-        
+
         // cursor
         var cursor = new am4charts.RadarCursor();
         chart.cursor = cursor;

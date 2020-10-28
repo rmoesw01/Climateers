@@ -19,7 +19,6 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.dataFields.category = "Year";
         categoryAxis.renderer.grid.template.location = 0;
-        categoryAxis.renderer.minGridDistance = 50;
 
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.title.text = "Count";
