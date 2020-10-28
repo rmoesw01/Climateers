@@ -24,7 +24,7 @@ def converter(csv_filepath, pred_filepath, output_path, date_col, y_col):
     for row in data_df.iterrows():
         features.append(
             {
-                "date": row[1][date_col],
+                "year": int(row[1][date_col]),
                 "observed": row[1][y_col]
             }
         )
@@ -32,7 +32,7 @@ def converter(csv_filepath, pred_filepath, output_path, date_col, y_col):
     for row in pred_df.iterrows():    
         features.append(
             {
-                "date": row[1][date_col],
+                "year": int(row[1][date_col]),
                 "easing": row[1]["easing"],
                 "maintaining": row[1]["maintaining"],
                 "increasing": row[1]["increase"] 
@@ -45,7 +45,7 @@ def converter(csv_filepath, pred_filepath, output_path, date_col, y_col):
 # In[3]:
 
 
-converter("static/data/dfFilt.csv","static/data/snow_pred_df.csv","static/data/snow2.json","Year","SNOW")
+# converter("static/data/dfFilt.csv","static/data/snow_pred_df.csv","static/data/snow2.json","Year","SNOW")
 
 
 # In[ ]:

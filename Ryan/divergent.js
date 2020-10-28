@@ -1,8 +1,7 @@
-d3.csv('Resources/DivergingData.csv').then(function (data) {
+d3.json('Resources/CO2_Chart_master.json').then(function (data) {
 
 
-    // var allData= data.ForEach(item =>o)
-    console.log(data[0])
+
 
     am4core.ready(function () {
 
@@ -12,15 +11,15 @@ d3.csv('Resources/DivergingData.csv').then(function (data) {
         // Themes end
 
         // Create chart instance
-        var chart = am4core.create("chart2", am4charts.XYChart);
+        var chart = am4core.create("chart3", am4charts.XYChart);
 
-        // chart.dateFormatter.dateFormat = "MMM YYYY";
-        // chart.numberFormatter.numberFormat = "#.#a";
-        // chart.numberFormatter.bigNumberPrefixes = [
-        //     { "number": 1e+3, "suffix": "K" },
-        //     { "number": 1e+6, "suffix": "M" },
-        //     { "number": 1e+9, "suffix": "B" }
-        // ];
+        chart.dateFormatter.dateFormat = "YYYY";
+        chart.numberFormatter.numberFormat = "#.#a";
+        chart.numberFormatter.bigNumberPrefixes = [
+            { "number": 1e+3, "suffix": "K" },
+            { "number": 1e+6, "suffix": "M" },
+            { "number": 1e+9, "suffix": "B" }
+        ];
 
         // Chart title
         var title = chart.titles.create();
@@ -48,7 +47,7 @@ d3.csv('Resources/DivergingData.csv').then(function (data) {
         function createSeries(field, name, color, dashed) {
             var series = chart.series.push(new am4charts.LineSeries());
             series.dataFields.valueY = field;
-            series.dataFields.dateX = "Year";
+            series.dataFields.dateX = "year";
             series.name = name;
             series.tooltipText = "[bold]{name}[/]\n{dateX}: [b]{valueY}[/]";
             series.strokeWidth = 2;
@@ -62,13 +61,13 @@ d3.csv('Resources/DivergingData.csv').then(function (data) {
             return series;
         }
 
-        createSeries("CO2_concentrations", "Observed", am4core.color("#B1B106"));
-        createSeries("easing", "Easing", am4core.color("#D68C45"), true);
-        createSeries("maintaining", "Maintaining", am4core.color("#2C6E49"), true);
-        createSeries("increase", "Increase", am4core.color("#B1B106"), true);
+        createSeries("observed", "Observed", am4core.color("#B1B106"));
+        createSeries("easing", "Decreasing", am4core.color("#2C6E49"), true);
+        createSeries("maintaining", "Maintaining", am4core.color("#B1B106"), true);
+        createSeries("increasing", "Increase", am4core.color("#D68C45"), true);
 
         chart.legend = new am4charts.Legend();
-        chart.cursor = new am4charts.XYCursor();
+        chart.cursor = new am4charts.XYCursor();"#D68C45"
 
     });
 });
