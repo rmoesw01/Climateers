@@ -11,6 +11,7 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         // var chart = am4core.create("chartdiv5", am4charts.XYChart3D);
         var chart = am4core.create("tornado_chart", am4charts.XYChart3D);
 
+        chart.colors.step = 3;
         // Add data
         chart.data = data;
 
@@ -59,6 +60,9 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         series2.columns.template.propertyFields.fillOpacity = "alpha";
         series2.showOnInit = true;
 
+        // Add legend
+        chart.legend = new am4charts.Legend();
+
         // Add cursor
         chart.cursor = new am4charts.XYCursor();
         chart.cursor.fullWidthLineX = true;
@@ -67,8 +71,7 @@ d3.csv("Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
         // chart.cursor.lineX.fill = am4core.color("#000");
         // chart.cursor.lineX.fillOpacity = 0.1;
 
-        // Add legend
-        chart.legend = new am4charts.Legend();
+
 
     }); // end am4core.ready()
 })

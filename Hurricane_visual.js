@@ -31,20 +31,6 @@ countAxis.title.text = "Count";
 countAxis.renderer.minGridDistance = 100;
 // countAxis.renderer.grid.template.disabled = true;
 
-// var durationAxis = chart.yAxes.push(new am4charts.DurationAxis());
-// durationAxis.title.text = "Duration";
-// durationAxis.baseUnit = "minute";
-// durationAxis.renderer.grid.template.disabled = true;
-// durationAxis.renderer.opposite = true;
-// durationAxis.syncWithAxis = countAxis;
-
-// durationAxis.durationFormatter.durationFormat = "hh'h' mm'min'";
-
-// var latitudeAxis = chart.yAxes.push(new am4charts.ValueAxis());
-// latitudeAxis.renderer.grid.template.disabled = true;
-// latitudeAxis.renderer.labels.template.disabled = true;
-// latitudeAxis.syncWithAxis = countAxis;
-
 // Create series
 var countSeries = chart.series.push(new am4charts.ColumnSeries());
 countSeries.dataFields.valueY = "Hurricane_total";
@@ -70,18 +56,6 @@ cat_1_Series.propertyFields.strokeDasharray = "dashLength";
 cat_1_Series.tooltipText = "{valueY} ";
 // cat_1_Series.showOnInit = true;
 
-// var cat_1_Bullet = cat_1_Series.bullets.push(new am4charts.Bullet());
-// var cat_1_Rectangle = cat_1_Bullet.createChild(am4core.Rectangle);
-// cat_1_Bullet.horizontalCenter = "middle";
-// cat_1_Bullet.verticalCenter = "middle";
-// cat_1_Bullet.width = 7;
-// cat_1_Bullet.height = 7;
-// cat_1_Rectangle.width = 7;
-// cat_1_Rectangle.height = 7;
-
-// var durationState = durationBullet.states.create("hover");
-// durationState.properties.scale = 1.2;
-
 var cat_2_Series = chart.series.push(new am4charts.LineSeries());
 cat_2_Series.dataFields.valueY = "Category_2";
 cat_2_Series.dataFields.dateX = "Year";
@@ -91,19 +65,6 @@ cat_2_Series.strokeWidth = 2;
 cat_2_Series.propertyFields.strokeDasharray = "dashLength";
 cat_2_Series.tooltipText = "{valueY}";
 cat_2_Series.showOnInit = true;
-
-// var cat_2_Bullet = cat_2_Series.bullets.push(new am4charts.CircleBullet());
-// cat_2_Bullet.circle.fill = am4core.color("#fff");
-// cat_2_Bullet.circle.strokeWidth = 2;
-// cat_2_Bullet.circle.propertyFields.radius = "Category_2";
-
-// var latitudeState = latitudeBullet.states.create("hover");
-// latitudeState.properties.scale = 1.2;
-
-// var latitudeLabel = latitudeSeries.bullets.push(new am4charts.LabelBullet());
-// latitudeLabel.label.text = "{townName2}";
-// latitudeLabel.label.horizontalCenter = "left";
-// latitudeLabel.label.dx = 14;
 
 var cat_3_Series = chart.series.push(new am4charts.LineSeries());
 cat_3_Series.dataFields.valueY = "Category_3";
