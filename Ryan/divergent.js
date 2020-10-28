@@ -12,7 +12,7 @@ d3.csv('Resources/DivergingData.csv').then(function (data) {
         // Themes end
 
         // Create chart instance
-        var chart = am4core.create("chartdiv", am4charts.XYChart);
+        var chart = am4core.create("chart2", am4charts.XYChart);
 
         // chart.dateFormatter.dateFormat = "MMM YYYY";
         // chart.numberFormatter.numberFormat = "#.#a";

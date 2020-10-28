@@ -10,7 +10,7 @@ d3.csv('Resources/eutrificationChart.csv').then(function (data) {
          * Chart design taken from Samsung health app
          */
 
-        var chart = am4core.create("chartdiv2", am4charts.XYChart);
+        var chart = am4core.create("chart3", am4charts.XYChart);
         chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
         chart.paddingBottom = 30;
