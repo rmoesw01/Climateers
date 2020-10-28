@@ -1,4 +1,4 @@
-// from 1st draft of public_opinion.js; removed bc i gave up on importing US data
+// from 1st draft of public_opinion.js;
 var q1_party_neg = [];
 
 var total_rep = 0;
