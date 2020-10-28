@@ -3,25 +3,25 @@ am4core.ready (function() {
     am4core.useTheme(am4themes_animated);
     
     // create map instances
-    var chart = am4core.create("chartdiv", am4maps.MapChart);
+    var iceChart = am4core.create("icechartdiv", am4maps.MapChart);
 
     // set map definition as low
-    chart.geodata = am4geodata_continentsLow;
+    iceChart.geodata = am4geodata_continentsLow;
 
     // set projection as globe (orthographic)
-    chart.projection = new am4maps.projections.Orthographic();
-    chart.panBehavior = 'rotateLongLat';
+    iceChart.projection = new am4maps.projections.Orthographic();
+    iceChart.panBehavior = 'rotateLongLat';
 
     // disable panning/dragging of the map
-    // chart.seriesContainer.draggable = false;
-    // chart.seriesContainer.resizable = false;
+    // iceChart.seriesContainer.draggable = false;
+    // iceChart.seriesContainer.resizable = false;
 
     // set bg color
-    chart.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#2E4053");
-    chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1.0;
+    iceChart.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#2E4053");
+    iceChart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1.0;
     
     // create map polygon series for countries
-    var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    var polygonSeries = iceChart.series.push(new am4maps.MapPolygonSeries());
     
     // load polygon geodata from geoJSON
     polygonSeries.useGeodata = true;
@@ -35,15 +35,15 @@ am4core.ready (function() {
     polygonTemplate.nonScalingStroke = true;
     
     // center on north pole
-    chart.deltaLatitude = -90;
-    chart.homeZoomLevel = 2.5;
+    iceChart.deltaLatitude = -90;
+    iceChart.homeZoomLevel = 2.5;
 
     // set max zoom level
-    chart.maxZoomLevel = 2.5;
-    // chart.minZoomLevel = 2.5;
+    iceChart.maxZoomLevel = 2.5;
+    // iceChart.minZoomLevel = 2.5;
     
     // create outline for 1979 ice extent
-    var outlineSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    var outlineSeries = iceChart.series.push(new am4maps.MapPolygonSeries());
 
     // add geojson url
     outlineSeries.geodataSource.url = 'sea_ice/geojsons/198009extent_geo.json';
@@ -57,62 +57,62 @@ am4core.ready (function() {
     outlineTemplate.strokeDasharray = "5, 5";
 
     // create map polygon series for northern polar sea ice
-    var iceSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries = iceChart.series.push(new am4maps.MapPolygonSeries());
 
     // add geojson url
     iceSeries.geodataSource.url = 'sea_ice/geojsons/198009extent_geo.json';
     iceSeries.useGeodata = true;
 
     // add *another* 1980 map polygon series for debugging
-    var iceSeries1 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries1 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries1.geodataSource.url = 'sea_ice/geojsons/198009extent_geo.json';
     iceSeries1.useGeodata = true;
     iceSeries1.hidden = true;
 
     // create 1985 map polygon series
-    var iceSeries2 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries2 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries2.geodataSource.url = 'sea_ice/geojsons/198509extent_geo.json';
     iceSeries2.useGeodata = true;
     iceSeries2.hidden = true;
 
     // create 1990 map polygon series
-    var iceSeries3 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries3 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries3.geodataSource.url = 'sea_ice/geojsons/199009extent_geo.json';
     iceSeries3.useGeodata = true;
     iceSeries3.hidden = true;
 
     // create 1995 map polygon series
-    var iceSeries4 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries4 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries4.geodataSource.url = 'sea_ice/geojsons/199509extent_geo.json';
     iceSeries4.useGeodata = true;
     iceSeries4.hidden = true;
 
     // create 2000 map polygon series
-    var iceSeries5 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries5 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries5.geodataSource.url = 'sea_ice/geojsons/200009extent_geo.json';
     iceSeries5.useGeodata = true;
     iceSeries5.hidden = true;
 
     // create 2005 map polygon series
-    var iceSeries6 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries6 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries6.geodataSource.url = 'sea_ice/geojsons/200509extent_geo.json';
     iceSeries6.useGeodata = true;
     iceSeries6.hidden = true;
 
     // create 2010 map polygon series
-    var iceSeries7 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries7 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries7.geodataSource.url = 'sea_ice/geojsons/201009extent_geo.json';
     iceSeries7.useGeodata = true;
     iceSeries7.hidden = true;
 
     // create 2015 map polygon series
-    var iceSeries8 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries8 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries8.geodataSource.url = 'sea_ice/geojsons/201509extent_geo.json';
     iceSeries8.useGeodata = true;
     iceSeries8.hidden = true;
 
     // create 2020 map polygon series
-    var iceSeries9 = chart.series.push(new am4maps.MapPolygonSeries());
+    var iceSeries9 = iceChart.series.push(new am4maps.MapPolygonSeries());
     iceSeries9.geodataSource.url = 'sea_ice/geojsons/202009extent_geo.json';
     iceSeries9.useGeodata = true;
     iceSeries9.hidden = true;
@@ -211,11 +211,11 @@ am4core.ready (function() {
     //   if (x != 0) {
     //     thisSeries.hidden = true;
     //   }
-    //   chart.invalidateData();
+    //   iceChart.invalidateData();
     // }
 
     // create labels for years
-    var iceLabel = chart.chartContainer.createChild(am4core.Label);
+    var iceLabel = iceChart.chartContainer.createChild(am4core.Label);
     iceLabel.isMeasured = false;
     iceLabel.x = 10;
     iceLabel.y = 10;
@@ -237,7 +237,7 @@ am4core.ready (function() {
     triangle2.dx = 1;
 
     // create button for replaying
-    replayButton = chart.createChild(am4core.Button);
+    replayButton = iceChart.createChild(am4core.Button);
     replayButton.horizontalCenter = "middle";
     replayButton.verticalCenter = "middle";
     replayButton.padding(0, 0, 0, 0);
@@ -252,7 +252,7 @@ am4core.ready (function() {
     replayButton.hide();
 
     // create label for button
-    var buttonLabel = chart.chartContainer.createChild(am4core.Label);
+    var buttonLabel = iceChart.chartContainer.createChild(am4core.Label);
     buttonLabel.isMeasured = false;
     buttonLabel.x = 60;
     buttonLabel.y = 452;
@@ -268,7 +268,7 @@ am4core.ready (function() {
     replayButton.events.on("hit", morphIce);
 
     // start animation sequence when ready
-    chart.events.on ('ready', function() {
+    iceChart.events.on ('ready', function() {
       setTimeout (morphIce, 500)
     });
 
