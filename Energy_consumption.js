@@ -191,6 +191,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         // this makes columns to be of a different color, depending on value
         series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
 
+        
         // cursor
         var cursor = new am4charts.RadarCursor();
         chart.cursor = cursor;
