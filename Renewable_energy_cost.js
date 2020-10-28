@@ -1,13 +1,8 @@
 
 
 d3.csv("Output_Data/Renewable_Energy_Costs.csv").then(function (data) {
-    console.log(data)
-    // var solar_data = [];
-    // for (i=0;i<data.length;i++) {
-
-    //     solar_data.push(data[i]["Solar gen/cost"])
-    // }
-    // console.log(solar_data);
+    // console.log(data)
+  
     am4core.ready(function () {
 
         // Themes begin
@@ -20,9 +15,6 @@ d3.csv("Output_Data/Renewable_Energy_Costs.csv").then(function (data) {
 
         // Add data
         chart.data = data;
-
-        // Set input format for the dates
-        // chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
 
         // Create axes
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -37,7 +29,22 @@ d3.csv("Output_Data/Renewable_Energy_Costs.csv").then(function (data) {
         solar_series.tooltipText = "{valueY}"
         solar_series.strokeWidth = 2;
         solar_series.name = "Solar TWh/$B";
-        // series.minBulletDistance = 15;
+
+        var hydro_series = chart.series.push(new am4charts.LineSeries());
+        hydro_series.dataFields.valueY = "Hydro gen/cost";
+        hydro_series.dataFields.dateX = "Year";
+        hydro_series.tooltipText = "{valueY}"
+        hydro_series.strokeWidth = 2;
+        hydro_series.name = "Hydropower TWh/$B";
+
+        
+        var wind_series = chart.series.push(new am4charts.LineSeries());
+        wind_series.dataFields.valueY = "Wind gen/cost";
+        wind_series.dataFields.dateX = "Year";
+        wind_series.tooltipText = "{valueY}"
+        wind_series.strokeWidth = 2;
+        wind_series.name = "Wind TWh/$B";
+ 
 
         // Drop-shaped tooltips
         solar_series.tooltip.background.cornerRadius = 20;
@@ -48,22 +55,6 @@ d3.csv("Output_Data/Renewable_Energy_Costs.csv").then(function (data) {
         solar_series.tooltip.label.textAlign = "middle";
         solar_series.tooltip.label.textValign = "middle";
 
-        // Make bullets grow on hover
-        var bullet = solar_series.bullets.push(new am4charts.CircleBullet());
-        bullet.circle.strokeWidth = 2;
-        bullet.circle.radius = 4;
-        bullet.circle.fill = am4core.color("#fff");
-
-        var bullethover = bullet.states.create("hover");
-        bullethover.properties.scale = 1.3;
-
-        var hydro_series = chart.series.push(new am4charts.LineSeries());
-        hydro_series.dataFields.valueY = "Hydro gen/cost";
-        hydro_series.dataFields.dateX = "Year";
-        hydro_series.tooltipText = "{valueY}"
-        hydro_series.strokeWidth = 2;
-        hydro_series.name = "Hydropower TWh/$B";
-
         hydro_series.tooltip.background.cornerRadius = 20;
         hydro_series.tooltip.background.strokeOpacity = 0;
         hydro_series.tooltip.pointerOrientation = "vertical";
@@ -71,21 +62,6 @@ d3.csv("Output_Data/Renewable_Energy_Costs.csv").then(function (data) {
         hydro_series.tooltip.label.minHeight = 40;
         hydro_series.tooltip.label.textAlign = "middle";
         hydro_series.tooltip.label.textValign = "middle";
-
-        var bullet2 = hydro_series.bullets.push(new am4charts.CircleBullet());
-        bullet2.circle.strokeWidth = 2;
-        bullet2.circle.radius = 4;
-        bullet2.circle.fill = am4core.color("#fff");
-
-        var bullethover = bullet.states.create("hover");
-        bullethover.properties.scale = 1.3;
-
-        var wind_series = chart.series.push(new am4charts.LineSeries());
-        wind_series.dataFields.valueY = "Wind gen/cost";
-        wind_series.dataFields.dateX = "Year";
-        wind_series.tooltipText = "{valueY}"
-        wind_series.strokeWidth = 2;
-        wind_series.name = "Wind TWh/$B";
 
         wind_series.tooltip.background.cornerRadius = 20;
         wind_series.tooltip.background.strokeOpacity = 0;
@@ -95,16 +71,35 @@ d3.csv("Output_Data/Renewable_Energy_Costs.csv").then(function (data) {
         wind_series.tooltip.label.textAlign = "middle";
         wind_series.tooltip.label.textValign = "middle";
 
+        // Make bullets grow on hover
+        var bullet = solar_series.bullets.push(new am4charts.CircleBullet());
+        bullet.circle.strokeWidth = 2;
+        bullet.circle.radius = 4;
+        bullet.circle.fill = am4core.color("#fff");
+
+        var bullet2 = hydro_series.bullets.push(new am4charts.CircleBullet());
+        bullet2.circle.strokeWidth = 2;
+        bullet2.circle.radius = 4;
+        bullet2.circle.fill = am4core.color("#fff");
+
         var bullet3 = wind_series.bullets.push(new am4charts.CircleBullet());
         bullet3.circle.strokeWidth = 2;
         bullet3.circle.radius = 4;
         bullet3.circle.fill = am4core.color("#fff");
 
+        var bullethover = bullet.states.create("hover");
+        bullethover.properties.scale = 1.3;
+
+        var bullethover2 = bullet2.states.create("hover");
+        bullethover2.properties.scale = 1.3;
+
+        var bullethover3 = bullet3.states.create("hover");
+        bullethover3.properties.scale = 1.3;
+
         // Make a panning cursor
         chart.cursor = new am4charts.XYCursor();
         chart.cursor.behavior = "panXY";
         chart.cursor.xAxis = dateAxis;
-        // chart.cursor.snapToSeries = series;
 
         // Add legend
         chart.legend = new am4charts.Legend();
