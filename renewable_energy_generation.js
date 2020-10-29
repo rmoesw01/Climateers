@@ -143,6 +143,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.renderer.grid.template.location = 0;
         categoryAxis.dataFields.category = "energytype";
+        // categoryAxis.dataFields.category = "[font-size: 30px]energytype[/]";
 
         var categoryAxisRenderer = categoryAxis.renderer;
         var categoryAxisLabel = categoryAxisRenderer.labels.template;
@@ -153,7 +154,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         categoryAxisRenderer.fontSize = 11;
         categoryAxisRenderer.minGridDistance = 10;
         categoryAxisRenderer.grid.template.radius = -25;
-        categoryAxisRenderer.grid.template.strokeOpacity = 0.05;
+        // categoryAxisRenderer.grid.template.strokeOpacity = 0.05;
         categoryAxisRenderer.grid.template.interactionsEnabled = false;
 
         categoryAxisRenderer.ticks.template.disabled = true;
@@ -177,7 +178,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         valueAxisRenderer.axisFills.template.disabled = true;
         valueAxisRenderer.ticks.template.disabled = true;
         valueAxisRenderer.minGridDistance = 20;
-        valueAxisRenderer.grid.template.strokeOpacity = 0.05;
+        // valueAxisRenderer.grid.template.strokeOpacity = 0.05;
 
         // axis break
         var axisBreak = valueAxis.axisBreaks.create();
@@ -197,7 +198,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         series.columns.template.strokeOpacity = 0;
         series.dataFields.valueY = "value" + currentYear;
         series.dataFields.categoryX = "energytype";
-        series.tooltipText = "{categoryX}:{valueY.value}";
+        series.tooltipText = "{categoryX}: {valueY.value}";
 
         // this makes columns to be of a different color, depending on value
         // series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
