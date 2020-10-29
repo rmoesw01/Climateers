@@ -19,7 +19,8 @@ am4core.ready(function () {
     worldSeries.useGeodata = true;
 
     var polygonTemplate = worldSeries.mapPolygons.template;
-    polygonTemplate.tooltipText = "{name}:{value}";
+    // MT = metric megatons
+    polygonTemplate.tooltipText = "{name}: {value} MT";
     polygonTemplate.fill = chart.colors.getIndex(10);
     polygonTemplate.nonScalingStroke = true;
 
