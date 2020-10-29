@@ -16,12 +16,12 @@ am4core.ready(function () {
     var snowChart = mainContainer.createChild(am4charts.XYChart);
     snowChart.paddingRight = 0;
     snowChart.data = JSON.parse(JSON.stringify(precipData));
-
+    snowChart.legend = new am4charts.Legend();
+    
     // Create axes
     var snowCategoryAxis = snowChart.yAxes.push(new am4charts.CategoryAxis());
     snowCategoryAxis.dataFields.category = "year";
     snowCategoryAxis.renderer.grid.template.location = 0;
-    //snowCategoryAxis.renderer.inversed = true;
     snowCategoryAxis.renderer.minGridDistance = 15;
 
     var snowValueAxis = snowChart.xAxes.push(new am4charts.ValueAxis());
@@ -39,12 +39,40 @@ am4core.ready(function () {
     snowSeries.calculatePercent = true;
     snowSeries.dataFields.categoryY = "year";
     snowSeries.interpolationDuration = 1000;
-    snowSeries.columns.template.tooltipText = "Snow Fall {categoryY}: {valueX}";
+    snowSeries.name = "Observed Snow Fall"
+    snowSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    snowSeries.showOnInit = true;
+
+    var snowPredESeries = snowChart.series.push(new am4charts.ColumnSeries());
+    snowPredESeries.dataFields.valueX = "snow_e";
+    snowPredESeries.calculatePercent = true;
+    snowPredESeries.dataFields.categoryY = "year";
+    snowPredESeries.interpolationDuration = 1000;
+    snowPredESeries.name = "Predicted Snow Fall (dec. CO2)"
+    snowPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    snowPredESeries.showOnInit = false;
+
+    var snowPredSeries = snowChart.series.push(new am4charts.ColumnSeries());
+    snowPredSeries.dataFields.valueX = "snow_u";
+    snowPredSeries.calculatePercent = true;
+    snowPredSeries.dataFields.categoryY = "year";
+    snowPredSeries.name = "Predicted Snow Fall"
+    snowPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    snowPredSeries.showOnInit = true;
+
+    var snowPredISeries = snowChart.series.push(new am4charts.ColumnSeries());
+    snowPredISeries.dataFields.valueX = "snow_i";
+    snowPredISeries.calculatePercent = true;
+    snowPredISeries.dataFields.categoryY = "year";
+    snowPredISeries.interpolationDuration = 1000;
+    snowPredISeries.name = "Predicted Snow Fall (inc. CO2)"
+    snowPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    snowPredISeries.showOnInit = false;
 
     var precipChart = mainContainer.createChild(am4charts.XYChart);
     precipChart.paddingLeft = 0;
     precipChart.data = JSON.parse(JSON.stringify(precipData));
-
+    precipChart.legend = new am4charts.Legend();
     // Create axes
     var precipCategoryAxis = precipChart.yAxes.push(new am4charts.CategoryAxis());
     precipCategoryAxis.renderer.opposite = true;
@@ -64,12 +92,46 @@ am4core.ready(function () {
     var precipSeries = precipChart.series.push(new am4charts.ColumnSeries());
     precipSeries.dataFields.valueX = "precipitation";
     precipSeries.calculatePercent = true;
-    precipSeries.fill = precipChart.colors.getIndex(4);
+    precipSeries.fill = precipChart.colors.getIndex(14).brighten(-0.1);
     precipSeries.stroke = precipSeries.fill;
-    precipSeries.columns.template.tooltipText = "Precipitation {categoryY}: {valueX}";
+    precipSeries.name = "Observed Precipitation"
+    precipSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    precipSeries.showOnInit = true;
     precipSeries.dataFields.categoryY = "year";
     precipSeries.interpolationDuration = 1000;
+    
+    var precipPredESeries = precipChart.series.push(new am4charts.ColumnSeries());
+    precipPredESeries.dataFields.valueX = "precipitation_e";
+    precipPredESeries.calculatePercent = true;
+    precipPredESeries.fill = precipChart.colors.getIndex(15).brighten(-0.6);
+    precipPredESeries.stroke = precipPredESeries.fill;
+    precipPredESeries.name = "Predicted Precipitation (dec. CO2)"
+    precipPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    precipPredESeries.showOnInit = false;
+    precipPredESeries.dataFields.categoryY = "year";
+    precipPredESeries.interpolationDuration = 1000;
 
+    var precipPredSeries = precipChart.series.push(new am4charts.ColumnSeries());
+    precipPredSeries.dataFields.valueX = "precipitation_u";
+    precipPredSeries.calculatePercent = true;
+    precipPredSeries.fill = precipChart.colors.getIndex(14).brighten(-0.4);
+    precipPredSeries.stroke = precipPredSeries.fill;
+    precipPredSeries.name = "Predicted Precipitation"
+    precipPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    precipPredSeries.showOnInit = true;
+    precipPredSeries.dataFields.categoryY = "year";
+    precipPredSeries.interpolationDuration = 1000;
+
+    var precipPredISeries = precipChart.series.push(new am4charts.ColumnSeries());
+    precipPredISeries.dataFields.valueX = "precipitation_i";
+    precipPredISeries.calculatePercent = true;
+    precipPredISeries.fill = precipChart.colors.getIndex(13).brighten(-0.2);
+    precipPredISeries.stroke = precipPredISeries.fill;
+    precipPredISeries.name = "Predicted Precipitation (inc. CO2)"
+    precipPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
+    precipPredISeries.showOnInit = false;
+    precipPredISeries.dataFields.categoryY = "year";
+    precipPredISeries.interpolationDuration = 1000;
 
     var label = mainContainer.createChild(am4core.Label);
     label.isMeasured = false;
