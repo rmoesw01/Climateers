@@ -31,7 +31,7 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         
 
         var tempAxis = chart.yAxes.push(new am4charts.ValueAxis());
-        tempAxis.title.text = "Temperature Anomaly (F)";
+        tempAxis.title.text = "Temperature Anomaly (°F)";
         tempAxis.renderer.minGridDistance = 10;
 
         // latitudeAxis.renderer.grid.template.disabled = true;
@@ -66,12 +66,12 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         sea_tmp_series.dataFields.valueY = "Projected_Sea_tmp";
         sea_tmp_series.dataFields.dateX = "Year";
         sea_tmp_series.yAxis = tempAxis;
-        sea_tmp_series.tooltipText = "{valueY} F"
+        sea_tmp_series.tooltipText = "{valueY}°F"
         sea_tmp_series.strokeWidth = 2;
         // sea_tmp_series.minBulletDistance = 10;
         sea_tmp_series.columns.template.propertyFields.strokeDasharray = "dashLength";
         sea_tmp_series.columns.template.propertyFields.fillOpacity = "alpha";
-        sea_tmp_series.name = "Projected Sea Temperature";
+        sea_tmp_series.name = "Projected Sea Temperature (°F)";
         sea_tmp_series.showOnInit = true;
 
 
