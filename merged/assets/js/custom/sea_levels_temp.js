@@ -10,7 +10,7 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         // Themes end
 
         // Create chart instance
-        var chart = am4core.create("chartdiv3", am4charts.XYChart);
+        var chart = am4core.create("seatemps", am4charts.XYChart);
 
         // Add data
         chart.data = data;
