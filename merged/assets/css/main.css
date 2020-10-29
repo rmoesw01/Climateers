@@ -4054,8 +4054,8 @@
 
 		.banner.full {
 			padding: 0;
-			min-height: 100vh;
-			height: 100vh !important;
+			min-height: 80vh;
+			height: 80vh !important;
 		}
 
 		.banner.half {
