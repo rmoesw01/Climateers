@@ -90,10 +90,10 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
          */
 
         var energies = {
-            "Solar": [NA_data_solar, china_data_solar, europe_data_solar, africa_data_solar, brazil_data_solar, world_data_solar],
-            "Hydropower": [NA_data_hydro, china_data_hydro, africa_data_hydro, europe_data_hydro, brazil_data_hydro, world_data_hydro],
-            "Wind": [china_data_wind, NA_data_wind, europe_data_wind, africa_data_wind, brazil_data_wind, world_data_wind],
-            "Other Renewables": [china_data_other, NA_data_other, europe_data_other, africa_data_other, brazil_data_other, world_data_other]
+            "Solar": [africa_data_solar, brazil_data_solar, china_data_solar, europe_data_solar, NA_data_solar, world_data_solar],
+            "Hydropower": [africa_data_hydro, brazil_data_hydro,china_data_hydro, europe_data_hydro, NA_data_hydro, world_data_hydro],
+            "Wind": [africa_data_wind, brazil_data_wind, china_data_wind, europe_data_wind, NA_data_wind, world_data_wind],
+            "Other": [africa_data_other, brazil_data_other, china_data_other, europe_data_other, NA_data_other, world_data_other]
         }
 
         var startYear = 1965;
@@ -143,7 +143,7 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.renderer.grid.template.location = 0;
         categoryAxis.dataFields.category = "energytype";
-        // categoryAxis.dataFields.category = "[font-size: 30px]energytype[/]";
+        categoryAxis.renderer.labels.template.fontSize = 15;
 
         var categoryAxisRenderer = categoryAxis.renderer;
         var categoryAxisLabel = categoryAxisRenderer.labels.template;

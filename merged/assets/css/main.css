@@ -31,6 +31,10 @@
 	background-image: url(../../images/ocean_bg.jpg);
 }
 
+.weather-banner {
+	background-image: url(../../images/weather.jpg);
+}
+
 .awareness-banner {
 	background-image: url(../../images/turbines.jpg);
 }

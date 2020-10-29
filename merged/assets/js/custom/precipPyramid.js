@@ -48,7 +48,7 @@ am4core.ready(function () {
     snowPredESeries.calculatePercent = true;
     snowPredESeries.dataFields.categoryY = "year";
     snowPredESeries.interpolationDuration = 1000;
-    snowPredESeries.name = "Predicted Snow Fall (dec. CO2)"
+    snowPredESeries.name = "Snow Fall - Stricter Rules"
     snowPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
     snowPredESeries.showOnInit = false;
 
@@ -56,7 +56,7 @@ am4core.ready(function () {
     snowPredSeries.dataFields.valueX = "snow_u";
     snowPredSeries.calculatePercent = true;
     snowPredSeries.dataFields.categoryY = "year";
-    snowPredSeries.name = "Predicted Snow Fall"
+    snowPredSeries.name = "Snow Fall - Projection"
     snowPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
     snowPredSeries.showOnInit = true;
 
@@ -65,7 +65,7 @@ am4core.ready(function () {
     snowPredISeries.calculatePercent = true;
     snowPredISeries.dataFields.categoryY = "year";
     snowPredISeries.interpolationDuration = 1000;
-    snowPredISeries.name = "Predicted Snow Fall (inc. CO2)"
+    snowPredISeries.name = "Snow Fall - Easing Rules"
     snowPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
     snowPredISeries.showOnInit = false;
 
@@ -105,7 +105,7 @@ am4core.ready(function () {
     precipPredESeries.calculatePercent = true;
     precipPredESeries.fill = precipChart.colors.getIndex(15).brighten(-0.6);
     precipPredESeries.stroke = precipPredESeries.fill;
-    precipPredESeries.name = "Predicted Precipitation (dec. CO2)"
+    precipPredESeries.name = "Precipitation - Stricter Rules"
     precipPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
     precipPredESeries.showOnInit = false;
     precipPredESeries.dataFields.categoryY = "year";
@@ -116,7 +116,7 @@ am4core.ready(function () {
     precipPredSeries.calculatePercent = true;
     precipPredSeries.fill = precipChart.colors.getIndex(14).brighten(-0.4);
     precipPredSeries.stroke = precipPredSeries.fill;
-    precipPredSeries.name = "Predicted Precipitation"
+    precipPredSeries.name = "Precipitation - Projection"
     precipPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
     precipPredSeries.showOnInit = true;
     precipPredSeries.dataFields.categoryY = "year";
@@ -127,7 +127,7 @@ am4core.ready(function () {
     precipPredISeries.calculatePercent = true;
     precipPredISeries.fill = precipChart.colors.getIndex(13).brighten(-0.2);
     precipPredISeries.stroke = precipPredISeries.fill;
-    precipPredISeries.name = "Predicted Precipitation (inc. CO2)"
+    precipPredISeries.name = "Precipitation - Easing Rules"
     precipPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
     precipPredISeries.showOnInit = false;
     precipPredISeries.dataFields.categoryY = "year";

@@ -23,7 +23,6 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.title.text = "Count";
 
-
         // Create series
         var series3 = chart.series.push(new am4charts.ColumnSeries3D());
         series3.dataFields.valueY = "Magnitude_2";
@@ -36,25 +35,22 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         series3.showOnInit = true;
 
         var series = chart.series.push(new am4charts.ColumnSeries3D());
-        // series.dataFields.valueY = "Tornado_total";
         series.dataFields.valueY = "Magnitude_0";
         series.dataFields.categoryX = "Year";
         series.name = "Magnitude 0 Tornadoes";
         series.clustered = false;
-        series.columns.template.tooltipText = "{valueY} tornadoes";
+        series.columns.template.tooltipText = "{valueY}";
         series.columns.template.fillOpacity = 0.9;
         series.columns.template.propertyFields.strokeDasharray = "dashLength";
         series.columns.template.propertyFields.fillOpacity = "alpha";
         series.showOnInit = true;
-
-
 
         var series2 = chart.series.push(new am4charts.ColumnSeries3D());
         series2.dataFields.valueY = "Tornado_total";
         series2.dataFields.categoryX = "Year";
         series2.name = "Total Tornadoes";
         series2.clustered = false;
-        series2.columns.template.tooltipText = "{valueY}";
+        series2.tooltipText = "{valueY}";
         series2.columns.template.propertyFields.strokeDasharray = "dashLength";
         series2.columns.template.propertyFields.fillOpacity = "alpha";
         series2.showOnInit = true;
@@ -65,12 +61,6 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         // Add cursor
         chart.cursor = new am4charts.XYCursor();
         chart.cursor.fullWidthLineX = true;
-        // chart.cursor.xAxis = categoryAxis;
-        // chart.cursor.lineX.strokeOpacity = 0;
-        // chart.cursor.lineX.fill = am4core.color("#000");
-        // chart.cursor.lineX.fillOpacity = 0.1;
-
-
-
+    
     }); // end am4core.ready()
 })
