@@ -23,6 +23,7 @@ var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
 dateAxis.renderer.grid.template.location = 0;
 dateAxis.renderer.minGridDistance = 50;
 dateAxis.renderer.grid.template.disabled = true;
+dateAxis.renderer.labels.template.dx = 10;
 dateAxis.title.text = "Year";
 // dateAxis.renderer.fullWidthTooltip = true;
 

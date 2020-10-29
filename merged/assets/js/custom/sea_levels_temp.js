@@ -15,6 +15,8 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         // Add data
         chart.data = data;
 
+        chart.colors.step = 3;
+
         // Set input format for the dates
         // chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
 
@@ -40,6 +42,18 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         tempAxis.syncWithAxis = valueAxis;
 
         // Create series
+        var sea_tmp_series = chart.series.push(new am4charts.ColumnSeries());
+        sea_tmp_series.dataFields.valueY = "Projected_Sea_tmp";
+        sea_tmp_series.dataFields.dateX = "Year";
+        sea_tmp_series.yAxis = tempAxis;
+        sea_tmp_series.tooltipText = "{valueY}°F"
+        sea_tmp_series.strokeWidth = 2;
+        // sea_tmp_series.minBulletDistance = 10;
+        sea_tmp_series.columns.template.propertyFields.strokeDasharray = "dashLength";
+        sea_tmp_series.columns.template.propertyFields.fillOpacity = "alpha";
+        sea_tmp_series.name = "Projected Sea Temperature (°F)";
+        sea_tmp_series.showOnInit = true;
+        
         var series = chart.series.push(new am4charts.LineSeries());
         series.dataFields.valueY = "Projected_Sea_Lvl";
         series.dataFields.dateX = "Year";
@@ -62,17 +76,7 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         series2.name = "Lin Regress Sea Level";
         series2.showOnInit = true;
 
-        var sea_tmp_series = chart.series.push(new am4charts.ColumnSeries());
-        sea_tmp_series.dataFields.valueY = "Projected_Sea_tmp";
-        sea_tmp_series.dataFields.dateX = "Year";
-        sea_tmp_series.yAxis = tempAxis;
-        sea_tmp_series.tooltipText = "{valueY}°F"
-        sea_tmp_series.strokeWidth = 2;
-        // sea_tmp_series.minBulletDistance = 10;
-        sea_tmp_series.columns.template.propertyFields.strokeDasharray = "dashLength";
-        sea_tmp_series.columns.template.propertyFields.fillOpacity = "alpha";
-        sea_tmp_series.name = "Projected Sea Temperature (°F)";
-        sea_tmp_series.showOnInit = true;
+        
 
 
         // Drop-shaped tooltips
