@@ -1,84 +1,31 @@
 
-// read in csv data about renewable enery consumption
-d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
-
-    // console.log(data);
-    // initialize data lists
-    // hydro data
-    var NA_data_hydro = ["N. America ", 0];
-    var china_data_hydro = ["China ", 0];
-    var africa_data_hydro = ["Africa ", 0];
-    var europe_data_hydro = ["Europe ", 0];
-    var brazil_data_hydro = ["Brazil ", 0];
-    var world_data_hydro = ["World ", 0];
-    // solar data
-    var china_data_solar = ["China", 0];
-    var NA_data_solar = ["N. America", 0];
-    var europe_data_solar = ["Europe", 0];
-    var africa_data_solar = ["Africa", 0];
-    var brazil_data_solar = ["Brazil", 0];
-    var world_data_solar = ["World", 0];
-
-    // wind data
-    var china_data_wind = ["China  ", 0];
-    var NA_data_wind = ["N. America  ", 0];
-    var europe_data_wind = ["Europe  ", 0];
-    var africa_data_wind = ["Africa  ", 0];
-    var brazil_data_wind = ["Brazil  ", 0];
-    var world_data_wind = ["World  ", 0];
-
-    // other renewables data
-    var china_data_other = [" China ", 0];
-    var NA_data_other = [" N. America ", 0];
-    var europe_data_other = [" Europe ", 0];
-    var africa_data_other = [" Africa ", 0];
-    var brazil_data_other = [" Brazil ", 0];
-    var world_data_other = [" World ", 0];
-
-    // push data for each country and energy type into individual list
+d3.csv("Data/investment-in-renewable-energy-by-technology.csv").then(function (data) {
+    var solarData = [];
+    var windData = [];
+    var Biomass_waste = [];
+    var Liquid_biofuels = [];
+    var hydropower = [];
+    var geothermal = [];
+    var marine = [];
+    console.log(data.length);
     for (var i = 0; i < data.length; i++) {
-
-        if (data[i]["Entity"] == "China") {
-            china_data_hydro.push(parseFloat(data[i]["Electricity from hydro (TWh)"]))
-            china_data_solar.push(parseFloat(data[i]["Electricity from solar (TWh)"]))
-            china_data_wind.push(parseFloat(data[i]["Electricity from wind (TWh)"]))
-            china_data_other.push(parseFloat(data[i]["Electricity from other renewables (TWh)"]))
-        }
-        else if (data[i]["Entity"] == "North America") {
-            NA_data_hydro.push(parseFloat(data[i]["Electricity from hydro (TWh)"]))
-            NA_data_solar.push(parseFloat(data[i]["Electricity from solar (TWh)"]))
-            NA_data_wind.push(parseFloat(data[i]["Electricity from wind (TWh)"]))
-            NA_data_other.push(parseFloat(data[i]["Electricity from other renewables (TWh)"]))
-        }
-        else if (data[i]["Entity"] == "Europe") {
-            europe_data_hydro.push(parseFloat(data[i]["Electricity from hydro (TWh)"]))
-            europe_data_solar.push(parseFloat(data[i]["Electricity from solar (TWh)"]))
-            europe_data_wind.push(parseFloat(data[i]["Electricity from wind (TWh)"]))
-            europe_data_other.push(parseFloat(data[i]["Electricity from other renewables (TWh)"]))
-        }
-        else if (data[i]["Entity"] == "Africa") {
-            africa_data_hydro.push(parseFloat(data[i]["Electricity from hydro (TWh)"]))
-            africa_data_solar.push(parseFloat(data[i]["Electricity from solar (TWh)"]))
-            africa_data_wind.push(parseFloat(data[i]["Electricity from wind (TWh)"]))
-            africa_data_other.push(parseFloat(data[i]["Electricity from other renewables (TWh)"]))
-        }
-        else if (data[i]["Entity"] == "Brazil") {
-            brazil_data_hydro.push(parseFloat(data[i]["Electricity from hydro (TWh)"]))
-            brazil_data_solar.push(parseFloat(data[i]["Electricity from solar (TWh)"]))
-            brazil_data_wind.push(parseFloat(data[i]["Electricity from wind (TWh)"]))
-            brazil_data_other.push(parseFloat(data[i]["Electricity from other renewables (TWh)"]))
-        }
-        else {
-            world_data_hydro.push(parseFloat(data[i]["Electricity from hydro (TWh)"]))
-            world_data_solar.push(parseFloat(data[i]["Electricity from solar (TWh)"]))
-            world_data_wind.push(parseFloat(data[i]["Electricity from wind (TWh)"]))
-            world_data_other.push(parseFloat(data[i]["Electricity from other renewables (TWh)"]))
-        }
-
+        var solarDatapt = data[i]["Solar Energy"];
+        solarData.push(solarDatapt);
+        var windDatapt = data[i]["Wind Energy"];
+        windData.push(windDatapt);
+        var Biomass_wastept = data[i]["Biomass & Waste-to-Energy"];
+        Biomass_waste.push(Biomass_wastept);
+        var Liquid_biofuelspt = data[i]["Liquid Biofuels"];
+        Liquid_biofuels.push(Liquid_biofuelspt);
+        var hydropowerpt = data[i]["Small Hydropower"];
+        hydropower.push(hydropowerpt);
+        var geothermalpt = data[i]["Geothermal Energy"];
+        geothermal.push(geothermalpt);
+        var marinept = data[i]["Marine Energy"];
+        marine.push(marinept);
     }
-    // console.log(china_data_solar);
+    console.log(solarData);
 
-    // Please note: chart code has been modified from demo available here: https://www.amcharts.com/demos/radar-timeline/
     am4core.ready(function () {
 
         // Themes begin
@@ -90,21 +37,41 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
          */
 
         var energies = {
-            "Solar": [NA_data_solar, china_data_solar, europe_data_solar, africa_data_solar, brazil_data_solar, world_data_solar],
-            "Hydropower": [NA_data_hydro, china_data_hydro, africa_data_hydro, europe_data_hydro, brazil_data_hydro, world_data_hydro],
-            "Wind": [china_data_wind, NA_data_wind, europe_data_wind, africa_data_wind, brazil_data_wind, world_data_wind],
-            "Other Renewables": [china_data_other, NA_data_other, europe_data_other, africa_data_other, brazil_data_other, world_data_other]
+            "Solar": [
+                ["Solar", solarData[0], solarData[1], solarData[2], solarData[3], solarData[4], solarData[5], solarData[6], solarData[7], solarData[8], solarData[9], solarData[10], solarData[11], solarData[12]]
+            ],
+            "Wind": [
+                ["Wind", windData[0], windData[1], windData[2], windData[3], windData[4], windData[5], windData[6], windData[7], windData[8], windData[9], windData[10], windData[11], windData[12]]
+
+            ],
+            "Biomass": [
+                ["Biomass and Waste-to-Energy", Biomass_waste[0], Biomass_waste[1], Biomass_waste[2], Biomass_waste[3], Biomass_waste[4], Biomass_waste[5], Biomass_waste[6], Biomass_waste[7], Biomass_waste[8], Biomass_waste[9], Biomass_waste[10], Biomass_waste[11], Biomass_waste[12]]
+
+            ],
+            "Liquid biofuels": [
+                ["Liquid biofuels", Liquid_biofuels[0], Liquid_biofuels[1], Liquid_biofuels[2], Liquid_biofuels[3], Liquid_biofuels[4], Liquid_biofuels[5], Liquid_biofuels[6], Liquid_biofuels[7], Liquid_biofuels[8], Liquid_biofuels[9], Liquid_biofuels[10], Liquid_biofuels[11], Liquid_biofuels[12]]
+
+            ],
+            "Hydropower": [
+                ["Hydropower", hydropower[0], hydropower[1], hydropower[2], hydropower[3], hydropower[4], hydropower[5], hydropower[6], hydropower[7], hydropower[8], hydropower[9], hydropower[10], hydropower[11], hydropower[12]]
+            ],
+
+            "Geothermal": [
+                ["Geothermal", geothermal[0], geothermal[1], geothermal[2], geothermal[3], geothermal[4], geothermal[5], geothermal[6], geothermal[7], geothermal[8], geothermal[9], geothermal[10], geothermal[11], geothermal[12]]
+            ],
+            "Marine": [
+                ["Marine", marine[0], marine[1], marine[2], marine[3], marine[4], marine[5], marine[6], marine[7], marine[8], marine[9], marine[10], marine[11], marine[12]]
+            ]
         }
 
-        var startYear = 1965;
-        var endYear = 2019;
-        var currentYear = 1965;
+        var startYear = 2004;
+        var endYear = 2016;
+        var currentYear = 2003;
         var colorSet = new am4core.ColorSet();
 
-        var chart = am4core.create("chartdiv4", am4charts.RadarChart);
-        chart.numberFormatter.numberFormat = "# TWh|# TWh|# TWh";
+        var chart = am4core.create("chartdiv", am4charts.RadarChart);
+        chart.numberFormatter.numberFormat = "$#B|$#B|$#B";
         chart.hiddenState.properties.opacity = 0;
-        chart.colors.step = 3;
 
         chart.startAngle = 270 - 180;
         chart.endAngle = 270 + 180;
@@ -166,7 +133,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         // value axis
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.min = -5;
-        valueAxis.max = 4500;
+        valueAxis.max = 180;
         valueAxis.strictMinMax = true;
         valueAxis.tooltip.defaultState.properties.opacity = 0;
         valueAxis.tooltip.animationDuration = 0;
@@ -179,17 +146,6 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         valueAxisRenderer.minGridDistance = 20;
         valueAxisRenderer.grid.template.strokeOpacity = 0.05;
 
-        // axis break
-        var axisBreak = valueAxis.axisBreaks.create();
-        axisBreak.startValue = 1600;
-        axisBreak.endValue = 4500;
-        axisBreak.breakSize = 0.02;
-
-        // make break expand on hover
-        var hoverState = axisBreak.states.create("hover");
-        hoverState.properties.breakSize = 1;
-        hoverState.properties.opacity = 0.1;
-        hoverState.transitionDuration = 1500;
 
         // series
         var series = chart.series.push(new am4charts.RadarColumnSeries());
@@ -200,8 +156,7 @@ d3.csv("Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
         series.tooltipText = "{categoryX}:{valueY.value}";
 
         // this makes columns to be of a different color, depending on value
-        // series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
-
+        series.heatRules.push({ target: series.columns.template, property: "fill", minValue: -5, maxValue: 200, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
 
         // cursor
         var cursor = new am4charts.RadarCursor();
