@@ -1,5 +1,8 @@
+# Mac Files
+.DS_Store
+
 # Config Files
-config.js
+config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
