@@ -154,22 +154,22 @@ graticuleSeries.mapLines.template.stroke = am4core.color("#fff");
 // co2ByCountrySeries.useGeodata = true;
 
 
-var imageSeries = chart.series.push(new am4maps.MapPolygonSeries());
+var imageSeries = chart.series.push(new am4maps.MapImageSeries());
 var imageSeriesTemplate = imageSeries.mapImages.template;
-// Add data for the three cities
-imageSeries.data = [{
-  "latitude": 48.856614,
-  "longitude": 2.352222,
-  "title": "Paris"
-}, {
-  "latitude": 40.712775,
-  "longitude": -74.005973,
-  "title": "New York"
-}, {
-  "latitude": 49.282729,
-  "longitude": -123.120738,
-  "title": "Vancouver"
-}];
+// // Add data for the three cities
+// imageSeries.data = [{
+//   "latitude": 48.856614,
+//   "longitude": 2.352222,
+//   "title": "Paris"
+// }, {
+//   "latitude": 40.712775,
+//   "longitude": -74.005973,
+//   "title": "New York"
+// }, {
+//   "latitude": 49.282729,
+//   "longitude": -123.120738,
+//   "title": "Vancouver"
+// }];
 var circle = imageSeriesTemplate.createChild(am4core.Circle);
 circle.radius = 10;
 circle.fill = am4core.color("#B27799");
@@ -361,15 +361,15 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //   "ZW": 0.06
 // }
 
-// var data = {
-//     "CN": 15.88,
+imageSeries.data = {
+    "CN": 15.88,
 //     // "CN": 14.32,
 //     // {
 //     //   "Company Name": "China (Coal),China",
 //     //   "Percent CO2": "14.32%",
 //     //   "Rank": 1
 //     // },
-//     "SA": 4.5,
+    "SA": 4.5,
 //     // {
 //     //   "Company Name": "Saudi Arabian Oil Company (Aramco)",
 //     //   "Percent CO2": "4.50%",
@@ -377,19 +377,19 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Latitude": 26.3049,
 //     //   "Longitude": 50.1286
 //     // },
-//     "RU": 3.91,
+    "RU": 3.91,
 //     // {
 //     //   "Company Name": "Gazprom OAO",
 //     //   "Percent CO2": "3.91%",
 //     //   "Rank": 3
 //     // },
-//     "IR": 2.28,
+    "IR": 2.28,
 //     // {
 //     //   "Company Name": "National Iranian Oil Co",
 //     //   "Percent CO2": "2.28%",
 //     //   "Rank": 4
 //     // },
-//     "US": 4.44,
+    "US": 4.44,
 //     // "US": 1.98,
 //     // {
 //     //   "Company Name": "ExxonMobil Corp",
@@ -398,7 +398,7 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Longitude": 29.7536,
 //     //   "Latitude: -95.3694
 //     // },
-//     "IN": 1.87,
+    "IN": 1.87,
 //     // {
 //     //   "Company Name": "Coal India",
 //     //   "Percent CO2": "1.87%",
@@ -406,7 +406,7 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Latitude": 23.154677,
 //     //   "Longitude": 81.482805
 //     // },
-//     "MX": 1.87,
+    "MX": 1.87,
 //     // {
 //     //   "Company Name": "Petroleos Mexicanos (Pemex)",
 //     //   "Percent CO2": "1.87%",
@@ -414,13 +414,13 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Longitude": 20.3658,
 //     //   "Latitude": -101.1208
 //     // },
-//     "RU": 1.86,
+    // "RU": 1.86,
 //     // {
 //     //   "Company Name": "Russia (Coal)",
 //     //   "Percent CO2": "1.86%",
 //     //   "Rank": 8
 //     // },
-//     "NL": 1.67,
+    "NL": 1.67,
 //     // {
 //     //   "Company Name": "Royal Dutch Shell PLC",
 //     //   "Percent CO2": "1.67%",
@@ -432,7 +432,7 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Percent CO2": "1.56%",
 //     //   "Rank": 10
 //     // },
-//     "UK": 1.53, 
+    "UK": 1.53, 
 //     // {
 //     //   "Company Name": "BP",
 //     //   "Percent CO2": "1.53%",
@@ -446,13 +446,13 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Latitude": 37.9313,
 //     //   "Longitude": -122.3907
 //     // },
-//     "VE": 1.23,
+    "VE": 1.23,
 //     // {
 //     //   "Company Name": "Petroleos de Venezuela SA (PDVSA)",
 //     //   "Percent CO2": "1.23%",
 //     //   "Rank": 13
 //     // },
-//     "AE": 1.2,
+    "AE": 1.2,
 //     // {
 //     //   "Company Name": "Abu Dhabi National Oil Co",
 //     //   "Percent CO2": "1.20%",
@@ -460,7 +460,7 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Latitude": 24.4297,
 //     //   "Longitude": 54.5058
 //     // },
-//     "PL": 1.16,
+    "PL": 1.16,
 //     // {
 //     //   "Company Name": "Poland (Coal)",
 //     //   "Percent CO2": "1.16%",
@@ -476,31 +476,31 @@ imageSeriesTemplate.propertyFields.longitude = "longitude";
 //     //   "Latitude": 38.6266409,
 //     //   "Longitude": -90.1926536
 //     // },
-//     "AG": 1,
+    "AG": 1,
 //     // {
 //     //   "Company Name": "Sonatrach SPA",
 //     //   "Percent CO2": "1.00%",
 //     //   "Rank": 17
 //     // },
-//     "KU": 1,
+    "KU": 1,
 //     // {
 //     //   "Company Name": "Kuwait Petroleum Corp",
 //     //   "Percent CO2": "1.00%",
 //     //   "Rank": 18
 //     // },
-//     "FR": 0.95,
+    "FR": 0.95,
 //     // {
 //     //   "Company Name": "Total SA",
 //     //   "Percent CO2": "0.95%",
 //     //   "Rank": 19
 //     // },
-//     "AS": 0.91
+    "AS": 0.91
 //     // {
 //     //   "Company Name": "BHP Billiton Ltd",
 //     //   "Percent CO2": "0.91%",
 //     //   "Rank": 20
 //     // }
-//   }
+  }
 }); // end am4core.ready()
 
     

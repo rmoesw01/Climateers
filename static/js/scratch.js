@@ -1,7 +1,7 @@
 am4core.useTheme(am4themes_animated);
 
 // Creates the map and tells where to put it in the html (nothing appears yet)
-var map = am4core.create("chartdiv", am4maps.MapChart);
+var map = am4core.create("globechart", am4maps.MapChart);
 // Map definition (nothing appears yet)
 map.geodata = am4geodata_worldLow;
 // set the project to be a globe
@@ -14,7 +14,7 @@ map.adapter.add("deltaLatitude", function(delatLatitude){
 })
 
 // Globe Chart: Color of the water, without it the water is tranparent
-map.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#C0C0C0");
+map.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#2E4053");
 map.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1;
 map.deltaLongitude = 20;
 map.deltaLatitude = -20;
@@ -100,7 +100,9 @@ lineSeries.hidden = true;
 map.smallMap = new am4maps.SmallMap();
 map.smallMap.series.push(worldSeries);
 // Configure small map
+
 map.smallMap.background.stroke = am4core.color("#7B3625")
+
 // fills the entire box, not just the globe
 // map.smallMap.background.fill = am4core.color("#969696")
 map.smallMap.background.strokeOpacity = 1;
