@@ -1,4 +1,4 @@
-d3.csv('Resources/footChart.csv').then(function (data) {
+d3.csv('../Resources/footChart.csv').then(function (data) {
     am4core.ready(function () {
 
         // Themes begin
