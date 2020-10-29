@@ -1681,7 +1681,7 @@
 
 		p.special {
 			text-transform: uppercase;
-			font-size: .75rem;
+			font-size: 1rem;
 			font-weight: 300;
 			margin: 0 0 .5rem 0;
 			padding: 0 0 1rem 0;
@@ -1846,7 +1846,7 @@
 
 		.box header p {
 			text-transform: uppercase;
-			font-size: .75rem;
+			font-size: 1rem;
 			font-weight: 300;
 			margin: 0 0 .25rem 0;
 			padding: 0 0 .75rem 0;
@@ -3351,7 +3351,7 @@
 
 			.wrapper.style3 p {
 				text-transform: uppercase;
-				font-size: .75rem;
+				font-size: 1rem;
 				font-weight: 300;
 				margin: 0 0 .5rem 0;
 				padding: 0 0 1rem 0;
@@ -4191,7 +4191,7 @@
 			.banner > article p {
 				color: rgba(255, 255, 255, 0.65);
 				text-transform: uppercase;
-				font-size: 1rem;
+				font-size: 1.25rem;
 				font-weight: 300;
 				margin: 0;
 				padding-bottom: 1.75rem;
@@ -4262,6 +4262,14 @@
 				background-attachment: scroll;
 			}
 
+			.banner > article h2 {
+				font-size: 4em;
+			}
+
+			.banner > article p {
+				font-size: 1em;
+			}
+
 		}
 
 		@media screen and (max-width: 736px) {
@@ -4272,10 +4280,11 @@
 
 			.banner > article p {
 				margin-bottom: 1rem;
+				font-size: .75em;
 			}
 
 			.banner > article h2 {
-				font-size: 4em;
+				font-size: 3.5em;
 			}
 
 		}
