@@ -254,7 +254,7 @@ am4core.ready(function () {
   replayButton.padding(0, 0, 0, 0);
   replayButton.background.cornerRadius(25, 25, 25, 25);
   replayButton.x = 30;
-  replayButton.y = 470;
+  replayButton.y = 570;
   replayButton.dy = 1;
   replayButton.height = 40;
   replayButton.width = 40;
@@ -266,7 +266,7 @@ am4core.ready(function () {
   var buttonLabel = iceChart.chartContainer.createChild(am4core.Label);
   buttonLabel.isMeasured = false;
   buttonLabel.x = 60;
-  buttonLabel.y = 452;
+  buttonLabel.y = 552;
   buttonLabel.fill = am4core.color("#808B96");
   buttonLabel.fontSize = 30;
   buttonLabel.fontWeight = "bold";
