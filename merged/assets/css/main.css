@@ -35,8 +35,8 @@
 	background-image: url(../../images/turbines.jpg);
 }
 
-.wrapper.style2 p strong, .wrapper.style2 p b {
-	color: #555;
+.wrapper.style2 p strong, .wrapper.style2 p b, .wrapper.style2 ul li b{
+	color: #808080;
 }
 
 /* Reset */
