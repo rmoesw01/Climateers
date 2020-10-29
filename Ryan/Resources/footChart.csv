@@ -1,7 +1,7 @@
 name,value,color
-land,54,#FEF5A8
+land change,54,#FEF5A8
 feed,19,#CF519A
-farm,149,#FFD8A0
+farm(waste),149,#FFD8A0
 processing,10,#F5DDB7
 transport,8,#B9D0E8
 packaging,11,#D6BFD4

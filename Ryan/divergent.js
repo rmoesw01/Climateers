@@ -64,7 +64,7 @@ d3.json('Resources/CO2_Chart_master.json').then(function (data) {
         createSeries("observed", "Observed", am4core.color("#B1B106"));
         createSeries("easing", "Decreasing", am4core.color("#2C6E49"), true);
         createSeries("maintaining", "Maintaining", am4core.color("#B1B106"), true);
-        createSeries("increasing", "Increase", am4core.color("#D68C45"), true);
+        createSeries("increasing", "Increasing", am4core.color("#D68C45"), true);
 
         chart.legend = new am4charts.Legend();
         chart.cursor = new am4charts.XYCursor();"#D68C45"
