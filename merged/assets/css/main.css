@@ -4248,6 +4248,10 @@
 				height: 75vh !important;
 			}
 
+			.banner > article h2 {
+				font-size: 4.5em;
+			}
+
 		}
 
 		@media screen and (max-width: 980px) {
