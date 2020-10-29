@@ -10,8 +10,6 @@ am4core.ready(function () {
     url_array.push (url);
   }
 
-  // console.log (url_array);
-
   // standard animated theme
   am4core.useTheme(am4themes_animated);
 
@@ -143,7 +141,7 @@ am4core.ready(function () {
   iceTemplate1.fillOpacity = 1.0;
   iceTemplate1.nonScalingStroke = true;
   iceTemplate1.strokeWidth = 0.5;
-  iceTemplate1.tooltipText = "sea ice extent: 6.70M sq km";
+  iceTemplate1.tooltipText = "sea ice extent: 7.67M sq km";
 
   var iceTemplate2 = iceSeries2.mapPolygons.template;
   iceTemplate2.fill = am4core.color("rgba(255, 255, 255, 1.0)");
@@ -285,7 +283,9 @@ am4core.ready(function () {
     setTimeout(morphIce, 500)
   });
 
+  // extra fxn that makes no visible difference; necessary for debugging
   function morphIce() {
+    iceSeries9.hide();
     iceSeries.hide();
     iceSeries1.show();
     iceLabel.text = '1980';

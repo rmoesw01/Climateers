@@ -19,6 +19,10 @@
 	background-image: url(../../images/slide04.jpg);
 }
 
+.global-banner {
+	background-image: url(../../images/usgs.jpg);
+}
+
 .sentiment-banner {
 	background-image: url(../../images/sentiment_bg2.jpg);
 }
