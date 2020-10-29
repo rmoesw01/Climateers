@@ -17,66 +17,15 @@ am4core.ready(function() {
   
   // Chart title
   var title = chart.titles.create();
-  title.text = "Projected infection dynamics";
+  title.text = "Projected Global Temperature";
   title.fontSize = 20;
   title.paddingBottom = 10;
   
 
-  d3.json("static/data/snow.json").then(function(currData) {
+  d3.json("static/data/TMAX.json").then(function(currData) {
     chart.data = currData;
     console.log(chart.data);
   });
-  // Add data
-  // chart.data = [{
-  //   "date": new Date(2020, 0, 1),
-  //   "observed": 0
-  // }, {
-  //   "date": new Date(2020, 1, 1),
-  //   "observed": 4000
-  // }, {
-  //   "date": new Date(2020, 2, 1),
-  //   "observed": 55000
-  // }, {
-  //   "date": new Date(2020, 3, 1),
-  //   "observed": 220000
-  // }, {
-  //   "date": new Date(2020, 4, 1),
-  //   "observed": 390000
-  // }, {
-  //   "date": new Date(2020, 5, 1),
-  //   "observed": 550000
-  // }, {
-  //   "date": new Date(2020, 6, 1),
-  //   "observed": 720000,
-  //   "easing": 720000,
-  //   "projection": 720000,
-  //   "stricter": 720000
-  // }, {
-  //   "date": new Date(2020, 7, 1),
-  //   "easing": 900000,
-  //   "projection": 900000,
-  //   "stricter": 900000
-  // }, {
-  //   "date": new Date(2020, 8, 1),
-  //   "easing": 1053000,
-  //   "projection": 1053000,
-  //   "stricter": 1053000
-  // }, {
-  //   "date": new Date(2020, 9, 1),
-  //   "easing": 1252000,
-  //   "projection": 1249000,
-  //   "stricter": 1232000
-  // }, {
-  //   "date": new Date(2020, 10, 1),
-  //   "easing": 1674000,
-  //   "projection": 1604000,
-  //   "stricter": 1415000
-  // }, {
-  //   "date": new Date(2020, 11, 1),
-  //   "easing": 3212000,
-  //   "projection": 2342000,
-  //   "stricter": 1751000
-  // }];
   
   // Create axes
   var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -84,12 +33,12 @@ am4core.ready(function() {
   dateAxis.renderer.minGridDistance = 30;
   
   var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-  valueAxis.renderer.inside = true;
+  valueAxis.renderer.inside = false;
   valueAxis.renderer.labels.template.verticalCenter = "bottom";
   valueAxis.renderer.labels.template.dx = -5;
   valueAxis.renderer.labels.template.dy = 10;
   valueAxis.renderer.maxLabelPosition = 0.95;
-  valueAxis.title.text = "Number of infections";
+  valueAxis.title.text = "Average Global Temperature (°C)";
   valueAxis.title.marginRight = 5;
   
   // Create series
