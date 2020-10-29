@@ -30,7 +30,8 @@
 			<li><a href="weather_impacts.html">Weather Impacts</a></li>
 			<li><a href="public_sentiment.html">Public Sentiment</a></li>
 			<li><a href="awareness.html">Awareness</a></li>
-			<li><a href="http://apizzo1-hindsight-2020.herokuapp.com/" target="_blank"><i>Visit our first project</i></a></li>
+			<li><a href="http://apizzo1-hindsight-2020.herokuapp.com/" target="_blank"><i>Visit our first
+						project</i></a></li>
 		</ul>
 	</nav>
 
@@ -57,25 +58,29 @@
 					<div class="row 200%">
 						<div class="6u 12u$(medium)">
 							<h4>Sea ice at the North Pole is <b>rapidly dwindling.</b></h4>
-							<h5>GeoTIFFs from NSIDC, <i><a href="https://nsidc.org/data/g02135" target="_blank">Sea Ice Index</a></i>, 
-							 Sept. 1980-2020</h5>
+							<h5>GeoTIFFs from NSIDC, <i><a href="https://nsidc.org/data/g02135" target="_blank">Sea Ice
+										Index</a></i>,
+								Sept. 1980-2020</h5>
 							<hr>
 							<p>
 								The average extent of northern sea ice has changed dramatically since 1980
-								as seen in the corresponding figure. Hover over the sea ice (depicted in white)
-								to view the numerical measure of the area. The interactive globe can also be dragged and
-								zoomed out.
-								<br><br>
-								This is consistent with rising global temperatures, both <a href="#">atmospheric</a> and
+								as seen in the corresponding figure.
+								This is consistent with rising global temperatures, both <a
+									href="global_temperature.html">atmospheric</a> and
 								oceanic.
 								This also directly contributes to rising sea levels, which in turn leads to flooding and
-								higher
-								likelihood of hurricane formation.
+								higher likelihood of hurricane formation.
 								<br><br>
 								GeoTIFF files of September sea ice extent every 5 years were obtained from the
-								<a href="https://nsidc.org/data/g02135" target="_blank">NSIDC</a>, polygonized with 
-								<a href="https://qgis.org/en/site/" target="_blank">QGIS</a>, and further manipulated with 
-								<a href="https://mapshaper.org/" target="_blank">mapshaper</a> to return files in geoJSON format.
+								<a href="https://nsidc.org/data/g02135" target="_blank">NSIDC</a>, polygonized with
+								<a href="https://qgis.org/en/site/" target="_blank">QGIS</a>, and further manipulated
+								with
+								<a href="https://mapshaper.org/" target="_blank">mapshaper</a> to return files in
+								geoJSON format.
+								<br><br>
+								Hover over the sea ice (depicted in white)
+								to view the numerical measure of the area. The interactive globe can also be dragged and
+								zoomed out.
 							</p>
 						</div>
 						<div class="6u 12u$(medium)">
@@ -92,42 +97,66 @@
 				<div class="content">
 					<header class="align-center">
 						<p>rising tides</p>
-						<h2>Sea Level & Sea Temperature</h2>
+						<h2>Sea Levels & Temperatures</h2>
 						<br>
 					</header>
 					<div class="row 200%">
 						<div class="7u 12u$(medium)">
-							<div id='seatemps' style="width: 100%; height: 700px;"></div>
+							<div id='seatemps' style="width: 100%; height: 800px;"></div>
 
 						</div>
 						<div class="5u 12u$(medium)">
-							<h4>The seas are <b>warmer</b>, and sea levels are <b>rising</b>.</h4>
+							<h4>The seas are getting <b>warmer</b>, and sea levels are <b>rising</b>.</h4>
 							<h5>data source here?</h5>
 							<hr>
 							<p>
 								As global temperatures steadily rise and the average extent of northern sea ice
-								depletes, the sea level continues to increase
-								each year. To model this increase, a linear regression model was utilized with inputs
-								including historical global temperature, sea temperature, and
-								carbon dioxide emissions.
+								depletes, <b>sea level</b> continues to increase each year. 
+								To model this increase, a <b>linear regression model</b> was utilized with inputs
+								including <i>historical global temperature, sea temperature, and
+								CO<sub>2</sub> emissions</i>.
 							</p>
 							<p>
-								A comparison was done between the machine learning linear regression model and the
-								linear regression performed on only the historical sea level data. As
+								A comparison was done between the <i>machine learning linear regression model</i> and the
+								<i>linear regression</i> performed on only the historical sea level data. As
 								can be seen, these two methodologies output very similar forecasts, with the machine
 								learning model projecting slightly lower sea levels by the year 2200.
 							</p>
 							<p>
 								In addition to sea level analysis, a linear regression model was also employed to
-								predict sea temperature change. This model applied historical changes in sea level,
-								global temperature, and glacier mass to forecast sea temperature change (anomaly) up to
-								the year 2200.
+								predict <b>sea temperature change (anomaly)</b>, using <i>sea level, global temperature, and glacier mass</i>.
 							</p>
 							<p>
-								In both sea temperature and sea level models, a steady increase is predicted.
+								In both sea temperature and sea level models, <b>a steady increase is predicted</b>.
+								<br><br>
+								Hover over the model to view values and toggle visible projections.
 							</p>
 						</div>
 					</div>
+					<!-- <div class="row 200%">
+						<p id='wrap'><span class="image right">
+								<div id='seatemps' style="width: 60%; height: 700px;"></div>
+							</span>
+							As global temperatures steadily rise and the average extent of northern sea ice
+							depletes, the sea level continues to increase
+							each year. To model this increase, a <b>linear regression model</b> was utilized with inputs
+							including <i>historical global temperature, sea temperature, and
+								CO<sub>2</sub> emissions</i>.
+							<br><br>
+							A comparison was done between the <i>machine learning linear regression model</i> and the
+							<i>linear regression</i> performed on only the historical sea level data. As
+							can be seen, these two methodologies output very similar forecasts, with the machine
+							learning model projecting slightly lower sea levels by the year 2200.
+							<br><br>
+							In addition to sea level analysis, a linear regression model was also employed to
+							predict sea temperature change, using sea level, global temperature, and glacier mass to
+							forecast sea temperature change (anomaly).
+							<br><br>
+							In both sea temperature and sea level models, <b>a steady increase is predicted</b>.
+							<br><br>
+							Hover over the model to view values and toggle visible projections.
+						</p>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -138,8 +167,8 @@
 		<div class="container">
 			<h4><b>Check out our project repository on GitHub:</b></h4>
 			<ul class="icons">
-				<a href="https://github.com/rmoesw01/Climateers" target="_blank"><img src="images/GitHub-Mark-Light-32px.png"
-						alt="Github link" /></a>
+				<a href="https://github.com/rmoesw01/Climateers" target="_blank"><img
+						src="images/GitHub-Mark-Light-32px.png" alt="Github link" /></a>
 			</ul>
 		</div>
 		<div class="copyright">
