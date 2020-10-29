@@ -1,4 +1,4 @@
-d3.json('../Resources/CO2_Chart_master.json').then(function (data) {
+d3.json('assets/data/Emissions/CO2_Chart_master.json').then(function (data) {
 
 
 
