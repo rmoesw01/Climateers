@@ -121,24 +121,26 @@
 						<br>
 					</header>
 					<div class="row 200%">
-						<div class="4u 12u$(medium)">
-							<h4><i>"How much do you think <b>human activity</b>, such as the burning of fossil fuels,
-									contributes to global climate change?"</i></h4>
-							<h5>Pew Research, <i><a
-										href="https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/">American
-										Trends Panel, Wave 55, Oct. 2019</a></i></h5>
+						<div class="5u 12u$(medium)">
+							<h4>About our hurricane models</h4>
 							<hr>
-							<p>The data used to analyze hurricane frequency and intensity ranged back to the 1850s, and therefore did not include the 
-								Saffir-Simpson Hurricane Wind Scale categorization scheme we have become accustomed to seeing (Category 1, 2, etc.). Therefore, 
-								a k-means clustering model was used to classify the hurricanes based on their minimum pressure and mazimum wind speed. The model was 
-								optimized to group the huricanes into 4 categories. 
+							<p>The data used to analyze hurricane frequency and intensity ranged back to the 1850s, and
+								therefore did not include the
+								Saffir-Simpson Hurricane Wind Scale categorization scheme we have become accustomed to
+								seeing (Category 1, 2, etc.). Therefore,
+								a k-means clustering model was used to classify the hurricanes based on their minimum
+								pressure and mazimum wind speed. The model was
+								optimized to group the huricanes into 4 categories.
 							</p>
-							<p>Next, a linear regression model was used to project the total number of hurricanes we could see up until the year 2200, as well as the number of hurricanes 
-								in each category. The models used inputs such as historical changes in sea temperature anomaly, sea level, and global temperature to make these forecasts. As can be 
-								seen by this chart, the frequency as well as intensity of hurricanes is projected to increase over time based on current historical data.
+							<p>Next, linear regression models were used to project the total number of hurricanes we
+								could potentially see up until the year 2200, as well as the number of hurricanes
+								in each category. The models used inputs such as historical changes in sea temperature
+								anomaly, sea level, and global temperature to make these forecasts. As can be
+								seen by this chart, the frequency as well as intensity of hurricanes is projected to
+								increase over time based on current historical data.
 							</p>
 						</div>
-						<div class="8u 12u$(medium)">
+						<div class="7u 12u$(medium)">
 							<div id='hurricane_chart' style="width: 100%; height: 500px;"></div>
 						</div>
 					</div>
@@ -146,42 +148,45 @@
 			</div>
 		</div>
 
-			<!-- Tornado -->
-			<div class="inner">
-				<div class="box">
-					<div class="content">
-						<header class="align-center">
-							<p>Tornadoes</p>
-							<h2>Has the number or intensity of tornadoes changed?</h2>
-							<br>
-						</header>
-						<div class="row 200%">
-							<div class='7u 12u$(medium)'>
-								<div id='tornado_chart' style="width: 100%; height: 500px;"></div>
-							</div>
-							<div class="5u 12u$(medium)">
-								<br>
-								<h4><i>"Do you think that <b>global climate change</b> is a major threat, a minor threat, or
-										not a threat to your country?"</i></h4>
-								<h5>Pew Research, <i><a
-											href="https://www.pewresearch.org/global/dataset/spring-2018-survey-data/">Global
-											Attitudes Survey, Spring 2018</a></i></h5>
-								<hr>
-								<p>Linear regression models were used to project the number of tornadoes we could see until the year 2200, in addition to the
-									number of magnitude 0 (F0 on the Fujita scale) and magnitude 2 (F2 on the Fujita scale) tornadoes. These 2 magnitudes were chosen for display 
-									as they demonstrated relatively reliable linear regression accuracies of above 70%. This is likely due to the fact that there is a noteable increase 
-									in tornadoes of these magnitudes seen in the available historical data.
-								</p>
-								<p>
-									It is worth mentioning that the model shows the number of magnitude 0 tornadoes is greater than the total tornadoes projected. As these 
-									were created from separate linear regression models, the intent is to display the future trends that could be seen, rather than predict the exact 
-									frequency that can be expected. 
-								</p>
-							</div>
+		<!-- Tornado -->
+		<div class="inner">
+			<div class="box">
+				<div class="content">
+					<header class="align-center">
+						<p>Tornadoes</p>
+						<h2>Has the number or intensity of tornadoes changed?</h2>
+						<br>
+					</header>
+					<div class="row 200%">
+						<div class='7u 12u$(medium)'>
+							<div id='tornado_chart' style="width: 100%; height: 500px;"></div>
+						</div>
+						<div class="5u 12u$(medium)">
+							
+							<h4>About our tornado models</h4>
+							<hr>
+							<p>Linear regression models were used to project the number of tornadoes we could see until
+								the year 2200, in addition to the
+								number of magnitude 0 (F0 on the Fujita scale) and magnitude 2 (F2 on the Fujita scale)
+								tornadoes. These 2 magnitudes were chosen for display
+								as they demonstrated relatively reliable linear regression accuracies of above 70%. This
+								is likely due to the fact that there is a notable increase
+								in tornadoes of these magnitudes seen in the available historical data. The models used inputs such as historical changes in cardon dioxide emissions,
+								 gas fuel emissions, and global temperature to make these forecasts.
+							</p>
+					
+							<p>
+								It is worth mentioning that the model shows the number of projected magnitude 0 tornadoes is
+								greater than the total tornadoes projected. As these
+								were created from separate linear regression models, the intent is to display the future
+								trends that could be seen, rather than predict the exact
+								frequency that can be expected.
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 	</section>
 
 
@@ -214,8 +219,8 @@
 	<script src="https://d3js.org/d3.v6.min.js"></script>
 
 	<!-- custom scripts -->
-	<script src="tornado_visual.js"></script>
-	<script src="Hurricane_visual.js"></script>
+	<script src="tornadoes.js"></script>
+	<script src="hurricanes.js"></script>
 
 
 </body>
