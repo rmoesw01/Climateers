@@ -22,14 +22,15 @@ am4core.ready(function () {
     var snowCategoryAxis = snowChart.yAxes.push(new am4charts.CategoryAxis());
     snowCategoryAxis.dataFields.category = "year";
     snowCategoryAxis.renderer.grid.template.location = 0;
-    snowCategoryAxis.renderer.minGridDistance = 15;
+    snowCategoryAxis.renderer.minGridDistance = 50;
+    snowCategoryAxis.numberFormatter.numberFormat = "#";
 
     var snowValueAxis = snowChart.xAxes.push(new am4charts.ValueAxis());
     snowValueAxis.renderer.inversed = true;
     snowValueAxis.min = 0;
     snowValueAxis.max = 2500;
     snowValueAxis.strictMinMax = true;
-
+    snowValueAxis.renderer.minGridDistance = 50;
     snowValueAxis.numberFormatter = new am4core.NumberFormatter();
     snowValueAxis.numberFormatter.numberFormat = "#";
 
@@ -40,8 +41,9 @@ am4core.ready(function () {
     snowSeries.dataFields.categoryY = "year";
     snowSeries.interpolationDuration = 1000;
     snowSeries.name = "Observed Snow Fall"
-    snowSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    snowSeries.showOnInit = true;
+    snowSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    snowSeries.numberFormatter.numberFormat = "#.##";
+    snowSeries.hidden = false;
 
     var snowPredESeries = snowChart.series.push(new am4charts.ColumnSeries());
     snowPredESeries.dataFields.valueX = "snow_e";
@@ -49,16 +51,16 @@ am4core.ready(function () {
     snowPredESeries.dataFields.categoryY = "year";
     snowPredESeries.interpolationDuration = 1000;
     snowPredESeries.name = "Snow Fall - Stricter Rules"
-    snowPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    snowPredESeries.showOnInit = false;
+    snowPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    snowPredESeries.hidden = true;
 
     var snowPredSeries = snowChart.series.push(new am4charts.ColumnSeries());
     snowPredSeries.dataFields.valueX = "snow_u";
     snowPredSeries.calculatePercent = true;
     snowPredSeries.dataFields.categoryY = "year";
     snowPredSeries.name = "Snow Fall - Projection"
-    snowPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    snowPredSeries.showOnInit = true;
+    snowPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    snowPredSeries.hidden = false;
 
     var snowPredISeries = snowChart.series.push(new am4charts.ColumnSeries());
     snowPredISeries.dataFields.valueX = "snow_i";
@@ -66,8 +68,8 @@ am4core.ready(function () {
     snowPredISeries.dataFields.categoryY = "year";
     snowPredISeries.interpolationDuration = 1000;
     snowPredISeries.name = "Snow Fall - Easing Rules"
-    snowPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    snowPredISeries.showOnInit = false;
+    snowPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    snowPredISeries.hidden = true;
 
     var precipChart = mainContainer.createChild(am4charts.XYChart);
     precipChart.paddingLeft = 0;
@@ -78,7 +80,7 @@ am4core.ready(function () {
     precipCategoryAxis.renderer.opposite = true;
     precipCategoryAxis.dataFields.category = "year";
     precipCategoryAxis.renderer.grid.template.location = 0;
-    precipCategoryAxis.renderer.minGridDistance = 15;
+    precipCategoryAxis.renderer.minGridDistance = 50;
 
     var precipValueAxis = precipChart.xAxes.push(new am4charts.ValueAxis());
     precipValueAxis.min = 0;
@@ -87,6 +89,7 @@ am4core.ready(function () {
     precipValueAxis.numberFormatter = new am4core.NumberFormatter();
     precipValueAxis.numberFormatter.numberFormat = "#";
     precipValueAxis.renderer.minLabelPosition = 0.01;
+    precipValueAxis.renderer.minGridDistance = 50;
 
     // Create series
     var precipSeries = precipChart.series.push(new am4charts.ColumnSeries());
@@ -95,8 +98,8 @@ am4core.ready(function () {
     precipSeries.fill = precipChart.colors.getIndex(14).brighten(-0.1);
     precipSeries.stroke = precipSeries.fill;
     precipSeries.name = "Observed Precipitation"
-    precipSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    precipSeries.showOnInit = true;
+    precipSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    precipSeries.hidden = false;
     precipSeries.dataFields.categoryY = "year";
     precipSeries.interpolationDuration = 1000;
     
@@ -106,8 +109,8 @@ am4core.ready(function () {
     precipPredESeries.fill = precipChart.colors.getIndex(15).brighten(-0.6);
     precipPredESeries.stroke = precipPredESeries.fill;
     precipPredESeries.name = "Precipitation - Stricter Rules"
-    precipPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    precipPredESeries.showOnInit = false;
+    precipPredESeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    precipPredESeries.hidden = true;
     precipPredESeries.dataFields.categoryY = "year";
     precipPredESeries.interpolationDuration = 1000;
 
@@ -117,8 +120,8 @@ am4core.ready(function () {
     precipPredSeries.fill = precipChart.colors.getIndex(14).brighten(-0.4);
     precipPredSeries.stroke = precipPredSeries.fill;
     precipPredSeries.name = "Precipitation - Projection"
-    precipPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    precipPredSeries.showOnInit = true;
+    precipPredSeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    precipPredSeries.hidden = false;
     precipPredSeries.dataFields.categoryY = "year";
     precipPredSeries.interpolationDuration = 1000;
 
@@ -128,8 +131,8 @@ am4core.ready(function () {
     precipPredISeries.fill = precipChart.colors.getIndex(13).brighten(-0.2);
     precipPredISeries.stroke = precipPredISeries.fill;
     precipPredISeries.name = "Precipitation - Easing Rules"
-    precipPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX}";
-    precipPredISeries.showOnInit = false;
+    precipPredISeries.columns.template.tooltipText = "{name}-{categoryY}: {valueX} mm";
+    precipPredISeries.hidden = true;
     precipPredISeries.dataFields.categoryY = "year";
     precipPredISeries.interpolationDuration = 1000;
 
