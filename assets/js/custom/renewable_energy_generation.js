@@ -229,7 +229,7 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
             updateRadarData(startYear + Math.round(yearSlider.start * (endYear - startYear)));
         })
         yearSlider.orientation = "horizontal";
-        yearSlider.start = 0.5;
+        yearSlider.start = 0;
         yearSlider.exportable = false;
 
         chart.data = generateRadarData();
