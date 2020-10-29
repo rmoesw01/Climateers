@@ -4,12 +4,12 @@ am4core.ready(function () {
     am4core.useTheme(am4themes_animated);
     // Themes end
 
-    var mainContainer = am4core.create("precip_chart", am4core.Container);
+    var mainContainer = am4core.create("precipitation_chart", am4core.Container);
     mainContainer.width = am4core.percent(100);
     mainContainer.height = am4core.percent(100);
     mainContainer.layout = "horizontal";
 
-    d3.json("static/data/snow_prcp.json").then(function(currData) {
+    d3.json("assets/data/json/snow_prcp.json").then(function(currData) {
         var precipData = currData;
         console.log(precipData);
       

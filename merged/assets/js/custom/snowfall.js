@@ -8,7 +8,7 @@ am4core.ready(function() {
     var chart = am4core.create("snow_chart", am4charts.XYChart);
     
     // Add data
-    d3.json("assets/data/snow2.json").then(function(currData) {
+    d3.json("assets/data/json/snow2.json").then(function(currData) {
         chart.data = currData;
         console.log(chart.data);
       });

@@ -97,18 +97,18 @@ lineSeries.hidden = true;
 // *************************************************************
 // * Inset map with copy of full map that remains when zoomed  *
 // *************************************************************
-map.smallMap = new am4maps.SmallMap();
-map.smallMap.series.push(worldSeries);
-// Configure small map
+// map.smallMap = new am4maps.SmallMap();
+// map.smallMap.series.push(worldSeries);
+// // Configure small map
 
-map.smallMap.background.stroke = am4core.color("#7B3625")
+// map.smallMap.background.stroke = am4core.color("#7B3625")
 
-// fills the entire box, not just the globe
-// map.smallMap.background.fill = am4core.color("#969696")
-map.smallMap.background.strokeOpacity = 1;
-map.smallMap.background.fillOpacity = 0.9;
-map.smallMap.align = "right";
-map.smallMap.valign = "top";
+// // fills the entire box, not just the globe
+// // map.smallMap.background.fill = am4core.color("#969696")
+// map.smallMap.background.strokeOpacity = 1;
+// map.smallMap.background.fillOpacity = 0.9;
+// map.smallMap.align = "right";
+// map.smallMap.valign = "top";
 
 // *************************************************************
 // * Inset map with copy of full map that remains when zoomed  *
@@ -138,7 +138,7 @@ circle.tooltipText = "{name}";
 filtStationSeriesTemplate.propertyFields.latitude = "latitude";
 filtStationSeriesTemplate.propertyFields.longitude = "longitude";
 
-d3.json("static/data/NOAA_filtStations.json").then(function(filtstationData) {
+d3.json("assets/data/json/NOAA_filtStations.json").then(function(filtstationData) {
   filtStationSeries.data = filtstationData;
   console.log(filtStationSeries.data);
 });

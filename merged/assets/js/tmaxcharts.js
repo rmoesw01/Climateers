@@ -22,7 +22,7 @@ am4core.ready(function() {
   title.paddingBottom = 10;
   
 
-  d3.json("static/data/TMAX.json").then(function(currData) {
+  d3.json("assets/data/json/TMAX.json").then(function(currData) {
     chart.data = currData;
     console.log(chart.data);
   });
