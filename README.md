@@ -61,3 +61,9 @@ Changing landscape for agricultural purposes often leads to an unstable phosphat
 * [Our World in Data](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions) for historical C02 levels & emissions
 * [Datahub.io](https://datahub.io/core/co2-fossil-global) for fossil fuel emissions
 * [Our World in Data](https://ourworldindata.org/environmental-impacts-of-food) for agricultural data
+
+**Libraries:**
+* [Scikit.Learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) for Multivariate Regression
+
+**Tools & languages:** JavaScript, HTML, CSS, Python, Jupyter Notebook
+
