@@ -89,23 +89,24 @@
 								</i></p>
 						</div>
 						<div class="7u 12u$(medium)">
-							<div id='precipitation_chart' style="width: 100%; height: 700px;"></div>
+							<div id='precipitation_chart' style="width: 100%; height: 750px;"></div>
 						</div>
 					</div>
 
 					<div class="row 200%">
 						<div class='7u 12u$(medium)'>
-							<div id='snow_chart' style="width: 100%; height: 700px;"></div>
+							<div id='snow_chart' style="width: 100%; height: 600px;"></div>
 						</div>
 						<div class="5u 12u$(medium)">
 							<br>
 							<h4>A <b>closer look</b> at snow fall data</h4>
 							<hr>
-							<p>This chart shows a more detailed visual of the observed snow fall data over the past <i>130 years</i>.
+							<p>This chart shows a more detailed visual of the observed snow fall data over the past
+								<i>130 years</i>.
 								<br><br>
 								Although the most drastic decrease in snow happened during the Industrial
-								Revolution,	the overall continued decline of snow fall throughout the 21st century 
-								shows the effects of global temperature increases. 
+								Revolution, the overall continued decline of snow fall throughout the 21st century
+								shows the effects of global temperature increases.
 								The increased non-frozen water in our ecosystem also has further
 								implications.
 								<br><br>
@@ -118,9 +119,9 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- Snow -->
-		<!-- <div class="inner">
+	</section>
+	<!-- Snow -->
+	<!-- <div class="inner">
 			<div class="box">
 				<div class="content">
 					<header class="align-center">
@@ -150,99 +151,100 @@
 			</div>
 		</div> -->
 
-		<section class="wrapper style3 weather-banner">
-			<div class="inner">
-				<header class="align-center">
-					<p>Severe Weather</p>
-					<h2>What about severe weather changes?</h2>
-				</header>
-			</div>
-		</section>
+	<section class="wrapper style3 weather-banner">
+		<div class="inner">
+			<header class="align-center">
+				<p>Severe Weather</p>
+				<h2>What about severe weather changes?</h2>
+			</header>
+		</div>
+	</section>
 
-		<!-- Hurricanes -->
-		<section class="wrapper style2">
-			<div class="inner">
-				<div class="box">
-					<div class="content">
-						<header class="align-center">
-							<p>Hurricanes</p>
-							<h2>Has the number or intensity of hurricanes changed?</h2>
-							<br>
-						</header>
-						<div class="row 200%">
-							<div class="5u 12u$(medium)">
-								<h4>About our hurricane models</h4>
-								<h5>Statistics from NHC, <i><a
-											href="https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv"
-											target="_blank">Hurricanes and Typhoons</a></i>,
-									2016</h5>
+	<!-- Hurricanes -->
+	<section class="wrapper style2">
+		<div class="inner">
+			<div class="box">
+				<div class="content">
+					<header class="align-center">
+						<p>Tracking Hurricanes</p>
+						<h2>How will hurricanes evolve?</h2>
+						<br>
+					</header>
+					<div class="row 200%">
+						<div class="5u 12u$(medium)">
+							<h4>Hurricane <b>frequency</b> and <b>intensity</b> are forecasted to increase.</h4>
+							<h5>Statistics from the National Hurricane Center (NHC), <i><a
+										href="https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv"
+										target="_blank">Hurricanes and Typhoons</a></i>,
+								2016</h5>
 								<hr>
-								<p>The data used to analyze hurricane frequency and intensity ranged back to the 1850s,
-									and
-									therefore did not include the
-									Saffir-Simpson Hurricane Wind Scale categorization scheme we have become accustomed
-									to
-									seeing (Category 1, 2, etc.). Therefore,
-									a k-means clustering model was used to classify the hurricanes based on their
-									minimum
-									pressure and maximum wind speed. The model was
-									optimized to group the huricanes into 4 categories.
-								</p>
-								<p>Next, linear regression models were used to predict the total number of hurricanes we
-									could potentially see up until the year 2200, as well as the number of hurricanes
-									in each category. The models used inputs such as historical changes in sea
-									temperature,
-									sea level, and global temperature to make these forecasts. As can be
-									seen by this chart, the frequency as well as intensity of hurricanes is projected to
-									increase over time based on current historical data.
-								</p>
-							</div>
-							<div class="7u 12u$(medium)">
-								<div id='hurricane_chart' style="width: 100%; height: 600px;"></div>
-							</div>
+							<p>The data used to analyze hurricane frequency and intensity ranged back to the 1850s,
+								and therefore did not include the customary
+								Saffir-Simpson Hurricane Wind Scale categorization scheme (Category 1, 2, etc.).
+								Therefore,
+								a <i>K-means clustering model</i> was used to classify the hurricanes based on their
+								minimum pressure and maximum wind speed. The model was
+								optimized to group the hurricanes into 4 categories.
+							</p>
+							<p>Next, linear regression models were used to predict the total number of hurricanes
+								up until 2200, as well as the number of hurricanes
+								in each category. The models used inputs such as historical sea temperature,
+								sea level, and global temperature to create these forecasts.
+								<br><br>
+								As can be
+								seen by this chart, the frequency as well as intensity of hurricanes is projected to
+								increase over time based on current historical data.
+							</p>
+						</div>
+						<div class="7u 12u$(medium)">
+							<div id='hurricane_chart' style="width: 100%; height: 700px;"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-
+		</div>
+	</section>
+	<section class="wrapper style2" style="padding-top: 0px;">
 		<!-- Tornado -->
 		<div class="inner">
 			<div class="box">
 				<div class="content">
 					<header class="align-center">
-						<p>Tornadoes</p>
-						<h2>Has the number or intensity of tornadoes changed?</h2>
+						<p>Tracking Tornadoes</p>
+						<h2>How will tornadoes evolve?</h2>
 						<br>
 					</header>
 					<div class="row 200%">
 						<div class='7u 12u$(medium)'>
-							<div id='tornado_chart' style="width: 100%; height: 600px;"></div>
-						</div>
-						<div class="5u 12u$(medium)">
-
-							<h4>About our tornado models</h4>
+							<h4>Tornado <b>frequency</b> and <b>intensity</b> are also forecasted to increase.</h4>
 							<h5>Statistics from NOAA, <i><a
 										href="https://oasishub.co/dataset/usa-tornado-historical-tracks-noaa"
 										target="_blank">USA - Historical Tornado Tracks</a></i>,
 								2020</h5>
 							<hr>
-							<p>Linear regression models were used to project the number of tornadoes we could
-								potentially see up to
-								the year 2200, in addition to the
-								number of magnitude 0 (F0 on the Fujita scale) and magnitude 2 (F2 on the Fujita scale)
-								tornadoes. These 2 magnitudes were chosen for display
-								as they demonstrated relatively reliable linear regression accuracies of above 70%. This
-								is likely due to the fact that there is a notable increase
-								in tornadoes of these magnitudes seen in the available historical data. The models used
-								inputs such as historical changes in CO2 emissions,
+							<div id='tornado_chart' style="width: 100%; height: 600px;"></div>
+						</div>
+						<div class="5u 12u$(medium)">
+
+							
+							<p style="margin-bottom: 10px;">
+								Linear regression models were used to project:
+								<ul>
+									<li>the number of tornadoes we could potentially see up to 2200,</li>
+									<li>number of magnitude 0 (F0 on the Fujita scale) tornadoes, and</li>
+									<li>magnitude 2 (F2 on the Fujita scale) tornadoes.</li>
+								</ul>
+								These 2 magnitudes were chosen for display
+								as they demonstrated relatively reliable linear regression accuracies of above 70%, 
+								likely because there is a notable increase
+								in these tornadoes in the available historical data.
+								<br><br>
+								The models used	inputs such as historical changes in CO2 emissions,
 								gas fuel emissions, and global temperature to make these forecasts.
 							</p>
-
 							<p>
 								It is worth mentioning that the model shows a greater number of predicted magnitude 0
-								tornadoes than
-								predicted total tornadoes. As these
+								tornadoes than predicted total tornadoes. As these
 								were created from separate linear regression models, the intent is to display the future
 								trends that could be seen, rather than predict the exact
 								frequency that can be expected.
