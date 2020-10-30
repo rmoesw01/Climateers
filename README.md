@@ -19,10 +19,10 @@ _Is the Earth getting warmer?_
 _How have the world's oceans been affected?_
 
 **Sea level modeling**  
-A linear regression machine learning model was used to predict the future trend of sea levels, as historical sea level temperatures displayed a linear increase over time. Input factors included historical cement emissions, global temperature, population, sea temperature change, and CO2 emissions. The testing score for this model was 0.98, indicating that this model is, in fact, reliable. Future sea levels were also predicted by fitting a trend line to historical sea level data. The result of this simplistic linear regression for the year 2200 was within 1.5in of the result for the machine learning model for the same year, which also boosts confidence in the machine learning model.
+A linear regression machine learning model was used to predict the future trend of sea levels, as historical sea level temperatures displayed a linear increase over time. Input factors included historical cement emissions, global temperature, population, sea temperature change, and CO2 emissions. When plotting this model with predictions to the year 2200, a stead increase over time can be seen. The testing score for this model was 0.98, indicating that this model is, in fact, reliable. Future sea levels were also predicted by fitting a trend line to historical sea level data. The result of this simplistic linear regression for the year 2200 was within 1.5in of the result for the machine learning model for the same year, which also boosts confidence in the machine learning model.
 
 **Sea temperature modeling**  
-Noting that the historical sea temperature trend is fairly linear, a linear regression machine learning model was employed to predict the future trend for sea temperature. The input factors used for this model were historical global temperature, population, glacier mass, and sea level changes. The testing score for this model was 0.97, and therefore can be considered a very reliable model. 
+Noting that the historical sea temperature trend is fairly linear, a linear regression machine learning model was employed to predict the future trend for sea temperature. The input factors used for this model were historical global temperature, population, glacier mass, and sea level changes. When visualizing this model with predictions to the year 2200, the sea temperature is expected to continue to increase at its current rate. The testing score for this model was 0.97, and therefore can be considered a very reliable model. 
 
 ### Weather Impacts
 _How have weather and natural disasters responded to climate change? Should we expect more extreme weather systems?_
@@ -39,7 +39,7 @@ Hurricane data  collected from the National Hurricane Center ranged back to the 
     - Inputs: historical gas fuel emissions, cement emissions, global temperature, sea temperature changes, and sea level changes
     - Testing score: 0.75
 - Category 3 hurricanes: 
-		- Inputs: historical gas fuel emissions, sea temperature changes, global temperature, and sea level changes  
+    - Inputs: historical gas fuel emissions, sea temperature changes, global temperature, and sea level changes  
     - Testing score: 0.78
 - Category 4 hurricanes:  
     - Inputs: historical gas fuel emissions, liquid fuel emissions, global temperature, sea temperature changes, and sea level changes  
