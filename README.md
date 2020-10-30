@@ -27,7 +27,7 @@ Noting that the historical sea temperature trend is fairly linear, a linear regr
 ### Weather Impacts
 _How have weather and natural disasters responded to climate change? Should we expect more extreme weather systems?_
 
-**Hurricanes**  
+**Hurricane Modeling**  
 Hurricane data  collected from the National Hurricane Center ranged back to the 1850s, but did not include a storm intensity category, likely because the method to categorize hurricanes, the Saffir-Simpson Hurricane Wind Scale, was not introduced until 1971. Therefore, unsupervised learning was utilized, in the form of a k-means clustering model, to group hurricanes by their minimum pressure and maximum windspeed. This model was optimized to have four categories of hurricane intensity. From there, linear regression machine learning models were used to predict the frequency of total hurricanes, as well as the frequency of each category of hurricane. Most models prove to be relatively reliable, with testing scores at 0.75 and above. However, the model for category 4 hurricanes shows a less reliable testing score of 0.68. The k-means clustering model shows the category 4 data as the most diverse of the 4 categories, with both maximum wind speed and minimum pressure having a larger range than any of the other categories. This model could be further optimized by adding more categories, and thus reducing the large range in this particular category.  This may lead to more reliable modeling of future trends. The model inputs and testing scores can be seen below. 
 - Total hurricanes:
     - Inputs: historical gas fuel emissions, sea temperature changes, global temperature, and sea level changes
