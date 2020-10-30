@@ -29,7 +29,8 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         series3.dataFields.categoryX = "Year";
         series3.name = "Magnitude 2 Tornadoes";
         series3.clustered = false;
-        series3.columns.template.tooltipText = "{valueY}";
+        // series3.columns.template.tooltipText = "{valueY}";
+        series3.tooltipText = "{valueY}";
         series3.columns.template.propertyFields.strokeDasharray = "dashLength";
         series3.columns.template.propertyFields.fillOpacity = "alpha";
         series3.showOnInit = true;
@@ -39,7 +40,8 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         series.dataFields.categoryX = "Year";
         series.name = "Magnitude 0 Tornadoes";
         series.clustered = false;
-        series.columns.template.tooltipText = "{valueY}";
+        // series.columns.template.tooltipText = "{valueY}";
+        series.tooltipText = "{valueY}";
         series.columns.template.fillOpacity = 0.9;
         series.columns.template.propertyFields.strokeDasharray = "dashLength";
         series.columns.template.propertyFields.fillOpacity = "alpha";
