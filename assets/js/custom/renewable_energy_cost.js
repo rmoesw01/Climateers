@@ -22,7 +22,6 @@ d3.csv("assets/data/Output_Data/Renewable_Energy_Costs.csv").then(function (data
 
         dateAxis.renderer.grid.template.location = 0;
         dateAxis.renderer.minGridDistance = 0;
-        dateAxis.renderer.grid.template.disabled = true;
 
         // Create series
         var solar_series = chart.series.push(new am4charts.LineSeries());
