@@ -40,7 +40,7 @@ d3.json('assets/data/Emissions/CO2_Chart_master.json').then(function (data) {
         valueAxis.renderer.labels.template.dx = -5;
         valueAxis.renderer.labels.template.dy = 10;
         valueAxis.renderer.maxLabelPosition = 0.95;
-        valueAxis.title.text = "CO2 Concentration";
+        valueAxis.title.text = "CO2 Concentration (ppm)";
         valueAxis.title.marginRight = 5;
 
         // Create series
@@ -49,7 +49,7 @@ d3.json('assets/data/Emissions/CO2_Chart_master.json').then(function (data) {
             series.dataFields.valueY = field;
             series.dataFields.dateX = "year";
             series.name = name;
-            series.tooltipText = "[bold]{name}[/]\n{dateX}: [b]{valueY}[/]";
+            series.tooltipText = "[bold]{name}[/]\n{dateX}: {valueY}";
             series.strokeWidth = 2;
             series.smoothing = "monotoneX";
             series.stroke = color;

@@ -26,7 +26,7 @@ am4core.ready(function() {
     series.dataFields.valueY = "observed";
     series.dataFields.dateX = "year";
     series.strokeWidth = 3;
-    series.tooltipText = "{valueY.value}";
+    series.tooltipText = "{valueY.value} mm";
     series.fillOpacity = 0.1;
     
     // Create a range to change stroke for values below 0
@@ -42,6 +42,9 @@ am4core.ready(function() {
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.xAxis = dateAxis;
     chart.scrollbarX = new am4core.Scrollbar();
+
+    // round numbers
+    chart.numberFormatter.numberFormat = "#,###.##";
     
     series.tooltip.getFillFromObject = false;
     series.tooltip.adapter.add("x", (x, target)=>{

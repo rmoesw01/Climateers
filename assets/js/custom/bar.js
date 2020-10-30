@@ -34,7 +34,7 @@ d3.csv('assets/data/Emissions/eutrificationChart.csv').then(function (data) {
         var series = chart.series.push(new am4charts.ColumnSeries);
         series.dataFields.valueY = "emissions_per_kg";
         series.dataFields.categoryX = "Entity";
-        series.tooltipText = "{valueY.value}";
+        series.tooltipText = "[bold]{valueY.value}[/] g PO4/ kg {categoryX}";
         series.tooltip.pointerOrientation = "vertical";
         series.tooltip.dy = - 6;
         series.columnsContainer.zIndex = 100;

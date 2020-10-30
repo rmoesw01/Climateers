@@ -18,6 +18,9 @@ am4core.ready(function () {
     worldSeries.exclude = ["AQ"];
     worldSeries.useGeodata = true;
 
+    // round numbers
+    chart.numberFormatter.numberFormat = "#,###.";
+
     var polygonTemplate = worldSeries.mapPolygons.template;
     // MT = metric megatons
     polygonTemplate.tooltipText = "{name}: {value} MT";
@@ -32,7 +35,7 @@ am4core.ready(function () {
 
     d3.json("assets/data/json/country_co2.json").then(function (currData) {
         worldSeries.data = currData;
-        console.log(worldSeries.data);
+        // console.log(worldSeries.data);
     });
 
     
