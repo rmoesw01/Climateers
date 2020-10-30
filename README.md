@@ -56,3 +56,8 @@ What is the cost/reward of renewable energy?
 How are we directly impacting the CO2 concentration levels?
 
 Changing landscape for agricultural purposes often leads to an unstable phosphate level in surrounding waterways. Land use change & animal waste accounts for 83% of greenhouse gas emissions from agriculture.
+
+**Data sources:**
+* [Our World in Data](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions) for historical C02 levels & emissions
+* [Datahub.io](https://datahub.io/core/co2-fossil-global) for fossil fuel emissions
+* [Datahub.io](https://datahub.io/core/co2-fossil-global) for fossil fuel emissions
