@@ -46,7 +46,7 @@ Hurricane data  collected from the National Hurricane Center ranged back to the 
     - Testing score: 0.68
 
 **Tornado Modeling**  
-Linear regression models were used to predict the frequency of total tornadoes, as well as the frequency of tornado magnitudes 0 and 2 (based on the Fujita Scale). Reliable models could not be created for magnitude 1, 3, 4, or 5 tornadoes. This is likely because the historical data for tornadoes of these magnitudes shows very consistent numbers from year to year, making It difficult to predict their future with the global warming factors employed in this project that show a steady increase over time. This indicates tornadoes of these magnitudes are not reliant on the traditional indicators of global warming. The inputs for the models that were created, as well as their testing scores can be seen below. 
+Linear regression models were used to predict the frequency of total tornadoes, as well as the frequency of tornado magnitudes 0 and 2 (based on the Fujita Scale). Reliable models could not be created for magnitude 1, 3, 4, or 5 tornadoes. This is likely because the historical data for tornadoes of these magnitudes shows very consistent numbers from year to year, making It difficult to predict their future with the global warming factors employed in this project that show a steady increase over time. This indicates tornadoes of these magnitudes are not reliant on the traditional indicators of global warming. The inputs for the models that were created, as well as their testing scores, can be seen below. 
 - Total tornadoes:
     - Inputs: historical gas fuel emissions, cement emissions, global temperature, population, CO2 emissions, and sea level changes
     - Testing score: 0.69
