@@ -13,7 +13,7 @@ We explored several different phenomena and questions for our models to answer.
 
 ### Global Temperatures
 _Is the Earth getting warmer?_
-models
+
 
 ### Ocean Impacts
 _How have the world's oceans been affected?_
@@ -32,7 +32,7 @@ twitter model
 
 ### Awareness
 _What parts of our behavior could we change? What is the cost/effectiveness of renewable energy? And how are we directly impacting the CO2 concentration levels?_
-models
+* CO2 - The features of this model are related to different fossil fuel emission concentrations in the atmosphere and variations in global temperature. As a multivariate regression, correlation between these datapoints is proved to be linear. One of the major contributors to these emmisions is the agricultural supply chain that serves the World's population. Changing land use to meet the demand of most current diets and consuming farm sourced animal products has created a major problem of how we interact with the environment. This results in our rate of polution pairing with population growth to a degree that is dangerous for our future.
 
 We trained our models to predict and validate indicators of the effects of climate change to answer the following questions:
 
@@ -56,3 +56,14 @@ What is the cost/reward of renewable energy?
 How are we directly impacting the CO2 concentration levels?
 
 Changing landscape for agricultural purposes often leads to an unstable phosphate level in surrounding waterways. Land use change & animal waste accounts for 83% of greenhouse gas emissions from agriculture.
+
+**Data sources:**
+* [Our World in Data](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions) for historical C02 levels & emissions
+* [Datahub.io](https://datahub.io/core/co2-fossil-global) for fossil fuel emissions
+* [Our World in Data](https://ourworldindata.org/environmental-impacts-of-food) for agricultural data
+
+**Libraries:**
+* [Scikit.Learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) for Multivariate Regression
+
+**Tools & languages:** JavaScript, HTML, CSS, Python, Jupyter Notebook
+

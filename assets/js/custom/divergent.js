@@ -23,7 +23,7 @@ d3.json('assets/data/Emissions/CO2_Chart_master.json').then(function (data) {
 
         // Chart title
         var title = chart.titles.create();
-        title.text = "Projected Atmospheric CO2 Concentration";
+        title.text = "Projected Atmospheric CO2 Concentration (ppm)";
         title.fontSize = 20;
         title.paddingBottom = 10;
 
