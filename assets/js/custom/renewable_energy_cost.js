@@ -20,8 +20,8 @@ d3.csv("assets/data/Output_Data/Renewable_Energy_Costs.csv").then(function (data
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.title.text = "TWh/$B";
 
-        dateAxis.renderer.grid.template.location = 0;
-        dateAxis.renderer.minGridDistance = 0;
+        dateAxis.renderer.grid.template.location = 0.5;
+        dateAxis.renderer.minGridDistance = 1;
 
         // Create series
         var solar_series = chart.series.push(new am4charts.LineSeries());
