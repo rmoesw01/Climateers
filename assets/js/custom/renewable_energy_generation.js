@@ -205,7 +205,7 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         series.tooltipText = "{categoryX}: {valueY.value}";
 
         // this makes columns to be of a different color, depending on value
-        // series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#673AB7"), max: am4core.color("#F44336"), dataField: "valueY" });
+        series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#42f58a"), max: am4core.color("#42f58a"), dataField: "valueY" });
 
 
         // cursor
