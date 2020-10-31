@@ -91,7 +91,7 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
 
         var energies = {
             "Solar": [africa_data_solar, brazil_data_solar, china_data_solar, europe_data_solar, NA_data_solar, world_data_solar],
-            "Hydropower": [africa_data_hydro, brazil_data_hydro,china_data_hydro, europe_data_hydro, NA_data_hydro, world_data_hydro],
+            "Hydro": [africa_data_hydro, brazil_data_hydro,china_data_hydro, europe_data_hydro, NA_data_hydro, world_data_hydro],
             "Wind": [africa_data_wind, brazil_data_wind, china_data_wind, europe_data_wind, NA_data_wind, world_data_wind],
             "Other": [africa_data_other, brazil_data_other, china_data_other, europe_data_other, NA_data_other, world_data_other]
         }
@@ -115,11 +115,15 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
 
         // year label goes in the middle
         var yearLabel = chart.radarContainer.createChild(am4core.Label);
-        yearLabel.horizontalCenter = "middle";
-        yearLabel.verticalCenter = "middle";
-        yearLabel.fill = am4core.color("#673AB7");
-        yearLabel.fontSize = 30;
-        yearLabel.text = String(currentYear);
+        // yearLabel.horizontalCenter = "middle";
+        // yearLabel.verticalCenter = "middle";
+        // yearLabel.fill = am4core.color("#673AB7");
+        // yearLabel.fontSize = 30;
+        // yearLabel.text = String(currentYear);
+        var label = chart.chartContainer.createChild(am4core.Label);
+        label.text = "[bold]Year: [/]" + String(currentYear);
+        label.align = "top";
+        label.fontSize = 30;
 
         // zoomout button
         var zoomOutButton = chart.zoomOutButton;
@@ -261,7 +265,8 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         function updateRadarData(year) {
             if (currentYear != year) {
                 currentYear = year;
-                yearLabel.text = String(currentYear);
+                // yearLabel.text = String(currentYear);
+                label.text = "[bold]Year: [/]" + String(currentYear);
                 series.dataFields.valueY = "value" + currentYear;
                 chart.invalidateRawData();
             }
