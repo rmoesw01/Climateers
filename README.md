@@ -13,7 +13,10 @@ We explored several different phenomena and questions for our models to answer.
 
 ### Temperature & Emissions
 _Is there a link between CO<sub>2</sub> emissions and global temperature?_
-
+Maximum temperature data collected from the [National Oceanic and Atmospheric Administration](https://www.ncdc.noaa.gov/cdo-web/datasets) as global summary of the year from multiple climate stations around the world.  The values were then averaged together for the years 1880 to 2010.  A linear regression machine learning model was used with the inputs listed below.Originally, the snow data was also used as an input for all the other outputs, but because it varied so greatly from year to year it was not a reliable input and caused the testing scores to decrease significantly.
+- Maximum Temperature (TMAX):
+  - Inputs: historical Gas Fuel CO<sub>2</sub> level,	Liquid Fuel CO<sub>2</sub> level,	Solid Fuel CO<sub>2</sub> level,	Cement CO<sub>2</sub> level,	Gas Flaring CO<sub>2</sub> level	population,	sea level,	extreme precipitation, precipitation, minimum temperature
+  - Testing score: **0.91**
 
 ### Ocean Impacts
 _How have the world's oceans been affected?_
@@ -28,6 +31,15 @@ Noting that the historical sea temperature trend is fairly linear, a linear regr
 
 ### Weather Impacts
 _How have weather and natural disasters responded to climate change? Should we expect more extreme weather systems?_
+
+#### Precipitation & Snow Modeling
+Precipitation and Snow data collected from the [National Oceanic and Atmospheric Administration](https://www.ncdc.noaa.gov/cdo-web/datasets) as global summary of the year from multiple climate stations around the world.  Those values were then averaged together for the years 1880 to 2010.  A linear regression machine learning model was used with the inputs listed below.Originally, the snow data was also used as an input for all the other outputs, but because it varied so greatly from year to year it was not a reliable input and caused the testing scores to decrease significantly.  The other impact the highly varied snow data had was when making predictions for the future.  For all other outputs, the most recent 40 years was used as the basis for the predictions, but for the snow data the most recent 100 years had to be used to see the larger overall trend reliably.
+- Snow (SNOW):
+  - Inputs: historical Gas Fuel CO<sub>2</sub> level,	Liquid Fuel CO<sub>2</sub> level,	Solid Fuel CO<sub>2</sub> level,	Cement CO<sub>2</sub> level,	Gas Flaring CO<sub>2</sub> level,	population,	sea level,	extreme precipitation, precipitation, maximum temperature, minimum temperature
+  - Testing score: **0.91**
+- Precipitation (PRCP):
+  - Inputs: historical Gas Fuel CO<sub>2</sub> level,	Liquid Fuel CO<sub>2</sub> level,	Solid Fuel CO<sub>2</sub> level,	Cement CO<sub>2</sub> level,	Gas Flaring CO<sub>2</sub> level	population,	sea level,	extreme precipitation, precipitation, maximum temperature, minimum temperature
+  - Testing score: **0.87**
 
 #### Hurricane Modeling
 Hurricane data  collected from the National Hurricane Center ranged back to the 1850s, but did not include a storm intensity category, likely because the method to categorize hurricanes, the [Saffir-Simpson Hurricane Wind Scale](https://en.wikipedia.org/wiki/Saffir%E2%80%93Simpson_scale), was not introduced until 1971. Therefore, unsupervised learning was utilized, in the form of a K-means clustering model, to group hurricanes by their minimum pressure and maximum windspeed. This model was optimized to have four categories of hurricane intensity. 
@@ -55,7 +67,7 @@ Linear regression models were used to predict the frequency of total tornadoes, 
     - Inputs: historical gas fuel emissions, cement emissions, global temperature, population, CO2 emissions, and sea level changes
     - Testing score: **0.69**
 - Magnitude 0 tornadoes: 
-    - Inputs: historical gas fuel emissions, liquid fuel emissions, cement emissions, global temperature, population, and CO2 emissions
+    - Inputs: historical gas fuel emissions, liquid fuel emissions, cement emissions, global temperature, population, and CO<sub>2</sub> emissions
     - Testing score: **0.82**
 - Magnitude 2 tornadoes:
     - Inputs: historical gas fuel emissions, liquid fuel emissions, cement emissions, global temperature, population and sea temperature changes 
@@ -114,6 +126,8 @@ Changing landscape for agricultural purposes often leads to an unstable phosphat
 * [Datahub.io](https://datahub.io/collections/climate-change):
   * [Sea level changes](https://datahub.io/core/sea-level-rise)
   * [Fossil fuel emissions](https://datahub.io/core/co2-fossil-global);
+* [National Oceanic and Atmospheric Administration](https://www.ncdc.noaa.gov/cdo-web/datasets)
+  * [Climate data](https://www.ncdc.noaa.gov/cdo-web/webservices/v2)
 * [NSIDC](https://nsidc.org/data/g02135) for northern sea ice extent geoTIFFs
 * [Pew Research](https://www.pewresearch.org/):
   * [U.S. opinions on climate](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/);
@@ -129,5 +143,5 @@ Changing landscape for agricultural purposes often leads to an unstable phosphat
 * [pytorch](https://pytorch.org/) for NLP models
 * [QGIS](https://qgis.org/en/site/) for vectorizing geoTIFFs & converting to geoJSON, [mapshaper](https://mapshaper.org/) for simplifying & formatting JSON polygons
 * [pyreadstat](https://pypi.org/project/pyreadstat/) for reading `.sav` files in Python
-**Tools & languages:** JavaScript, HTML, CSS, Python, Jupyter Notebook
+**Tools & languages:** JavaScript, HTML, CSS, Python, Pandas, Jupyter Notebook
 
