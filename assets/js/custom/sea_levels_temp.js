@@ -42,6 +42,9 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         tempAxis.syncWithAxis = valueAxis;
 
         // Create series
+
+       
+
         var sea_tmp_series = chart.series.push(new am4charts.ColumnSeries());
         sea_tmp_series.dataFields.valueY = "Projected_Sea_tmp";
         sea_tmp_series.dataFields.dateX = "Year";
@@ -53,6 +56,17 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         sea_tmp_series.columns.template.propertyFields.fillOpacity = "alpha";
         sea_tmp_series.name = "Projected Sea Temperature (°F)";
         sea_tmp_series.showOnInit = true;
+
+        var series2 = chart.series.push(new am4charts.LineSeries());
+        series2.dataFields.valueY = "LinRegress_Sea_Lvl";
+        series2.dataFields.dateX = "Year";
+        series2.yAxis = valueAxis;
+        series2.tooltipText = "{valueY} in"
+        series2.strokeWidth = 2;
+        series2.propertyFields.strokeDasharray = "dashLength";
+        // series2.minBulletDistance = 10;
+        series2.name = "Lin Regress Sea Level";
+        series2.showOnInit = true;
         
         var series = chart.series.push(new am4charts.LineSeries());
         series.dataFields.valueY = "Projected_Sea_Lvl";
@@ -65,17 +79,7 @@ d3.csv("assets/data/Output_Data/Projected_Sea_tmp_lvl_reduced.csv").then(functio
         series.name = "Projected Sea Level";
         series.showOnInit = true;
 
-        var series2 = chart.series.push(new am4charts.LineSeries());
-        series2.dataFields.valueY = "LinRegress_Sea_Lvl";
-        series2.dataFields.dateX = "Year";
-        series2.yAxis = valueAxis;
-        series2.tooltipText = "{valueY} in"
-        series2.strokeWidth = 2;
-        series2.propertyFields.strokeDasharray = "dashLength";
-        // series2.minBulletDistance = 10;
-        series2.name = "Lin Regress Sea Level";
-        series2.showOnInit = true;
-
+        
         
 
 
