@@ -123,15 +123,21 @@ Changing landscape for agricultural purposes often leads to an unstable phosphat
 * [Our World in Data](https://ourworldindata.org):
   * [Historical CO<sub>2</sub> levels & emissions](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions);
   * [Agricultural data](https://ourworldindata.org/environmental-impacts-of-food)
+  * [Renewable Energy data](https://ourworldindata.org/renewable-energy)
+  * [Energy data](https://ourworldindata.org/energy)
 * [Datahub.io](https://datahub.io/collections/climate-change):
   * [Sea level changes](https://datahub.io/core/sea-level-rise)
   * [Fossil fuel emissions](https://datahub.io/core/co2-fossil-global);
 * [National Oceanic and Atmospheric Administration](https://www.ncdc.noaa.gov/cdo-web/datasets)
   * [Climate data](https://www.ncdc.noaa.gov/cdo-web/webservices/v2)
+  * [Tornado data](https://oasishub.co/dataset/usa-tornado-historical-tracks-noaa/resource/b2a11100-eac5-4d10-869a-87ba064ede2d#)
+  * [Hurricane data](https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv)
 * [NSIDC](https://nsidc.org/data/g02135) for northern sea ice extent geoTIFFs
 * [Pew Research](https://www.pewresearch.org/):
   * [U.S. opinions on climate](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/);
   * [World opinions on climate](https://www.pewresearch.org/global/dataset/spring-2018-survey-data/)
+* [International Energy Agency](https://www.iea.org/reports/world-energy-investment-2019/power-sector) for hydropower investment data
+* [Environmental Protection Agency](https://www.epa.gov/climate-indicators/climate-change-indicators-sea-surface-temperature) for sea level data
 
 **Libraries:**
 * [amCharts](https://www.amcharts.com/) for all visualizations
@@ -142,6 +148,7 @@ Changing landscape for agricultural purposes often leads to an unstable phosphat
 * [fastai.text](https://fastai1.fast.ai/text.html) for text analysis & deep learning
 * [pytorch](https://pytorch.org/) for NLP models
 * [QGIS](https://qgis.org/en/site/) for vectorizing geoTIFFs & converting to geoJSON, [mapshaper](https://mapshaper.org/) for simplifying & formatting JSON polygons
-* [pyreadstat](https://pypi.org/project/pyreadstat/) for reading `.sav` files in Python
+* [pyreadstat](https://pypi.org/project/pyreadstat/) for reading `.sav` files in Python  
+
 **Tools & languages:** JavaScript, HTML, CSS, Python, Pandas, Jupyter Notebook
 
