@@ -138,6 +138,7 @@ Changing landscape for agricultural purposes often leads to an unstable phosphat
   * [World opinions on climate](https://www.pewresearch.org/global/dataset/spring-2018-survey-data/)
 * [International Energy Agency](https://www.iea.org/reports/world-energy-investment-2019/power-sector) for hydropower investment data
 * [Environmental Protection Agency](https://www.epa.gov/climate-indicators/climate-change-indicators-sea-surface-temperature) for sea temperature data
+* Image sources found in Image_Credits.txt
 
 **Libraries:**
 * [amCharts](https://www.amcharts.com/) for all visualizations
