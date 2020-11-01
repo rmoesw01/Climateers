@@ -1,6 +1,7 @@
+// bring in renewable energy cost data
 d3.csv("assets/data/Output_Data/Renewable_Energy_Costs.csv").then(function (data) {
-    // console.log(data)
-  
+
+    // please note: code modified from https://www.amcharts.com/demos/duration-on-value-axis/
     am4core.ready(function () {
 
         // Themes begin
@@ -24,6 +25,7 @@ d3.csv("assets/data/Output_Data/Renewable_Energy_Costs.csv").then(function (data
         dateAxis.renderer.minGridDistance = 1;
 
         // Create series
+        // solar line series
         var solar_series = chart.series.push(new am4charts.LineSeries());
         solar_series.dataFields.valueY = "Solar gen/cost";
         solar_series.dataFields.dateX = "Year";
@@ -31,6 +33,7 @@ d3.csv("assets/data/Output_Data/Renewable_Energy_Costs.csv").then(function (data
         solar_series.strokeWidth = 2;
         solar_series.name = "Solar TWh/$B";
 
+        // hydro line series
         var hydro_series = chart.series.push(new am4charts.LineSeries());
         hydro_series.dataFields.valueY = "Hydro gen/cost";
         hydro_series.dataFields.dateX = "Year";
@@ -38,14 +41,14 @@ d3.csv("assets/data/Output_Data/Renewable_Energy_Costs.csv").then(function (data
         hydro_series.strokeWidth = 2;
         hydro_series.name = "Hydropower TWh/$B";
 
-        
+        // wind line series
         var wind_series = chart.series.push(new am4charts.LineSeries());
         wind_series.dataFields.valueY = "Wind gen/cost";
         wind_series.dataFields.dateX = "Year";
         wind_series.tooltipText = "{valueY}"
         wind_series.strokeWidth = 2;
         wind_series.name = "Wind TWh/$B";
- 
+
 
         // Drop-shaped tooltips
         solar_series.tooltip.background.cornerRadius = 20;
@@ -105,5 +108,5 @@ d3.csv("assets/data/Output_Data/Renewable_Energy_Costs.csv").then(function (data
         // Add legend
         chart.legend = new am4charts.Legend();
     }); // end am4core.ready()
-  
+
 })

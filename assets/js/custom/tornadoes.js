@@ -1,6 +1,7 @@
-
+// bring in tornado data
 d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function (data) {
 
+    // please note: code modified from https://www.amcharts.com/demos/3d-stacked-column-chart/
     am4core.ready(function () {
 
         // Themes begin
@@ -8,9 +9,8 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         // Themes end
 
         // Create chart instance
-        // var chart = am4core.create("chartdiv5", am4charts.XYChart3D);
         var chart = am4core.create("tornado_chart", am4charts.XYChart3D);
-
+        // make colors contrast
         chart.colors.step = 3;
         // Add data
         chart.data = data;
@@ -24,38 +24,39 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         valueAxis.title.text = "Count";
 
         // Create series
-        var series3 = chart.series.push(new am4charts.ColumnSeries3D());
-        series3.dataFields.valueY = "Magnitude_2";
-        series3.dataFields.categoryX = "Year";
-        series3.name = "Magnitude 2 Tornadoes";
-        series3.clustered = false;
-        // series3.columns.template.tooltipText = "{valueY}";
-        series3.tooltipText = "{valueY}";
-        series3.columns.template.propertyFields.strokeDasharray = "dashLength";
-        series3.columns.template.propertyFields.fillOpacity = "alpha";
-        series3.showOnInit = true;
+        // mag 2 tornadoes
+        var mag_2_series = chart.series.push(new am4charts.ColumnSeries3D());
+        mag_2_series.dataFields.valueY = "Magnitude_2";
+        mag_2_series.dataFields.categoryX = "Year";
+        mag_2_series.name = "Magnitude 2 Tornadoes";
+        mag_2_series.clustered = false;
+        mag_2_series.tooltipText = "{valueY}";
+        mag_2_series.columns.template.propertyFields.strokeDasharray = "dashLength";
+        mag_2_series.columns.template.propertyFields.fillOpacity = "alpha";
+        mag_2_series.showOnInit = true;
 
-        var series = chart.series.push(new am4charts.ColumnSeries3D());
-        series.dataFields.valueY = "Magnitude_0";
-        series.dataFields.categoryX = "Year";
-        series.name = "Magnitude 0 Tornadoes";
-        series.clustered = false;
-        // series.columns.template.tooltipText = "{valueY}";
-        series.tooltipText = "{valueY}";
-        series.columns.template.fillOpacity = 0.9;
-        series.columns.template.propertyFields.strokeDasharray = "dashLength";
-        series.columns.template.propertyFields.fillOpacity = "alpha";
-        series.showOnInit = true;
+        // mag 0 tornadoes
+        var mag_0_series = chart.series.push(new am4charts.ColumnSeries3D());
+        mag_0_series.dataFields.valueY = "Magnitude_0";
+        mag_0_series.dataFields.categoryX = "Year";
+        mag_0_series.name = "Magnitude 0 Tornadoes";
+        mag_0_series.clustered = false;
+        mag_0_series.tooltipText = "{valueY}";
+        mag_0_series.columns.template.fillOpacity = 0.9;
+        mag_0_series.columns.template.propertyFields.strokeDasharray = "dashLength";
+        mag_0_series.columns.template.propertyFields.fillOpacity = "alpha";
+        mag_0_series.showOnInit = true;
 
-        var series2 = chart.series.push(new am4charts.ColumnSeries3D());
-        series2.dataFields.valueY = "Tornado_total";
-        series2.dataFields.categoryX = "Year";
-        series2.name = "Total Tornadoes";
-        series2.clustered = false;
-        series2.tooltipText = "{valueY}";
-        series2.columns.template.propertyFields.strokeDasharray = "dashLength";
-        series2.columns.template.propertyFields.fillOpacity = "alpha";
-        series2.showOnInit = true;
+        // total tornadoes
+        var tot_tornado = chart.series.push(new am4charts.ColumnSeries3D());
+        tot_tornado.dataFields.valueY = "Tornado_total";
+        tot_tornado.dataFields.categoryX = "Year";
+        tot_tornado.name = "Total Tornadoes";
+        tot_tornado.clustered = false;
+        tot_tornado.tooltipText = "{valueY}";
+        tot_tornado.columns.template.propertyFields.strokeDasharray = "dashLength";
+        tot_tornado.columns.template.propertyFields.fillOpacity = "alpha";
+        tot_tornado.showOnInit = true;
 
         // Add legend
         chart.legend = new am4charts.Legend();
@@ -63,6 +64,6 @@ d3.csv("assets/data/Output_Data/Projected_tornadoes_reduced.csv").then(function 
         // Add cursor
         chart.cursor = new am4charts.XYCursor();
         chart.cursor.fullWidthLineX = true;
-    
+
     }); // end am4core.ready()
 })

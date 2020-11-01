@@ -2,7 +2,7 @@
 // read in csv data about renewable enery consumption
 d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (data) {
 
-    // console.log(data);
+
     // initialize data lists
     // hydro data
     var NA_data_hydro = ["N. America ", 0];
@@ -76,9 +76,9 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         }
 
     }
-    
 
-    // Please note: chart code has been modified from demo available here: https://www.amcharts.com/demos/radar-timeline/
+
+    // ****Please note: chart code has been modified from demo available here: https://www.amcharts.com/demos/radar-timeline/
     am4core.ready(function () {
 
         // Themes begin
@@ -91,17 +91,20 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
 
         var energies = {
             "Solar": [africa_data_solar, brazil_data_solar, china_data_solar, europe_data_solar, NA_data_solar, world_data_solar],
-            "Hydro": [africa_data_hydro, brazil_data_hydro,china_data_hydro, europe_data_hydro, NA_data_hydro, world_data_hydro],
+            "Hydro": [africa_data_hydro, brazil_data_hydro, china_data_hydro, europe_data_hydro, NA_data_hydro, world_data_hydro],
             "Wind": [africa_data_wind, brazil_data_wind, china_data_wind, europe_data_wind, NA_data_wind, world_data_wind],
             "Other": [africa_data_other, brazil_data_other, china_data_other, europe_data_other, NA_data_other, world_data_other]
         }
 
+        // set starting variables
         var startYear = 1965;
         var endYear = 2019;
         var currentYear = 1965;
         var colorSet = new am4core.ColorSet();
 
+        // add chart instance for html
         var chart = am4core.create("energy_gen", am4charts.RadarChart);
+        // format y axis
         chart.numberFormatter.numberFormat = "# TWh|# TWh|# TWh";
         chart.hiddenState.properties.opacity = 0;
         chart.colors.step = 3;
@@ -113,13 +116,8 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         chart.radius = am4core.percent(65);
         chart.innerRadius = am4core.percent(40);
 
-        // year label goes in the middle
+        // year label - show above slider
         var yearLabel = chart.radarContainer.createChild(am4core.Label);
-        // yearLabel.horizontalCenter = "middle";
-        // yearLabel.verticalCenter = "middle";
-        // yearLabel.fill = am4core.color("#673AB7");
-        // yearLabel.fontSize = 30;
-        // yearLabel.text = String(currentYear);
         var label = chart.chartContainer.createChild(am4core.Label);
         label.text = "[bold]Year: [/]" + String(currentYear);
         label.align = "top";
@@ -158,7 +156,6 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         categoryAxisRenderer.fontSize = 11;
         categoryAxisRenderer.minGridDistance = 10;
         categoryAxisRenderer.grid.template.radius = -25;
-        // categoryAxisRenderer.grid.template.strokeOpacity = 0.05;
         categoryAxisRenderer.grid.template.interactionsEnabled = false;
 
         categoryAxisRenderer.ticks.template.disabled = true;
@@ -182,7 +179,6 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         valueAxisRenderer.axisFills.template.disabled = true;
         valueAxisRenderer.ticks.template.disabled = true;
         valueAxisRenderer.minGridDistance = 20;
-        // valueAxisRenderer.grid.template.strokeOpacity = 0.05;
 
         // axis break
         var axisBreak = valueAxis.axisBreaks.create();
@@ -204,7 +200,7 @@ d3.csv("assets/data/Output_Data/Combined_Energy_by_Region.csv").then(function (d
         series.dataFields.categoryX = "energytype";
         series.tooltipText = "{categoryX}: {valueY.value}";
 
-        // this makes columns to be of a different color, depending on value
+        // set column for series
         series.heatRules.push({ target: series.columns.template, property: "fill", minValue: 0, maxValue: 4500, min: am4core.color("#42f58a"), max: am4core.color("#42f58a"), dataField: "valueY" });
 
 
