@@ -1,3 +1,4 @@
+// begin plotting sea ice extent
 am4core.ready(function () {
 
   // create array of urls
@@ -19,11 +20,11 @@ am4core.ready(function () {
   // set map definition as low
   iceChart.geodata = am4geodata_continentsLow;
 
-  // set projection as globe (orthographic)
+  // set projection as globe (orthographic), set pan behavior
   iceChart.projection = new am4maps.projections.Orthographic();
   iceChart.panBehavior = 'rotateLongLat';
 
-  // disable panning/dragging of the map
+  // disable panning/dragging of the map (if desired)
   // iceChart.seriesContainer.draggable = false;
   // iceChart.seriesContainer.resizable = false;
 
@@ -49,11 +50,11 @@ am4core.ready(function () {
   iceChart.deltaLatitude = -90;
   iceChart.homeZoomLevel = 2.5;
 
-  // set max zoom level
+  // set max/min zoom level
   iceChart.maxZoomLevel = 2.5;
   // iceChart.minZoomLevel = 2.5;
 
-  // create outline for 1979 ice extent
+  // create outline for 1980 ice extent
   var outlineSeries = iceChart.series.push(new am4maps.MapPolygonSeries());
 
   // add geojson url
@@ -62,12 +63,11 @@ am4core.ready(function () {
 
   // config fill, stroke, color
   var outlineTemplate = outlineSeries.mapPolygons.template;
-  // outlineTemplate.nonScalingStroke = true;
   outlineTemplate.fillOpacity = 0.0;
   outlineTemplate.strokeWidth = 2.0;
   outlineTemplate.strokeDasharray = "5, 5";
 
-  // create map polygon series for northern polar sea ice
+  // create map polygon series for 1980 ice extent
   var iceSeries = iceChart.series.push(new am4maps.MapPolygonSeries());
 
   // add geojson url
@@ -199,7 +199,7 @@ am4core.ready(function () {
   iceTemplate9.strokeWidth = 0.5;
   iceTemplate9.tooltipText = "sea ice extent: 3.92M sq km";
 
-  // unfortunately, looping through the templates didn't work. likely d/t the geojsons
+  // testing efficacy of a loop for amchart geoJSON plotting; this version did **not** work
 
   // var year_list = [1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020];
   // var series_list = [iceSeries, iceSeries2, iceSeries3, iceSeries4, iceSeries5, iceSeries6, iceSeries7, iceSeries8, iceSeries9];
@@ -225,7 +225,7 @@ am4core.ready(function () {
   //   iceChart.invalidateData();
   // }
 
-  // create labels for years
+  // create label for year
   var iceLabel = iceChart.chartContainer.createChild(am4core.Label);
   iceLabel.isMeasured = false;
   iceLabel.x = 10;
@@ -275,7 +275,7 @@ am4core.ready(function () {
   buttonLabel.zIndex = 3;
   buttonLabel.hide();
 
-  // call restart fxn when button is clicked
+  // call fxn to restart animation when button is clicked
   replayButton.events.on("hit", morphIce);
 
   // start animation sequence when ready
@@ -290,16 +290,21 @@ am4core.ready(function () {
     iceSeries1.show();
     iceLabel.text = '1980';
 
+    // hide replay button & label when replaying animation
     replayButton.hide();
     buttonLabel.hide();
 
+    // call next fxn in succession
     setTimeout(morphIce1, 3000)
   }
 
+  // hide 1980 polygon, show 1985 polygon, etc.
   function morphIce1() {
     iceSeries1.hide();
     iceSeries2.show();
     iceLabel.text = '1985';
+
+    // animation for label transition
     iceLabel.y = -30;
     iceLabel.animate({ property: "y", to: 10 }, 300, am4core.ease.quadOut);
     setTimeout(morphIce2, 3000)
@@ -369,4 +374,4 @@ am4core.ready(function () {
     buttonLabel.show();
   }
 
-}); // end am4core.ready()
+}); // end sea ice visualization
