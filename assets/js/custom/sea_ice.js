@@ -1,7 +1,7 @@
 // begin plotting sea ice extent
 am4core.ready(function () {
 
-  // create array of urls
+  // create array of urls to call
   var url_array = [];
 
   for (var x = 0; x < 9; x++) {

@@ -122,13 +122,19 @@ function total_fxn2() {
 
 
 // begin world views visualization
+
+// create list of 27 surveyed countries
 var countries = ['Argentina', 'Australia', 'Brazil', 'Canada', 'France', 'Germany', 'Greece', 'Hungary', 'India', 'Indonesia', 'Israel', 'Italy', 'Japan', 'Kenya', 'Mexico', 'Netherlands', 'Nigeria', 'Philippines', 'Poland', 'Russia', 'South Africa', 'South Korea', 'Spain', 'Sweden', 'Tunisia', 'United Kingdom', 'United States']
 
+// import csv
 d3.csv('assets/data/climate_tweets/pew_data/pew_csvs/global_survey.csv').then(response => {
+    
+    // begin organizing data for plotting
     var major = [];
     var minor = [];
     var none = [];
 
+    // sort data by responses by each country
     response.forEach((d) => {
         if (d.intthreat_climatechange == 1) {
             major.push(d.count);
@@ -143,6 +149,7 @@ d3.csv('assets/data/climate_tweets/pew_data/pew_csvs/global_survey.csv').then(re
 
     var global_data = [];
 
+    // push data to array
     for (var x = 0; x < countries.length; x++) {
         var total_responses = +major[x] + +minor[x] + +none[x];
         var major_percent = Math.round(+major[x] * 100 / total_responses);
@@ -166,18 +173,20 @@ d3.csv('assets/data/climate_tweets/pew_data/pew_csvs/global_survey.csv').then(re
         });
     }
 
-    // console.log(global_data);
-
+    // use standard animated theme
     am4core.useTheme(am4themes_animated);
 
+    // create container for world data
     var threatContainer = am4core.create("globalchart", am4core.Container);
     threatContainer.width = am4core.percent(100);
     threatContainer.height = am4core.percent(100);
 
+    // add XY column chart to container
     var chart = threatContainer.createChild(am4charts.XYChart);
     chart.width = am4core.percent(100);
     chart.height = am4core.percent(100);
 
+    // set countries to x-axis
     var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.dataFields.category = "country";
@@ -186,30 +195,38 @@ d3.csv('assets/data/climate_tweets/pew_data/pew_csvs/global_survey.csv').then(re
     categoryAxis.renderer.grid.template.disabled = true;
     categoryAxis.cursorTooltipEnabled = false;
 
+    // set % responses to y-axis
     var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
     valueAxis.min = 0;
     valueAxis.max = 100;
     valueAxis.cursorTooltipEnabled = false;
 
+    // create series from chart & data
     var series = chart.series.push(new am4charts.ColumnSeries());
     series.dataFields.categoryY = "country";
     series.dataFields.valueX = "major_percent";
+
+    // config tooltip & tooltip placement
     series.columns.template.tooltipText = "{categoryY}: [bold]{valueX}%[/]";
     series.columns.template.tooltipX = am4core.percent(100);
     series.tooltip.pointerOrientation = 'left';
     series.columns.template.propertyFields.fill = 'fill';
+
+    // config column outline & rounding
     series.columns.template.strokeOpacity = 0;
     series.columns.template.column.cornerRadiusBottomRight = 5;
     series.columns.template.column.cornerRadiusTopRight = 5;
 
+    // add cursor for spikeline & zooming in on bars
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.lineX.disabled = true;
     chart.cursor.behavior = 'zoomY';
 
+    // visibly sort data after populating
     categoryAxis.sortBySeries = series;
     chart.data = global_data;
 
-    // add label
+    // add label container
     var labelContainer = chart.chartContainer.createChild(am4core.Container);
     labelContainer.layout = 'absolute';
     labelContainer.toBack();
@@ -217,18 +234,17 @@ d3.csv('assets/data/climate_tweets/pew_data/pew_csvs/global_survey.csv').then(re
     labelContainer.paddingTop = 0;
     labelContainer.width = am4core.percent (100);
 
+    // add label to label container, format accordingly
     var threat_label = labelContainer.createChild(am4core.Label);
     threat_label.fill = am4core.color("#000000");
     threat_label.align = 'right';
     threat_label.paddingLeft = 10;
-
     threat_label.fontSize = 25;
     threat_label.fontWeight = "bold";
     threat_label.text = "[bold]major[/] threat";
     threat_label.fillOpacity = 0.6;
-    // threat_label.isMeasured = false;
 
-    // call fxn to populate minor threat data
+    // call fxn to populate "minor threat" data
     series.events.on("ready", function () {
         setTimeout(showMinorThreat, 7000);
     })
@@ -240,8 +256,10 @@ d3.csv('assets/data/climate_tweets/pew_data/pew_csvs/global_survey.csv').then(re
         series.dataFields.valueX = 'minor_percent';
         chart.data = global_data;
 
+        // change label
         threat_label.text = '[bold]minor[/] threat';
         
+        // show visible sorting of data
         categoryAxis.sortBySeries = series;
 
         // call fxn to populate no threat data
