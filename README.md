@@ -5,6 +5,8 @@ A site that analyzes and predicts climate change and its effects.
 
 **Access the deployed page [here](https://rmoesw01.github.io/Climateers/).**
 
+![screenshot](/images/screenshots/screenshot1.png)
+
 ## Background
 As our world progresses technologically, the health of our planet degrades day by day. Our group's aim was to analyze the trends seen today and model how our world could be affected by climate change in the future via machine learning.
 
@@ -13,28 +15,28 @@ As our world progresses technologically, the health of our planet degrades day b
 
 **Data sources:**
 * [Our World in Data](https://ourworldindata.org) for:
-  * [Historical CO<sub>2</sub> levels & emissions](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions),
-  * [Agricultural data](https://ourworldindata.org/environmental-impacts-of-food),
-  * [Renewable energy data](https://ourworldindata.org/renewable-energy), 
-  * [General energy data](https://ourworldindata.org/energy)
+  * [historical CO<sub>2</sub> levels & emissions](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions),
+  * [agricultural data](https://ourworldindata.org/environmental-impacts-of-food),
+  * [renewable energy data](https://ourworldindata.org/renewable-energy), 
+  * [general energy data](https://ourworldindata.org/energy)
 * [Datahub.io](https://datahub.io/collections/climate-change) for:
-  * [Sea level changes](https://datahub.io/core/sea-level-rise), 
-  * [Fossil fuel emissions](https://datahub.io/core/co2-fossil-global)
+  * [sea level changes](https://datahub.io/core/sea-level-rise), 
+  * [fossil fuel emissions](https://datahub.io/core/co2-fossil-global)
 * [National Oceanic and Atmospheric Administration (NOAA)](https://www.ncdc.noaa.gov/cdo-web/datasets) for:
-  * [Climate data](https://www.ncdc.noaa.gov/cdo-web/webservices/v2),
-  * [Tornado data](https://oasishub.co/dataset/usa-tornado-historical-tracks-noaa/resource/b2a11100-eac5-4d10-869a-87ba064ede2d#), 
-  * [Hurricane data](https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv)
+  * [climate data](https://www.ncdc.noaa.gov/cdo-web/webservices/v2),
+  * [tornado data](https://oasishub.co/dataset/usa-tornado-historical-tracks-noaa/resource/b2a11100-eac5-4d10-869a-87ba064ede2d#), 
+  * [hurricane data](https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv)
 * [National Snow & Ice Data Center (NSIDC)](https://nsidc.org/data/g02135) for northern sea ice extent geoTIFFs
 * [Pew Research](https://www.pewresearch.org/) for:
   * [U.S. opinions on climate](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/),
-  * [World opinions on climate](https://www.pewresearch.org/global/dataset/spring-2018-survey-data/)
+  * [world opinions on climate](https://www.pewresearch.org/global/dataset/spring-2018-survey-data/)
 * [International Energy Agency (IEA)](https://www.iea.org/reports/world-energy-investment-2019/power-sector) for hydropower investment data
 * [Environmental Protection Agency (EPA)](https://www.epa.gov/climate-indicators/climate-change-indicators-sea-surface-temperature) for sea temperature data
 
 **Libraries & packages:**
 * [amCharts](https://www.amcharts.com/) for all visualizations
 * [Scikit.Learn](https://scikit-learn.org/stable/index.html) for:
-  * [Multivariate linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html),
+  * [multivariate linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html),
   * [TF-IDF vectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html),
   * [K-means clustering](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
 * [Twint](https://github.com/twintproject/twint) for pulling Tweet information from [Twitter](https://twitter.com)
@@ -58,7 +60,7 @@ _Is there a link between CO<sub>2</sub> emissions and global temperature? Are th
 
 Maximum temperature data was collected from the [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets) as global summary of the year from multiple climate stations around the world.  The values were then averaged together for the years 1880 to 2010.  A linear regression machine learning model was used with the inputs listed below. Originally, the snow data was also used as an input for all the other outputs, but because it varied so greatly from year to year, it was not a reliable input and caused the testing scores to decrease significantly.
 
-For the CO<sub>2</sub> model, the features are related to different fossil fuel emission concentrations in the atmosphere and variations in global temperature. As a multivariate regression, correlation between these datapoints was shown to be linear. 
+For the CO<sub>2</sub> model, the selected features are related to different fossil fuel emission concentrations in the atmosphere and variations in global temperature. As a multivariate regression, correlation between these datapoints was shown to be linear. 
 
 _Model Parameters_:
 - Maximum temperature (TMAX):
