@@ -35,11 +35,11 @@ As our world progresses technologically, the health of our planet degrades day b
 
 **Libraries & packages:**
 * [amCharts](https://www.amcharts.com/) for all visualizations
-* [Scikit.Learn](https://scikit-learn.org/stable/index.html) for:
+* [scikit-learn](https://scikit-learn.org/stable/index.html) for:
   * [multivariate linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html),
   * [TF-IDF vectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html), &
   * [K-means clustering](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
-* [Twint](https://github.com/twintproject/twint) for pulling Tweet information from [Twitter](https://twitter.com)
+* [Twint](https://github.com/twintproject/twint) for pulling tweet information from [Twitter](https://twitter.com)
 * [fastai.text](https://fastai1.fast.ai/text.html) for text analysis & deep learning, [pytorch](https://pytorch.org/) for NLP models
 * [QGIS](https://qgis.org/en/site/) for vectorizing geoTIFFs & converting to geoJSON, [mapshaper](https://mapshaper.org/) for simplifying & formatting JSON polygons
 * [pyreadstat](https://pypi.org/project/pyreadstat/) for reading `.sav` files in Python  
@@ -118,7 +118,7 @@ _Model Parameters_:
     - **Testing score**: 0.83
 - Category 1 hurricanes: 
     - **Inputs**: historical gas fuel emissions, sea temperature changes, global temperature, sea level changes
-    - **Testing score**:*0.79
+    - **Testing score**: 0.79
 - Category 2 hurricanes:
     - **Inputs**: historical gas fuel emissions, cement emissions, global temperature, sea temperature changes, sea level changes
     - **Testing score**: 0.75
@@ -146,7 +146,7 @@ _Model Parameters_:
 ### Public Sentiment
 _**How does the public feel about climate change? Can we replicate online opinions with deep learning?**_
 
-In the U.S., the existence of climate change and the role of CO2 emissions have become a highly partisan topic. In a [2019 Pew Research survey in the U.S.](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/), Democratic-associated respondents answered that human activity contributed "a great deal "to climate change _(76.8%)_ as opposed to the Republican-associated _(20.1%)_.
+In the U.S., the existence of climate change and the role of CO<sub>2</sub> emissions have become a highly partisan topic. In a [2019 Pew Research survey in the U.S.](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/), Democratic-associated respondents answered that human activity contributed "a great deal" to climate change _(76.8%)_ as opposed to the Republican-associated _(20.1%)_.
 
 Furthermore, in a [2018 worldwide Pew survey](https://www.pewresearch.org/global/dataset/spring-2018-survey-data/), among 27 surveyed countries, the U.S. ranked in the lower-half of percent of respondents who consider climate change to be a "major threat" _(58%)_, and had the fourth-highest percentage _(18%)_ of respondents stating that climate change is "not a threat".
 
@@ -159,12 +159,12 @@ Finally, our own "tweets" were created by using the model to predict a given num
 ### Awareness
 _**How are we directly impacting the CO<sub>2</sub> concentration levels? What parts of our behavior could we change? What is the cost/effectiveness of renewable energy?**_
 
-#### Our Carbon Footprint
+#### Our Agricultural Carbon Footprint
 One of the major contributors to CO<sub>2</sub> emissions is the agricultural supply chain that serves the world's population. Consumption of farm-sourced animal products has increased greatly in recent years, and land use change has increased in response in order to meet the demand of most current diets. This leads to significant amounts of waste and pollution; land use change & animal waste accounts for 83% of greenhouse gas emissions from agriculture. Furthermore, changing landscape for agricultural purposes often leads to an unstable phosphate level in surrounding waterways via [eutrophication](https://www.nature.com/scitable/knowledge/library/eutrophication-causes-consequences-and-controls-in-aquatic-102364466/).
 
 As a result, both our population and our rate of pollution are growing at a alarming rate, suggesting dangerous implications for the future of our environment.
 
-While eating local and _"going organic"_ are trendy solutions to help prevent climate change, an action with larger impact on our carbon footprint is decreasing our consumption of farmed animals, which also would decrease the rate in which land is changed for housing livestock. While it's not necessary to cut out food items such as beef and fish from our diets entirely, we can make a difference in overall demand by avoiding these items just one day a week.
+While eating local and _"going organic"_ are trendy solutions to help prevent climate change, an action with larger impact on our carbon footprint is decreasing our consumption of farmed animals, which also would decrease the rate in which land is changed for housing livestock. While it's not necessary to cut out food items such as beef and fish from our diets entirely, we can make a difference in overall demand by avoiding these items even just one day a week.
 
 #### Renewable Energy
 Investing in renewable energy is the one of the best chances society has to combat the alarming changes seen on the planet today. Over the last several decades the generation of renewable energy has been slowly increasing, with hydropower as a frontrunner. However, as of 2019, the energy generated by hydropower was just above 4200 TWh, which pales in comparison to the 40,000-50,000 TWh of energy consumed in 2019 by each of our main sources of non-renewable energy: gas, oil, and coal. This indicates that, while renewable energy generation is increasing over time, these technologies still need to mature before any significant global impacts can be seen.
@@ -178,3 +178,5 @@ Some tasks we'd like to build on in future commits:
 - Optimizing webpage design for mobile screens
 - Plotting cities prone to flooding in the next few decades
 - Performing ML on sea ice polygon shrinking
+- Performing ML on renewable energy growth
+- Making a visualization "movie" with amCharts for the front page
