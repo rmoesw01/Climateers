@@ -52,7 +52,7 @@ As our world progresses technologically, the health of our planet degrades day b
 <br><br>
 
 ## Topics, Models, & Analyses
-We explored several different phenomena and questions for our models to answer:
+We explored several different phenomena and questions for our models to answer. You can view the models and their brief explanations on our [deployed page](https://rmoesw01.github.io/Climateers/), while this README has more in-depth, technical information and analyses.
 
 ![screenshot](/images/screenshots/screenshot1.png)
 _Figure 2: One example of our several interactive visualizations._
@@ -108,7 +108,7 @@ _Model Parameters_:
   - **Testing score**: 0.87
 
 #### Hurricane Modeling
-Hurricane data  collected from the [NHC](https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv) ranged back to the 1850s, but did not include a storm intensity category, likely because the standard categorization criteria ([Saffir-Simpson Hurricane Wind Scale](https://en.wikipedia.org/wiki/Saffir%E2%80%93Simpson_scale)) was not introduced until 1971. Therefore, unsupervised learning was utilized in the form of a K-means clustering model to group hurricanes by their minimum pressure and maximum windspeed. This model was optimized to have four categories of hurricane intensity. 
+Hurricane data  collected from the [National Hurricane Center (NHC)](https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv) ranged back to the 1850s, but did not include a storm intensity category, likely because the standard categorization criteria ([Saffir-Simpson Hurricane Wind Scale](https://en.wikipedia.org/wiki/Saffir%E2%80%93Simpson_scale)) was not introduced until 1971. Therefore, unsupervised learning was utilized in the form of a K-means clustering model to group hurricanes by their minimum pressure and maximum windspeed. This model was optimized to have four categories of hurricane intensity. 
 
 From there, linear regression machine learning models were used to predict the frequency of total hurricanes, as well as the frequency of each category of hurricane. Most models prove to be relatively reliable, with testing scores at 0.75 and above. However, the model for category 4 hurricanes shows a less reliable testing score of 0.68. The K-means clustering model shows the category 4 data as the most diverse of the 4 categories, with both maximum wind speed and minimum pressure having a larger range than any of the other categories. This model could be further optimized by adding more categories, and thus reducing the large range in this particular category.  This may lead to more reliable modeling of future trends.
 
@@ -160,14 +160,14 @@ Finally, our own "tweets" were created by using the model to predict a given num
 _**How are we directly impacting the CO<sub>2</sub> concentration levels? What parts of our behavior could we change? What is the cost/effectiveness of renewable energy?**_
 
 #### Our Carbon Footprint
-One of the major contributors to CO<sub>2</sub> emissions is the agricultural supply chain that serves the world's population. Consumption of farm-sourced animal products has increased greatly in recent years, and land use change has increased in response in order to meet the demand of most current diets. This leads to significant amounts of waste and pollution; land use change & animal waste accounts for 83% of greenhouse gas emissions from agriculture.
+One of the major contributors to CO<sub>2</sub> emissions is the agricultural supply chain that serves the world's population. Consumption of farm-sourced animal products has increased greatly in recent years, and land use change has increased in response in order to meet the demand of most current diets. This leads to significant amounts of waste and pollution; land use change & animal waste accounts for 83% of greenhouse gas emissions from agriculture. Furthermore, changing landscape for agricultural purposes often leads to an unstable phosphate level in surrounding waterways via [eutrophication](https://www.nature.com/scitable/knowledge/library/eutrophication-causes-consequences-and-controls-in-aquatic-102364466/).
 
-Furthermore, changing landscape for agricultural purposes often leads to an unstable phosphate level in surrounding waterways via [eutrophication](https://www.nature.com/scitable/knowledge/library/eutrophication-causes-consequences-and-controls-in-aquatic-102364466/). This results in our rate of pollution pairing with population growth to a degree that is dangerous for our future. 
+As a result, both our population and our rate of pollution are growing at a alarming rate, suggesting dangerous implications for the future of our environment.
 
-A large opportunity to significantly reduce our carbon footprint is to slow down the consumption of farmed animals, which also would decrease the rate in which land is changed for housing livestock.
+While eating local and _"going organic"_ are trendy solutions to help prevent climate change, an action with larger impact on our carbon footprint is decreasing our consumption of farmed animals, which also would decrease the rate in which land is changed for housing livestock. While it's not necessary to cut out food items such as beef and fish from our diets entirely, we can make a difference in overall demand by avoiding these items just one day a week.
 
 #### Renewable Energy
-Investing in renewable energy is the one of the best chances society has to combat the alarming changes seen on the planet today. Over the last several decades the generation of renewable energy has been slowly increasing, with hydropower as a frontrunner. However, as of 2019, the energy generated by hydropower was just above 4200 TWh, which pales in comparison to the 40,000- 50,000 TWh of energy consumed in 2019 by each of our main sources of non-renewable energy: gas, oil, and coal. This indicates that, while renewable energy generation is increasing over time, these technologies still need to mature before any significant global impacts can be seen.
+Investing in renewable energy is the one of the best chances society has to combat the alarming changes seen on the planet today. Over the last several decades the generation of renewable energy has been slowly increasing, with hydropower as a frontrunner. However, as of 2019, the energy generated by hydropower was just above 4200 TWh, which pales in comparison to the 40,000-50,000 TWh of energy consumed in 2019 by each of our main sources of non-renewable energy: gas, oil, and coal. This indicates that, while renewable energy generation is increasing over time, these technologies still need to mature before any significant global impacts can be seen.
 
 When looking at the return on investment for hydropower, solar energy, and wind energy, it can be seen that hydropower seems to give the biggest payout. However, hydropower cannot be the only way forward in the renewable energy arena, as it can only be used in specific areas (dams and reservoirs) and can pose a threat to the habitats nearby. Therefore, investments in wind and solar energy must continue, and likely, increase, to improve their efficiencies and reliabilities.
 
