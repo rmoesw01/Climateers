@@ -5,11 +5,11 @@ A site that analyzes and predicts climate change and its effects.
 
 **Access the deployed page [here](https://rmoesw01.github.io/Climateers/).**
 
-![screenshot](/images/screenshots/screenshot1.png)
+![screenshot](/images/screenshots/screenshot3.png)
+_Figure 1: The Climateers homepage._
 
 ## Background
 As our world progresses technologically, the health of our planet degrades day by day. Our group's aim was to analyze the trends seen today and model how our world could be affected by climate change in the future via machine learning.
-
 
 ## Resources, Libraries, & Tools
 
@@ -17,18 +17,18 @@ As our world progresses technologically, the health of our planet degrades day b
 * [Our World in Data](https://ourworldindata.org) for:
   * [historical CO<sub>2</sub> levels & emissions](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions),
   * [agricultural data](https://ourworldindata.org/environmental-impacts-of-food),
-  * [renewable energy data](https://ourworldindata.org/renewable-energy), 
+  * [renewable energy data](https://ourworldindata.org/renewable-energy), &
   * [general energy data](https://ourworldindata.org/energy)
 * [Datahub.io](https://datahub.io/collections/climate-change) for:
-  * [sea level changes](https://datahub.io/core/sea-level-rise), 
+  * [sea level changes](https://datahub.io/core/sea-level-rise) & 
   * [fossil fuel emissions](https://datahub.io/core/co2-fossil-global)
 * [National Oceanic and Atmospheric Administration (NOAA)](https://www.ncdc.noaa.gov/cdo-web/datasets) for:
   * [climate data](https://www.ncdc.noaa.gov/cdo-web/webservices/v2),
-  * [tornado data](https://oasishub.co/dataset/usa-tornado-historical-tracks-noaa/resource/b2a11100-eac5-4d10-869a-87ba064ede2d#), 
+  * [tornado data](https://oasishub.co/dataset/usa-tornado-historical-tracks-noaa/resource/b2a11100-eac5-4d10-869a-87ba064ede2d#), &
   * [hurricane data](https://www.kaggle.com/noaa/hurricane-database?select=atlantic.csv)
 * [National Snow & Ice Data Center (NSIDC)](https://nsidc.org/data/g02135) for northern sea ice extent geoTIFFs
 * [Pew Research](https://www.pewresearch.org/) for:
-  * [U.S. opinions on climate](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/),
+  * [U.S. opinions on climate](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/) &
   * [world opinions on climate](https://www.pewresearch.org/global/dataset/spring-2018-survey-data/)
 * [International Energy Agency (IEA)](https://www.iea.org/reports/world-energy-investment-2019/power-sector) for hydropower investment data
 * [Environmental Protection Agency (EPA)](https://www.epa.gov/climate-indicators/climate-change-indicators-sea-surface-temperature) for sea temperature data
@@ -37,11 +37,10 @@ As our world progresses technologically, the health of our planet degrades day b
 * [amCharts](https://www.amcharts.com/) for all visualizations
 * [Scikit.Learn](https://scikit-learn.org/stable/index.html) for:
   * [multivariate linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html),
-  * [TF-IDF vectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html),
+  * [TF-IDF vectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html), &
   * [K-means clustering](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
 * [Twint](https://github.com/twintproject/twint) for pulling Tweet information from [Twitter](https://twitter.com)
-* [fastai.text](https://fastai1.fast.ai/text.html) for text analysis & deep learning
-* [pytorch](https://pytorch.org/) for NLP models
+* [fastai.text](https://fastai1.fast.ai/text.html) for text analysis & deep learning, [pytorch](https://pytorch.org/) for NLP models
 * [QGIS](https://qgis.org/en/site/) for vectorizing geoTIFFs & converting to geoJSON, [mapshaper](https://mapshaper.org/) for simplifying & formatting JSON polygons
 * [pyreadstat](https://pypi.org/project/pyreadstat/) for reading `.sav` files in Python  
 
@@ -55,8 +54,11 @@ As our world progresses technologically, the health of our planet degrades day b
 ## Topics, Models, & Analyses
 We explored several different phenomena and questions for our models to answer:
 
+![screenshot](/images/screenshots/screenshot1.png)
+_Figure 2: One example of our several interactive visualizations._
+
 ### Temperature & Emissions
-_Is there a link between CO<sub>2</sub> emissions and global temperature? Are they rising?_
+_**Is there a link between CO<sub>2</sub> emissions and global temperature? Are they rising?**_
 
 Maximum temperature data was collected from the [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets) as global summary of the year from multiple climate stations around the world.  The values were then averaged together for the years 1880 to 2010.  A linear regression machine learning model was used with the inputs listed below. Originally, the snow data was also used as an input for all the other outputs, but because it varied so greatly from year to year, it was not a reliable input and caused the testing scores to decrease significantly.
 
@@ -72,7 +74,7 @@ _Model Parameters_:
   - **Testing score**: 0.96
 
 ### Ocean Impacts
-_How have the world's oceans been affected?_
+_**How have the world's oceans been affected?**_
 
 #### Sea Ice Extent
 We gathered northern sea ice extent polygons for every 5 years in September from 1980 to 2020, and plotted them consecutively. Numerically, from September 1980 to September 2020, area of sea ice extent has decreased from 7.67 to 3.92 million sq km, leading to devastating consequences to surrounding ecosystems and wildlife. This is consistent with rising global temperatures, both atmospheric and oceanic. This also directly contributes to rising sea levels, which in turn leads to flooding and higher likelihood of hurricane formation, which we discuss further below.
@@ -92,7 +94,7 @@ _Model Parameters_:
 
 
 ### Weather Impacts
-_How have weather and natural disasters responded to climate change? Should we expect more extreme weather systems?_
+_**How have weather and natural disasters responded to climate change? Should we expect more extreme weather systems?**_
 
 #### Precipitation & Snow
 Like data for maximum temperature (see above), precipitation and snow data were also collected from the [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets) as global summary of the year from multiple climate stations around the world.  Those values were then averaged together for the years 1880 to 2010.  A linear regression machine learning model was used with the inputs listed below. Again, snow data was originally also used as an input for all the other outputs, but because it varied so greatly from year to year, it was not a reliable input.  Because it was so varied, we had to utilize snow data for the last 100 years to create our model, while for all other outputs, only the last 40 years were used as the basis for the predictions.
@@ -142,7 +144,7 @@ _Model Parameters_:
     - **Testing score**: 0.74
 
 ### Public Sentiment
-_How does the public feel about climate change? Can we replicate online opinions with deep learning?_
+_**How does the public feel about climate change? Can we replicate online opinions with deep learning?**_
 
 In the U.S., the existence of climate change and the role of CO2 emissions have become a highly partisan topic. In a [2019 Pew Research survey in the U.S.](https://www.pewresearch.org/science/dataset/american-trends-panel-wave-55/), Democratic-associated respondents answered that human activity contributed "a great deal "to climate change _(76.8%)_ as opposed to the Republican-associated _(20.1%)_.
 
@@ -155,7 +157,7 @@ We then used the module fastAI to create a language learning model based on the 
 Finally, our own "tweets" were created by using the model to predict a given number of words after being given a word or phrase. We used a TF-IDF vectorizer to determine some of the most n-grams for each hashtag, and chose some of them to feed the language model. You can view the outputs on the deployed page, or run the notebook (`assets/data/climate_tweets/tweet_analysis/tweet_analysis.ipynb`) yourself to return new tweets from the same model.
 
 ### Awareness
-_How are we directly impacting the CO<sub>2</sub> concentration levels? What parts of our behavior could we change? What is the cost/effectiveness of renewable energy?_
+_**How are we directly impacting the CO<sub>2</sub> concentration levels? What parts of our behavior could we change? What is the cost/effectiveness of renewable energy?**_
 
 #### Our Carbon Footprint
 One of the major contributors to CO<sub>2</sub> emissions is the agricultural supply chain that serves the world's population. Consumption of farm-sourced animal products has increased greatly in recent years, and land use change has increased in response in order to meet the demand of most current diets. This leads to significant amounts of waste and pollution; land use change & animal waste accounts for 83% of greenhouse gas emissions from agriculture.
